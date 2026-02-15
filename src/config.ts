@@ -2,7 +2,7 @@ export const SITE = {
   website: "https://simply-you-blog.pages.dev/", // replace this with your deployed domain
   author: "Dxmond Tecku",
   profile: "https://yourprofile.com",
-  desc: "A modern blog focused on writing, monetization, and creator tools - built for writers and developers.",
+  desc: "Simply·You·Blog is your go-to space for everything that sparks curiosity, creativity, and inspiration. From lifestyle and personal stories to tips, ideas , and everyday musings, we explore it all with a fresh perspective and a focus on what makes life uniquely yours.",
   title: "Simply You Blog",
   ogImage: "simply-you-og.jpg",
   lightAndDarkMode: true,

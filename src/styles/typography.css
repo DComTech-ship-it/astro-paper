@@ -1,144 +1,238 @@
 @plugin "@tailwindcss/typography";
 
+
+
 @layer base {
+
   /* ===== Override default Tailwind Typography styles ===== */
+
   .app-prose {
+
     @apply prose;
-    font-family: var(--font-roboto), system-ui, sans-serif;
+
+
 
     h1,
+
     h2,
+
     h3,
+
     h4,
+
     th {
+
       @apply mb-3 text-foreground;
-      font-family: var(--font-roboto), system-ui, sans-serif;
-      font-weight: 700;
+
     }
+
+
 
     h3 {
+
       @apply italic;
-      font-weight: 500;
+
     }
+
+
 
     p,
+
     strong,
+
     ol,
+
     ul,
+
     figcaption,
+
     table,
+
     code {
+
       @apply text-foreground;
-      font-family: var(--font-roboto), system-ui, sans-serif;
+
     }
 
-    p {
-      line-height: 1.7;
-      font-weight: 400;
-    }
+
 
     a {
+
       @apply wrap-break-word text-foreground decoration-dashed underline-offset-4 hover:text-accent focus-visible:no-underline;
-      font-family: var(--font-roboto), system-ui, sans-serif;
+
     }
+
+
 
     ul {
+
       @apply overflow-x-clip;
+
     }
+
+
 
     li {
+
       @apply marker:text-accent;
-      font-family: var(--font-roboto), system-ui, sans-serif;
+
     }
+
+
 
     hr {
+
       @apply border-border;
+
     }
+
+
 
     img {
+
       @apply mx-auto border border-border;
+
     }
+
+
 
     figcaption {
+
       @apply opacity-75;
-      font-family: var(--font-roboto), system-ui, sans-serif;
-      font-size: 0.875rem;
+
     }
+
+
 
     table {
+
       th,
+
       td {
+
         @apply border border-border p-2;
-        font-family: var(--font-roboto), system-ui, sans-serif;
+
       }
+
+
 
       th {
+
         @apply py-1.5;
-        font-weight: 600;
+
       }
+
+
 
       code {
+
         @apply break-all sm:break-normal;
-        font-family: var(--font-roboto-mono), monospace;
+
       }
+
     }
+
+
 
     code {
+
       @apply rounded bg-muted/75 p-1 wrap-break-word text-foreground before:content-none after:content-none;
-      font-family: var(--font-roboto-mono), monospace;
-      font-size: 0.875rem;
+
     }
+
+
 
     .astro-code code {
+
       @apply flex-[1_0_100%] bg-inherit p-0;
-      font-family: var(--font-roboto-mono), monospace;
+
     }
+
+
 
     blockquote {
+
       @apply border-s-accent/80 wrap-break-word opacity-80;
-      font-family: var(--font-roboto), system-ui, sans-serif;
-      font-style: italic;
+
     }
+
+
 
     details {
+
       @apply inline-block cursor-pointer text-foreground select-none [&_p]:hidden [&_ul]:my-0!;
-      font-family: var(--font-roboto), system-ui, sans-serif;
+
     }
+
+
 
     summary {
+
       @apply focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent focus-visible:outline-dashed;
-      font-family: var(--font-roboto), system-ui, sans-serif;
+
     }
+
+
 
     pre {
+
       @apply focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-dashed;
-      font-family: var(--font-roboto-mono), monospace;
+
     }
+
   }
+
+
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
+
   .astro-code {
+
     @apply flex border bg-(--shiki-light-bg) text-(--shiki-light) outline-border [&_span]:text-(--shiki-light);
+
   }
+
+
 
   html[data-theme="dark"] .astro-code {
+
     @apply bg-(--shiki-dark-bg) text-(--shiki-dark) [&_span]:text-(--shiki-dark);
+
   }
 
+
+
   /* Styles for Shiki transformers */
+
   /* https://shiki.style/packages/transformers */
+
   .astro-code {
+
     .line.diff.add {
+
       @apply relative inline-block w-full bg-green-400/20 before:absolute before:-left-3 before:text-green-500 before:content-['+'];
+
     }
+
     .line.diff.remove {
+
       @apply relative inline-block w-full bg-red-500/20 before:absolute before:-left-3 before:text-red-500 before:content-['-'];
+
     }
+
     .line.highlighted {
+
       @apply inline-block w-full bg-slate-400/20;
+
     }
+
     .highlighted-word {
+
       @apply rounded-sm border border-border px-0.5 py-px;
+
     }
+
   }
+
 }
+
