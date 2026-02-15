@@ -34,4 +34,4 @@ Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue
 
 If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
 
-Kyay zuu! 🙏🏼
+Akpe! 🙏🏼
