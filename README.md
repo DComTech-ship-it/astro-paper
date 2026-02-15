@@ -173,8 +173,48 @@ If you have any suggestions/feedback, you can contact me via [my email](mailto:c
 
 ## 📜 License
 
-Licensed under the MIT License, Copyright © 2025
+Licensed under the MIT License, Copyright 2025
 
 ---
 
-Made with 🤍 by [Sat Naing](https://satnaing.dev) 👨🏻‍💻 and [contributors](https://github.com/satnaing/astro-paper/graphs/contributors).
+Made with by [Sat Naing](https://satnaing.dev) and [contributors](https://github.com/satnaing/astro-paper/graphs/contributors).
+
+## Simply You Blog
+
+A modern, responsive blog theme focused on exceptional reading experience and clean typography. Built with Astro and Tailwind CSS.
+
+**Perfect for:**
+- Personal blogs and portfolios
+- Technical writing and tutorials
+- Developer-focused content
+- Monetization and side income strategies
+
+**Key Features:**
+- Modern Roboto fonts for optimal readability
+- SEO-optimized structure
+- Light/dark theme support
+- Mobile-responsive design
+- Fast performance and accessibility
+
+**Get Started:**
+```bash
+# Clone the repository
+git clone https://github.com/DComTech-ship-it/astro-paper.git
+
+# Install dependencies
+pnpm install
+
+# Start development
+pnpm run dev
+```
+
+**Configuration:**
+- Update `src/config.ts` with your site details
+- Customize colors in `src/styles/global.css`
+- Add your posts to `src/data/blog/`
+
+**Built with:**
+- Astro 5.16.6
+- TailwindCSS 4.1.18
+- TypeScript for type safety
+- Modern web standards and best practices
