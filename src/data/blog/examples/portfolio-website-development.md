@@ -1,105 +1,93 @@
 ---
-title: How Do I Develop My Portfolio Website & Blog
-author: Sat Naing
+title: Finding Your Creative Voice in a Digital World
+author: Dxmond Tecku
 pubDatetime: 2022-03-25T16:55:12.000+00:00
-slug: how-do-i-develop-my-portfolio-and-blog
+slug: finding-your-creative-voice-digital-world
 featured: false
 draft: false
 tags:
-  - NextJS
-  - TailwindCSS
-  - HeadlessCMS
-  - Blog
+  - Personal Growth
+  - Creativity
+  - Digital Life
+  - Inspiration
 description:
-  "EXAMPLE POST: My experience about developing my first portfolio website and a blog
-  using NextJS and a headless CMS."
-timezone: "Asia/Yangon"
+  "EXAMPLE POST: My journey of discovering authentic self-expression and creativity
+  in our modern digital landscape."
+timezone: "America/New_York"
 ---
 
-> This article is originally from my [blog post](https://satnaing.dev/blog/posts/how-do-i-develop-my-portfolio-and-blog). I put this article to demonstrate how you can write blog posts/articles using AstroPaper theme.
+> This article is a personal reflection on finding authentic self-expression in our digital age. I'm sharing this journey to demonstrate how you can write blog posts/articles using AstroPaper theme.
 
-My experience about developing my first portfolio website and a blog using NextJS and a headless CMS.
+My journey of discovering authentic self-expression and creativity in our modern digital landscape.
 
-![Building portfolio](https://satnaing.dev/_ipx/w_2048,q_75/https%3A%2F%2Fres.cloudinary.com%2Fnoezectz%2Fimage%2Fupload%2Fv1653050141%2FSatNaing%2Fblog_at_cafe_ei1wf4.jpg?url=https%3A%2F%2Fres.cloudinary.com%2Fnoezectz%2Fimage%2Fupload%2Fv1653050141%2FSatNaing%2Fblog_at_cafe_ei1wf4.jpg&w=2048&q=75)
+![Creative writing space](https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80)
 
-## Motivation
+## The Spark Within
 
-I've been always thinking about launching my own website with my custom domain name (**satnaing.dev**) since my college student life. But that never happened until this project. I've done several projects and works about web application development but I didn't make an effort to do this.
+I've always been drawn to creative expression, even from my early days. There was something magical about putting thoughts into words, ideas into visuals, and emotions into stories. But for the longest time, I struggled with finding my authentic voice in a world that seemed to demand perfection and conformity.
 
-So, "what about blog?" you may ask. Yeah, blog also has been in my project list for some time. I always wanted to make a blog project using some of the latest technologies. However, I've been busy with my works and other projects so that blog project has never been started.
+So, "what about digital creativity?" you might wonder. Yes, that too has been on my mind for quite some time. I've wanted to explore how technology and creativity could dance together, but life's responsibilities and other projects always seemed to take precedence.
 
-In these days, I tend to develop my own projects with the focus in good quality rather than quantity. After the project is done, I usually put a proper readme file in the GitHub repo. But GitHub repo readme is only suitable for technical aspects (this is just my thought). I want to write down my experiences and challenges. Thus, I decided to make my own blog. Plus, at this point, I have decent experiences and confidence to develop this project.
+Lately, I've been focusing on quality over quantity in everything I create. Whether it's a simple social media post or a longer piece of writing, I want it to mean something. This shift in perspective made me realize that I needed a space where I could be unapologetically myself - a digital garden where my thoughts could grow freely.
 
-## Tech Stack
+## My Creative Toolkit
 
-For the front-end, I wanted to use [React](https://reactjs.org/ "React Official Website"). But React alone is not good enough for SEO; and I did have to consider many factors like routing, image optimization etc. So, I chose [NextJS](https://nextjs.org/ "NextJS Official Website") as my main front-end stack. And of course TypeScript for type checking. (It's said that you'll love TypeScript when you're used to it 😉)
+For my creative expression, I wanted tools that felt natural and intuitive. I discovered that [journaling](https://www.journal.com "Journaling for creativity") became my foundation - a space where raw thoughts could flow without judgment. But journaling alone wasn't enough; I needed ways to organize and refine these ideas.
 
-For styling, I use [TailwindCSS](https://tailwindcss.com/ "Tailwind CSS Official Website"). This is because I love developer experience that Tailwind gives and it has a lot of flexibilities compared to other component UI libraries like MUI or React Bootstrap.
+For visual creativity, I found [digital art tools](https://www.canva.com "Digital Art Tools") that allowed me to express ideas visually without being overwhelmed by complex software. This gave me the freedom to experiment with colors, layouts, and designs that reflected my personality.
 
-All contents of this project reside within the GitHub repository. All my blog posts (including this one) are written in Markdown file format since I'm very used to with this. But to write Markdown along with its frontmatter effortlessly, I use [Forestry](https://forestry.io/ "Forestry Official Website") headless CMS. It is a git-based CMS that can serve Markdown and other contents. Because of this, I can write my contents either using Markdown or wysiwyg editor. Besides, writing frontmatters with this is a breeze.
+All my creative work lives in a simple, organized system. I write most of my content using [markdown](https://www.markdownguide.org "Markdown Guide") because it's clean and distraction-free. To make the writing process smoother, I use [simple writing apps](https://notion.so "Notion Writing App") that help me focus on the words rather than the formatting.
 
-Images and assets are uploaded and stored in [Cloudinary](https://cloudinary.com/ "Cloudinary Official Website"). I connect Cloudinary via Forestry and manage them directly in the dashboard.
+Images and visual elements are stored in [cloud storage](https://www.dropbox.com "Cloud Storage"), making it easy to access and share my creative assets across different projects.
 
-In conclusion, these are the tech stack I've used for this project.
+In essence, this is my creative toolkit:
 
-- Front-end: NextJS (TypeScript)
-- Styling: TailwindCSS
-- Animations: GSAP
-- CMS: Forestry Headless CMS
-- Deployment: Vercel
+- Writing: Markdown & Simple Writing Apps
+- Visual Design: Digital Art Tools
+- Organization: Cloud Storage & Note-taking
+- Sharing: Social Media & Personal Blog
+- Inspiration: Daily walks & Nature
 
-## Features
+## What Makes This Space Special
 
-The following are certain features of my portfolio and blog
+The following are the elements that make this creative space uniquely mine:
 
-### SEO Friendly
+### Authentic Voice
 
-The entire project is developed with SEO focus in mind. I've used proper meta tags, descriptions and heading alignments. This website is now indexed by Google.
+I write exactly as I think and feel. No corporate jargon, no trying to sound like someone else. Just honest, raw thoughts that come from the heart. This authenticity is what connects me with readers who appreciate genuine content.
 
-> You can search this website on google by using keywords like 'sat naing dev'
+> You can feel the difference when someone writes from their soul versus when they're writing for an algorithm.
 
-![searching satnaing.dev on google](https://res.cloudinary.com/noezectz/image/upload/v1648231400/SatNaing/satnaing-on-google_asflq6.png "satnaing.dev is indexed")
+![Authentic writing](https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80 "Authentic creative writing")
 
-Moreover, this website will be displayed well when shared to social media due to properly used meta tags.
+Moreover, this space feels welcoming because it's built on genuine human connection rather than trying to game the system.
 
-![satnaing.dev card layout when shared to Facebook](https://res.cloudinary.com/noezectz/image/upload/v1653106955/SatNaing/satnaing-dev-share-on-facebook_1_zjoehx.png "Card layout when shared to Facebook")
+### Flexible Structure
 
-### Dynamic Sitemap
+Creativity doesn't follow a strict schedule, so neither does this space. Some weeks I write daily, other times I take breaks to recharge. This flexibility allows creativity to flow naturally rather than forcing it.
 
-Sitemap plays an important part in SEO. Because of this, every single page of this site should be included in sitemap.xml. I made an auto generated sitemap in my website whenever I create a new content or tags or categories.
+### Personal Touch
 
-### Light & Dark Themes
+Every element here reflects my personality - from the color choices to the writing style. This isn't a template; it's a digital extension of who I am.
 
-Due to dark theme trend in recent years, many websites include dark theme out of the box nowadays. Certainly, my website also supports light & dark themes.
+### Community Connection
 
-### Fully Accessible
+This isn't just about broadcasting my thoughts; it's about building connections. I respond to every comment, engage with readers, and create content based on what people actually want to explore together.
 
-This website is fully accessible. You can navigate around by only using keyboard. I put all a11y enhancement best practices like including alt text in all images, no skipping headings, using semantic HTML tags, using aria-attributes properly.
+### Creative Freedom
 
-### Search box, Categories & Tags
+Most importantly, this space gives me the freedom to experiment, fail, learn, and grow without pressure. Every post is an opportunity to try something new.
 
-All blog contents can be searched by search box. Moreover, contents can be filtered by categories and tags. In this way, blog readers can search and read what they really want.
+## The Journey Continues
 
-### Performance and Lighthouse Score
+This creative space has taught me so much about authentic self-expression and the power of sharing your voice. I've learned that creativity isn't about perfection - it's about connection. I've discovered that my unique perspective matters, and that there are people out there who resonate with my way of seeing the world.
 
-This website got very good performance and lighthouse score thanks to proper development and best practices. Here's the lighthouse score for this website.
+I'll keep exploring, experimenting, and growing in this space. The journey of creative self-discovery is ongoing, and I'm excited to see where it leads next. So stay tuned! ✌🏻
 
-![satnaing.dev Lighthouse score](https://user-images.githubusercontent.com/53733092/159957822-7082e459-11e9-4616-8f1e-49d0881f7cbb.png "satnaing.dev Lighthouse score")
+And... last but not least, I want to thank everyone who has been part of this journey - every reader, commenter, and fellow creative soul who has inspired me to keep going.
 
-### Animations
+## Connect & Explore
 
-Initially I used [Framer Motion](https://www.framer.com/motion/ "Framer Motion") to add animations and micro interactions for this website. However, when I tried to use some complex animations and parallax effects, I found it inconvenient to integrate with Framer Motion (Maybe I'm not very good at and used to working with it). Hence, I decided to use [GSAP](https://greensock.com/ "GSAP Animation Library") for all of my animations. It is one of the most popular animation library and it is capable of doing complex and advanced animations. You can see animations and micro interactions on pretty much every page of this website.
-
-![animations at satnaing.dev](https://res.cloudinary.com/noezectz/image/upload/v1653108324/SatNaing/ezgif.com-gif-maker_2_hehtlm.gif "satnaing.dev website")
-
-## Outro
-
-In conclusion, this project gives me a lot of experience and confidence about developing blog site (SSG). Now, I have gained knowledge of git-based CMS and how it interacts with NextJS. I've also learned about SEO, dynamic sitemap generation and indexing Google procedures. I will make better projects in the future. So, stay tuned! ✌🏻
-
-And... last but not least, I would like to say 'thanks' to my friend [Swann Fevian Kyaw](https://www.facebook.com/bon.zai.3910 "Swann Fevian Kyaw's Facebook Account") (@[ToonHa](https://www.facebook.com/ToonHa-102639465752883 "ToonHa Facebook Page")) who has drawn a beautiful illustration for my hero section of the website.
-
-## Project Links
-
-- Website: [https://satnaing.dev/](https://satnaing.dev/ "https://satnaing.dev/")
-- Blog: [https://satnaing.dev/blog](https://satnaing.dev/blog "https://satnaing.dev/blog")
-- Repo: [https://github.com/satnaing/my-portfolio](https://github.com/satnaing/my-portfolio "https://github.com/satnaing/my-portfolio")
+- Blog: [simply-you-blog.pages.dev](https://simply-you-blog.pages.dev/ "Simply You Blog")
+- Social: [Follow our journey](https://twitter.com/simplyyoublog "Simply You Blog on Twitter")
+- Community: [Join our creative circle](https://community.simply-you-blog.pages.dev "Creative Community")
