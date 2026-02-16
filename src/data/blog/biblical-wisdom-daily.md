@@ -1,6 +1,7 @@
 ---
 author: Dxmond Tecku
 pubDatetime: 2024-01-20T08:00:00Z
+title: Biblical Wisdom Daily
 slug: biblical-wisdom-daily
 featured: false
 draft: false
@@ -8,7 +9,6 @@ tags:
   - Faith
   - Daily Wisdom
   - Spiritual Growth
-  - Biblical Inspiration
 description: "Daily reflections on biblical wisdom and how it applies to modern life challenges."
 ---
 
