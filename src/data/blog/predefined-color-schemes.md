@@ -1,171 +1,121 @@
 ---
-author: Sat Naing
+author: Dxmond Tecku
 pubDatetime: 2022-09-26T12:13:24Z
 modDatetime: 2024-01-04T09:09:06Z
-title: Predefined color schemes
-slug: predefined-color-schemes
+title: Finding Your Personal Rhythms
+slug: finding-your-personal-rhythms
 featured: false
 draft: false
 tags:
-  - color-schemes
+  - Personal Growth
+  - Daily Rhythms
+  - Mindful Living
 description:
-  Some of the well-crafted, predefined color schemes for AstroPaper blog
-  theme.
+  Some of the well-crafted, personal rhythms for creating a life that flows
+  naturally and authentically.
 ---
 
-I've crafted some predefined color schemes for this AstroPaper blog theme. You can replace these color schemes with the original ones.
+I've crafted some personal rhythms for creating a life that flows with your natural energy and honors your authentic patterns. You can replace these rhythms with the original ones, but I encourage you to discover what works best for your unique self.
 
-If you don't know how you can configure color schemes, check [this blog post](https://astro-paper.pages.dev/posts/customizing-astropaper-theme-color-schemes/).
+If you don't know how to find your natural rhythms, check [this reflection](https://simply-you-blog.pages.dev/posts/finding-your-writing-voice/) on discovering your personal patterns.
+
+<figure>
+  <img
+    src="https://images.pexels.com/photos/1024989/pexels-photo-1024989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    alt="Person following natural daily rhythms with sunrise and coffee"
+  />
+    <figcaption class="text-center">
+      When you honor your natural rhythms, life flows with ease and joy
+    </figcaption>
+</figure>
 
 ## Table of contents
 
-## Light color schemes
+## Morning Rhythms
 
-Light color scheme has to be defined using the css selector `:root` and `html[data-theme="light"]`.
+How you start your day sets the tone for everything that follows. Morning rhythms might include:
 
-### Lobster
+### Gentle Awakening
+- Wake up naturally with your body's rhythm
+- Take a few moments to set intentions before the world demands your attention
+- Morning light exposure to regulate your natural cycles
+- Movement that feels good rather than punishing exercise
 
-![lobster-color-scheme](https://user-images.githubusercontent.com/53733092/192282447-1d222faf-a3ce-44a9-9cfe-ac873155e5a9.png)
+### Nourishing Start
+- Breakfast that energizes rather than weighs you down
+- Mindful consumption of something warm and comforting
+- Planning your day from a place of calm rather than stress
 
-```css
-:root,
-html[data-theme="light"] {
-  --background: #f6eee1;
-  --foreground: #012c56;
-  --accent: #e14a39;
-  --muted: #efd8b0;
-  --border: #dc9891;
-}
-```
+## Work Rhythms
 
-### Leaf Blue
+Finding your natural work patterns helps you be productive without burnout:
 
-![leaf-blue-color-scheme](https://user-images.githubusercontent.com/53733092/192318782-e80e3c39-54b5-423e-8f4b-9ae60402fc8d.png)
+### Energy Cycles
+- Work during your peak hours (morning person? night owl?)
+- Take breaks that restore rather than drain
+- Alternate focused work with restorative activities
 
-```css
-:root,
-html[data-theme="light"] {
-  --background: #f2f5ec;
-  --foreground: #353538;
-  --accent: #1158d1;
-  --muted: #bbc789;
-  --border: #7cadff;
-}
-```
+### Flow States
+- Identify when you're "in the zone" and protect that time
+- Minimize multitasking during deep work periods
+- End work at a natural completion point, not arbitrary clock-out time
 
-### Pinky light
+## Evening Rhythms
 
-![pinky-color-scheme](https://user-images.githubusercontent.com/53733092/192286510-892d0042-2d6d-471e-bb72-954221ae2d17.png)
+How you transition from day to night affects your rest quality:
 
-```css
-:root,
-html[data-theme="light"] {
-  --background: #fafcfc;
-  --foreground: #222e36;
-  --accent: #d3006a;
-  --muted: #f1bad4;
-  --border: #e3a9c6;
-}
-```
+### Gentle Wind-down
+- Dim lighting to signal your brain it's time to rest
+- Screen-free time before bed
+- Relaxing activities that lower your heart rate
+- Reflection or journaling to process the day
 
-## Dark color schemes
+## Weekly Rhythms
 
-Dark color scheme has to be defined as `html[data-theme="dark"]`.
+Looking at your week as a whole helps create sustainable patterns:
 
-### AstroPaper 1 original Dark Theme
+### Energy Management
+- Plan high-energy activities for your peak days
+- Schedule rest and recovery for low-energy periods
+- Build in buffer time between commitments
 
-![AstroPaper 1 default dark theme](https://user-images.githubusercontent.com/53733092/215769153-13b0ad8d-5ba2-44b1-af06-e5ae61293f62.png)
+### Seasonal Adjustments
+- Adjust your rhythms with seasonal energy changes
+- Honor your body's need for different types of weather
+- Plan indoor alternatives for extreme weather conditions
 
-```css
-html[data-theme="dark"] {
-  --background: #2f3741;
-  --foreground: #e6e6e6;
-  --accent: #1ad9d9;
-  --muted: #596b81;
-  --border: #3b4655;
-}
-```
+## Personal Rhythm Combinations
 
-### Deep Oyster
+Everyone's natural rhythms are unique. Here are some examples:
 
-![deep-oyster-color-scheme](https://user-images.githubusercontent.com/53733092/192314524-45ec5904-3d8f-450a-9edf-1e32c5e11d6c.png)
+### The Creative Rhythm
+- Morning: Creative work when mind is fresh
+- Afternoon: Administrative tasks and planning  
+- Evening: Reading, learning, and inspiration
 
-```css
-html[data-theme="dark"] {
-  --background: #21233d;
-  --foreground: #f4f7f5;
-  --accent: #ff5256;
-  --muted: #4a4e86;
-  --border: #b12f32;
-}
-```
+### The Social Rhythm
+- Morning: Solo preparation and centering
+- Midday: Connection and collaboration
+- Evening: Intimate relationships and deep conversation
 
-### Pikky dark
+### The Introspective Rhythm
+- Morning: Movement and body awareness
+- Afternoon: Deep work and creative projects
+- Evening: Reflection, meditation, and gentle activities
 
-![pinky-dark-color-scheme](https://user-images.githubusercontent.com/53733092/192307050-fbd55326-911c-4001-87c6-a8ad9378ac2e.png)
+## Listening to Your Body
 
-```css
-html[data-theme="dark"] {
-  --background: #353640;
-  --foreground: #e9edf1;
-  --accent: #ff78c8;
-  --muted: #715566;
-  --border: #86436b;
-}
-```
+Your body constantly communicates your natural rhythms through:
 
-### Astro dark (High Contrast)
+- **Energy levels**: When you feel most alert and creative
+- **Hunger patterns**: Your natural eating times and food preferences  
+- **Sleep needs**: Your ideal bedtime and wake-up times
+- **Physical cues**: When you need movement, rest, or change of scenery
 
-![astro-dark-color-scheme](https://user-images.githubusercontent.com/53733092/215680520-59427bb0-f4cb-48c0-bccc-f182a428d72d.svg)
+## The Beauty of Imperfect Rhythms
 
-```css
-html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #8a3302;
-  --border: #ab4b08;
-}
-```
+Some days your perfect rhythm will fall apart - and that's okay. Life happens. The goal isn't perfect adherence to patterns, but having the self-awareness to return to what works when things get chaotic.
 
-### Astro dark (New default dark theme in AstroPaper 2)
+Your personal rhythms are about honoring your unique nature while creating the structure that helps you thrive. Experiment, observe, and adjust until you find the flow that makes life feel like dancing rather than struggling.
 
-![new dark color scheme - low contrast](https://user-images.githubusercontent.com/53733092/215772856-d5b7ae35-ddaa-4ed6-b0bf-3fa5dbcf834c.png)
-
-```css
-html[data-theme="dark"] {
-  --background: #212737; /* lower contrast background */
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #8a3302;
-  --border: #ab4b08;
-}
-```
-
-### Astro Deep Purple (New dark theme in AstroPaper 3)
-
-![AstroPaper v3 new theme](https://github.com/satnaing/astro-paper/assets/53733092/c8b5d7e1-a3bc-4852-a5ad-4abf7b3cec79)
-
-```css
-html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #eb3fd3;
-  --muted: #7d4f7c;
-  --border: #642451;
-}
-```
-
-### AstroPaper v4 Special (New dark theme in AstroPaper 4)
-
-![AstroPaper v4 new theme](https://github.com/satnaing/astro-paper/assets/53733092/66eb74dc-7a0e-4f2e-982d-25f5c443b25a)
-
-```css
-html[data-theme="dark"] {
-  --background: #000123;
-  --accent: #617bff;
-  --foreground: #eaedf3;
-  --muted: #0c0e4f;
-  --border: #303f8a;
-}
-```
+Remember that your rhythms will change throughout your life, and that's the beauty of being human - we're constantly evolving, learning, and growing into our most authentic selves.

@@ -1,206 +1,93 @@
 ---
-author: FjellOverflow
+author: Dxmond Tecku
 pubDatetime: 2024-07-25T11:11:53Z
 modDatetime: 2025-03-12T12:28:53Z
-title: How to integrate Giscus comments into AstroPaper
-slug: how-to-integrate-giscus-comments
+title: Building Meaningful Connections
+slug: building-meaningful-connections
 featured: false
 draft: false
 tags:
-  - astro
-  - blog
-  - docs
-description: Comment function on a static blog hosted on GitHub Pages with Giscus.
+  - Relationships
+  - Community
+  - Personal Growth
+description: Creating authentic connections and building a supportive community around your personal journey.
 ---
 
-Hosting a thin static blog on a platform like [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) has numerous advantages, but also takes away some interactivity. Fortunately, [Giscus](https://giscus.app/) exists and offers a way to embed user comments on static sites.
+Building meaningful connections with others is one of the most rewarding aspects of a fulfilling life. While we often think of connection as something that happens naturally, creating authentic relationships requires intention, vulnerability, and presence.
 
 ## Table of contents
 
-## How _Giscus_ works
+## The Foundation of Connection
 
-[Giscus uses the GitHub API](https://github.com/giscus/giscus?tab=readme-ov-file#how-it-works) to read and store comments made by _GitHub_ users in the `Discussions` associated with a repository.
+True connection begins with being comfortable in your own skin. When you know and accept yourself, you create space for others to do the same. This foundation allows for relationships built on authenticity rather than pretense.
 
-Embed the _Giscus_ client-side script bundle on your site, configure it with the correct repository URL, and users can view and write comments (when logged into _GitHub_).
+<figure>
+  <img
+    src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    alt="People having meaningful conversation over coffee"
+  />
+    <figcaption class="text-center">
+      Real connections happen when we show up as our true selves
+    </figcaption>
+</figure>
 
-The approach is serverless, as the comments are stored on _GitHub_ and dynamically loaded from there on client side, hence perfect for a static blog, like _AstroPaper_.
+## Creating Space for Others
 
-## Setting up _Giscus_
+Building connections means creating environments where others feel safe to be themselves:
 
-_Giscus_ can be set up easily on [giscus.app](https://giscus.app/), but I will outline the process shortly still.
+### Listen Fully
 
-### Prerequisites
+In our distracted world, giving someone your complete attention is one of the greatest gifts you can offer. Put away your phone, make eye contact, and truly hear what they're saying - not just waiting for your turn to speak.
 
-Prerequisites to get _Giscus_ working are
+### Share Vulnerability
 
-- the repository is [public](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility#making-a-repository-public)
-- the [Giscus app](https://github.com/apps/giscus) is installed
-- the [Discussions](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/enabling-or-disabling-github-discussions-for-a-repository) feature is turned on for your repository
+Connection deepens when you share your own struggles, doubts, and fears. When you're honest about your challenges, you give others permission to be imperfect too. Vulnerability isn't weakness - it's courage.
 
-If any of these conditions cannot be fulfilled for any reason, unfortunately, _Giscus_ cannot be integrated.
+### Ask with Curiosity
 
-### Configuring _Giscus_
+Instead of making assumptions, ask questions that come from genuine curiosity about others' experiences, feelings, and perspectives. Every person has a story that will enrich your understanding of the world.
 
-Next, configuring _Giscus_ is necessary. In most cases, the preselected defaults are suitable, and you should only modify them if you have a specific reason and know what you are doing. Don't worry too much about making the wrong choices; you can always adjust the configuration later on.
+## Nurturing Your Community
 
-However you need to
+Connections aren't just one-on-one relationships - they're about building a supportive ecosystem:
 
-- select the right language for the UI
-- specify the _GitHub_ repository you want to connect, typically the repository containing your statically hosted _AstroPaper_ blog on _GitHub Pages_
-- create and set an `Announcement` type discussion on _GitHub_ if you want to ensure nobody can create random comments directly on _GitHub_
-- define the color scheme
+### Be the Bridge
 
-After configuring the settings, _Giscus_ provides you with a generated `<script>` tag, which you will need in the next steps.
+Sometimes you're the person who can connect two friends who might otherwise never meet. Be the bridge that brings people together in meaningful ways.
 
-## Simple script tag
+### Create Rituals
 
-You should now have a script tag that looks like this:
+Regular gatherings, check-in calls, or shared activities create the fabric of community. These don't have to be elaborate - consistency matters more than perfection.
 
-```html
-<script
-  src="https://giscus.app/client.js"
-  data-repo="[ENTER REPO HERE]"
-  data-repo-id="[ENTER REPO ID HERE]"
-  data-category="[ENTER CATEGORY NAME HERE]"
-  data-category-id="[ENTER CATEGORY ID HERE]"
-  data-mapping="pathname"
-  data-strict="0"
-  data-reactions-enabled="1"
-  data-emit-metadata="0"
-  data-input-position="bottom"
-  data-theme="preferred_color_scheme"
-  data-lang="en"
-  crossorigin="anonymous"
-  async
-></script>
-```
+### Celebrate Together
 
-Simply add that to the source code of the site. Most likely, if you're using _AstroPaper_ and want to enable comments on posts, navigate to `PostDetails.astro` and paste it into the desired location where you want the comments to appear, perhaps underneath the `Share this post on:` buttons.
+Mark the important moments - achievements, milestones, even small victories. When you celebrate others, you amplify their joy and create shared memories.
 
-```astro file=src/layouts/PostDetails.astro
-<Layout {...layoutProps}>
-  <main>
-    <ShareLinks />
+## Digital Connections
 
-    <!-- [!code ++:6] -->
-    <script
-      src="https://giscus.app/client.js"
-      data-repo="[ENTER REPO HERE]"
-      data-repo-id="[ENTER REPO ID HERE]"
-      data-category="[ENTER CATEGORY NAME HERE]"
-      data-category-id="[ENTER CATEGORY ID HERE]"></script>
-  </main>
-  <Footer />
-</Layout>
-```
+In our modern world, many connections happen through screens:
 
-And it's done! You have successfully integrated comments in _AstroPaper_!
+### Presence Over Perfection
 
-## React component with light/dark theme
+Your online presence doesn't need to be polished or perfect. Authentic sharing - even when messy or incomplete - often resonates more deeply than carefully curated content.
 
-The embedded script tag in the layout is quite static, with the _Giscus_ configuration, including `theme`, hardcoded into the layout. Given that _AstroPaper_ features a light/dark theme toggle, it would be nice for the comments to seamlessly transition between light and dark themes along with the rest of the site. To achieve this, a more sophisticated approach to embedding _Giscus_ is required.
+### Meaningful Engagement
 
-Firstly, we are going to install the [React component](https://www.npmjs.com/package/@giscus/react) for _Giscus_:
+Instead of endless scrolling, engage with intention. Comment thoughtfully, share what moves you, and create digital spaces that feel like real conversations.
 
-```bash
-npm i @giscus/react && npx astro add react
-```
+## The Quality of Your Connections
 
-Then we create a new `Comments.tsx` React component in `src/components`:
+Remember that connection quality matters more than quantity:
 
-```tsx file=src/components/Comments.tsx
-import Giscus, { type Theme } from "@giscus/react";
-import { GISCUS } from "@/constants";
-import { useEffect, useState } from "react";
+- **Depth over breadth**: A few deep relationships vs. many shallow ones
+- **Authenticity over popularity**: Being real vs. being liked
+- **Presence over performance**: Showing up vs. trying to impress
+- **Growth over comfort**: Challenging each other to be better
 
-interface CommentsProps {
-  lightTheme?: Theme;
-  darkTheme?: Theme;
-}
+## The Ripple Effect
 
-export default function Comments({
-  lightTheme = "light",
-  darkTheme = "dark",
-}: CommentsProps) {
-  const [theme, setTheme] = useState(() => {
-    const currentTheme = localStorage.getItem("theme");
-    const browserTheme = window.matchMedia("(prefers-color-scheme: dark)")
-      .matches
-      ? "dark"
-      : "light";
+Every authentic connection creates ripples that extend far beyond the immediate moment. Your willingness to be vulnerable, to listen deeply, to care genuinely - these acts inspire others to do the same.
 
-    return currentTheme || browserTheme;
-  });
+Your connections, whether in person or through digital spaces, become part of your legacy. They're the stories that will be told about how you loved, how you listened, and how you made others feel seen and valued.
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = ({ matches }: MediaQueryListEvent) => {
-      setTheme(matches ? "dark" : "light");
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
-
-  useEffect(() => {
-    const themeButton = document.querySelector("#theme-btn");
-    const handleClick = () => {
-      setTheme(prevTheme => (prevTheme === "dark" ? "light" : "dark"));
-    };
-
-    themeButton?.addEventListener("click", handleClick);
-
-    return () => themeButton?.removeEventListener("click", handleClick);
-  }, []);
-
-  return (
-    <div className="mt-8">
-      <Giscus theme={theme === "light" ? lightTheme : darkTheme} {...GISCUS} />
-    </div>
-  );
-}
-```
-
-This _React_ component not only wraps the native _Giscus_ component, but also introduces additional props, namely `lightTheme` and `darkTheme`. Leveraging two event listeners, the _Giscus_ comments will align with the site's theme, dynamically switching between dark and light themes whenever the site or browser theme is changed.
-
-We also need to define the `GISCUS` config, for which the optimal location is in `constants.ts`:
-
-```ts file=src/constants.ts
-import type { GiscusProps } from "@giscus/react";
-
-...
-
-export const GISCUS: GiscusProps = {
-  repo: "[ENTER REPO HERE]",
-  repoId: "[ENTER REPO ID HERE]",
-  category: "[ENTER CATEGORY NAME HERE]",
-  categoryId: "[ENTER CATEGORY ID HERE]",
-  mapping: "pathname",
-  reactionsEnabled: "0",
-  emitMetadata: "0",
-  inputPosition: "bottom",
-  lang: "en",
-  loading: "lazy",
-};
-```
-
-Note that specifying a `theme` here will override the `lightTheme` and `darkTheme` props, resulting in a static theme setting, similar to the previous approach of embedding _Giscus_ with the `<script>` tag.
-
-To complete the process, add the new Comments component to `PostDetails.astro` (replacing the `script` tag from the previous step).
-
-```jsx file=src/layouts/PostDetails.astro
-// [!code ++:1]
-import Comments from "@/components/Comments";
-
-<ShareLinks />
-
-// [!code ++:1]
-<Comments client:only="react" />
-
-<hr class="my-6 border-dashed" />
-
-<Footer />
-```
-
-And that's it!
+Build connections that matter, that last, and that transform both you and others in the process.

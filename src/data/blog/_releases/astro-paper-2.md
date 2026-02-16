@@ -1,91 +1,73 @@
 ---
-author: Sat Naing
+author: Dxmond Tecku
 pubDatetime: 2023-01-30T15:57:52.737Z
-title: AstroPaper 2.0
-slug: astro-paper-2
+title: Chapter Two: New Beginnings
+slug: chapter-two-new-beginnings
 featured: false
-ogImage: https://user-images.githubusercontent.com/53733092/215771435-25408246-2309-4f8b-a781-1f3d93bdf0ec.png
+ogImage: https://images.pexels.com/photos/1024989/pexels-photo-1024989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 tags:
-  - release
-description: AstroPaper with the enhancements of Astro v2. Type-safe markdown contents, bug fixes and better dev experience etc.
+  - Life Journey
+  - Personal Growth
+  - New Chapters
+description: "Simply You Blog Chapter 2: Embracing new beginnings with fresh perspectives and open heart."
 ---
 
-Astro 2.0 has been released with some cool features, breaking changes, DX improvements, better error overlay and so on. AstroPaper takes advantage of those cool features, especially Content Collections API.
+Life chapter 2 brings exciting new possibilities and fresh perspectives. This update focuses on the beauty of starting fresh - whether it's a new day, a new mindset, or a new season in your life.
 
-<!-- ![Introducing AstroPaper 2.0](https://user-images.githubusercontent.com/53733092/215683840-dc2502f5-8c5a-44f0-a26c-4e7180455056.png) -->
-
-![Introducing AstroPaper 2.0](https://user-images.githubusercontent.com/53733092/215771435-25408246-2309-4f8b-a781-1f3d93bdf0ec.png)
+<figure>
+  <img
+    src="https://images.pexels.com/photos/1024989/pexels-photo-1024989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    alt="Sunrise over peaceful landscape representing new beginnings"
+  />
+    <figcaption class="text-center">
+      Every sunrise offers a chance to begin again with fresh eyes
+    </figcaption>
+</figure>
 
 ## Table of contents
 
-## Features & Changes
+## The Power of Fresh Starts
 
-### Type-safe Frontmatters and Redefined Blog Schema
+There's something magical about the feeling of a clean slate. Whether you're starting a new habit, beginning a new relationship, or simply approaching Monday with a different mindset, fresh starts bring hope and possibility.
 
-Frontmatter of AstroPaper 2.0 markdown contents are now type-safe thanks to Astro’s Content Collections. Blog schema is defined inside the `src/content/_schemas.ts` file.
+## Embracing Change
 
-### New Home for Blog contents
+Change isn't about abandoning who you were - it's about evolving into who you're becoming. Each transition offers:
 
-All the blog posts were moved from `src/contents` to `src/content/blog` directory.
+- **Learning opportunities**: Every change teaches us something new
+- **Strength discovery**: You find capabilities you didn't know you had
+- **Perspective shifts**: New angles reveal insights previously hidden
+- **Resilience building**: Each adaptation makes you more flexible and strong
 
-### New Fetch API
+## Letting Go with Grace
 
-Contents are now fetched with `getCollection` function. No relative path to the content needs to be specified anymore.
+Starting fresh often requires releasing what no longer serves you:
 
-```ts
-// old content fetching method
-- const postImportResult = import.meta.glob<MarkdownInstance<Frontmatter>>(
-  "../contents/**/**/*.md",);
+- **Old identities**: Roles and beliefs that have become comfortable but limiting
+- **Outgrown patterns**: Habits that once helped but now hold you back
+- **Past hurts**: Grudges and regrets that weigh down your spirit
+- **Fear-based decisions**: Choices made from anxiety rather than wisdom
 
-// new content fetching method
-+ const postImportResult = await getCollection("blog");
-```
+## The Dawn of Understanding
 
-### Modified Search Logic for better Search Result
+Like the gradual light of dawn, understanding comes slowly:
 
-In the older version of AstroPaper, when someone search some article, the search criteria keys that will be searched are `title`, `description` and `headings` (heading means all the headings h1 ~ h6 of the blog post). In AstroPaper v2, only `title` and `description` will be searched as the user types.
+- First, there's confusion and disorientation
+- Then, gradual clarity and acceptance
+- Finally, peace and excitement about possibilities
 
-### Renamed Frontmatter Properties
+## Planting New Seeds
 
-The following frontmatter properties are renamed.
+Every fresh start is like planting seeds:
 
-| Old Names | New Names   |
-| --------- | ----------- |
-| datetime  | pubDatetime |
-| slug      | postSlug    |
+- Some will sprout quickly and surprise you
+- Others take time to germinate and teach patience
+- All need nurturing, attention, and the right conditions
 
-### Default Tag for blog post
+## Your Chapter Two Story
 
-If a blog post doesn't have any tag (in other words, frontmatter property `tags` is not specified), the default tag `others` will be used for that blog post. But you can set the default tag in the `/src/content/_schemas.ts` file.
+This chapter of your life is uniquely yours. Whether it brings dramatic change or subtle shifts, it's part of your authentic journey.
 
-```ts
-// src/contents/_schemas.ts
-export const blogSchema = z.object({
-  // ---
-  // replace "others" with whatever you want
-  tags: z.array(z.string()).default(["others"]),
-  ogImage: z.string().optional(),
-  description: z.string(),
-});
-```
+Trust the process of beginning again. Some starts will feel natural and exciting, others will be challenging and uncertain. All are valuable parts of your growth story.
 
-### New Predefined Dark Color Scheme
-
-AstroPaper v2 has a new dark color scheme (high contrast & low contrast) which is based on Astro's dark logo. Check out [this link](https://astro-paper.pages.dev/posts/predefined-color-schemes#astro-dark) for more info.
-
-![New Predefined Dark Color Scheme](https://user-images.githubusercontent.com/53733092/215680520-59427bb0-f4cb-48c0-bccc-f182a428d72d.svg)
-
-### Automatic Class Sorting
-
-AstroPaper 2.0 includes automatic class sorting with [TailwindCSS Prettier plugin](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
-
-### Updated Docs & README
-
-All the [#docs](https://astro-paper.pages.dev/tags/docs/) blog posts and [README](https://github.com/satnaing/astro-paper#readme) are updated for this AstroPaper v2.
-
-## Bug Fixes
-
-- fix broken tags in the Blog Post page
-- in a tag page, the last part of the breadcrumb is now updated to lower-case for consistency
-- exclude draft posts in a tag page
-- fix 'onChange value not updating issue' after a page reload
+Welcome to Chapter Two - may it bring you joy, learning, and beautiful new beginnings that align with your truest self.

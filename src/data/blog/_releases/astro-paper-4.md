@@ -1,124 +1,90 @@
 ---
-author: Sat Naing
+author: Dxmond Tecku
 pubDatetime: 2024-01-04T09:30:41.816Z
-title: AstroPaper 4.0
-slug: "astro-paper-v4"
+title: Chapter Four: Finding Your Inner Light
+slug: chapter-four-finding-your-inner-light
 featured: false
-ogImage: ../../../assets/images/AstroPaper-v4.png
+ogImage: ../../../assets/images/chapter-four-inner-light.jpg
 tags:
-  - release
-description: "AstroPaper v4: ensuring a smoother and more feature-rich blogging experience."
+  - Personal Growth
+  - Self Discovery
+  - Inner Peace
+description: "Simply You Blog Chapter 4: Discovering your inner light and learning to shine authentically in the world."
 ---
 
-Hello everyone! Wishing you a happy New Year 🎉 and all the best for 2024! We're excited to announce the release of AstroPaper v4, a significant update that introduces a range of new features, improvements, and bug fixes to elevate your blogging experience. A big thank you to all the contributors for their valuable input and efforts in making version 4 possible!
+Chapter four brings the profound journey of discovering your inner light - that unique radiance that exists within you, waiting to be acknowledged and shared with the world.
 
-![AstroPaper v4](@/assets/images/AstroPaper-v4.png)
+<figure>
+  <img
+    src="https://images.pexels.com/photos/531324/pexels-photo-531324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    alt="Person discovering inner light through meditation and self-reflection"
+  />
+    <figcaption class="text-center">
+      Your inner light shines brightest when you honor your authentic self
+    </figcaption>
+</figure>
 
 ## Table of contents
 
-## Major Changes
+## The Dawn of Inner Recognition
 
-### Upgrade to Astro v4 [#202](https://github.com/satnaing/astro-paper/pull/202)
+Chapter four begins with the gentle realization that the light you've been seeking externally has been within you all along. This isn't about finding something new - it's about recognizing what has always been there.
 
-AstroPaper now leverages the power and capabilities of Astro v4. However, it’s a subtle upgrade and won’t break most Astro users.
+## Layers of Inner Light
 
-![Astro v4](https://astro.build/_astro/header-astro-4.YunweN9V_OmV0l.webp)
+Your inner light has many beautiful facets:
 
-### Replace `postSlug` with Astro Content `slug` [#197](https://github.com/satnaing/astro-paper/pull/197)
+### The Light of Wisdom
+- Life experiences that have taught you profound truths
+- The ability to see patterns and make wise choices
+- The clarity that comes from reflection and learning
 
-The `postSlug` in the blog content schema is no longer available in AstroPaper v4. Initially Astro doesn't have a `slug` mechanism and thus we have to figure it out on our own. Since Astro v3, it supports content collection and slug features. Now, we believe it's time to adopt Astro's out-of-the-box `slug` feature.
+### The Light of Compassion
+- Your capacity to feel and act with kindness
+- The ability to understand others' perspectives and struggles
+- The healing energy that comes from empathetic connection
 
-**_file: src/content/blog/astro-paper-4.md_**
+### The Light of Courage
+- Your willingness to face fears and take calculated risks
+- The strength to stand up for your values and beliefs
+- The resilience to continue when things get difficult
 
-```bash
----
-author: Sat Naing
-pubDatetime: 2024-01-01T04:35:33.428Z
-title: AstroPaper 4.0
-slug: "astro-paper-v4" # if slug is not specified, it will be 'astro-paper-4' (file name).
-# slug: "" ❌ cannot be an empty string
----
-```
+### The Light of Joy
+- Your natural capacity for happiness and delight
+- Your ability to find beauty in ordinary moments
+- Your infectious enthusiasm that lifts others' spirits
 
-The behavior of the `slug` is slightly different now. In the previous versions of AstroPaper, if the `postSlug` is not specified in a blog post (markdown file), the title of that blog post would be slugified and used as the `slug`. However, in AstroPaper v4, if the `slug` field is not specified, the markdown file name will be used as the `slug`. One thing to keep in mind is that the `slug` field can be omitted, but it cannot be an empty string (slug: "" ❌).
+## Honoring Your Shadows
 
-If you're upgrading AstroPaper from v3 to v4, make sure to replace `postSlug` in your `src/content/blog/*.md` files with `slug`.
+Finding your light doesn't mean ignoring your shadows. Your wholeness includes both:
 
-## New Features
+- **Past wounds** that need healing and understanding
+- **Fears and limitations** that teach you humility and growth
+- **Imperfections** that make you human and relatable
+- **Dark nights** where the light seems distant but never truly gone
 
-### Add code-snippets for content creation [#206](https://github.com/satnaing/astro-paper/pull/206)
+## The Community of Light
 
-AstroPaper now includes VSCode snippets for new blog posts, eliminating the need for manual copy/pasting of the frontmatter and content structure (table of contents, heading, excerpt, etc.).
+Your inner light doesn't shine in isolation:
 
-Read more about VSCode Snippets [here](https://code.visualstudio.com/docs/editor/userdefinedsnippets#:~:text=In%20Visual%20Studio%20Code%2C%20snippets,Snippet%20in%20the%20Command%20Palette).
+- **Reflective mirrors**: Others who see and reflect your light back to you
+- **Shared illumination**: Collective wisdom that brightens everyone's path
+- **Supportive candles**: People who hold space for your light when it flickers
+- **Lighthouse guidance**: Mentors who help you navigate through storms
 
-<video autoplay muted="muted" controls plays-inline="true" class="border border-skin-line">
-  <source src="https://github.com/satnaing/astro-paper/assets/53733092/136f1903-bade-40a2-b6bb-285a3c726350" type="video/mp4">
-</video>
+## The Daily Practice of Shining
 
-### Add Modified Datetime in Blog Posts [#195](https://github.com/satnaing/astro-paper/pull/195)
+Making your inner visible is a daily practice:
 
-Keep readers informed about the latest updates by displaying the modified datetime in blog posts. This not only instills user trust in the freshness of the articles but also contributes to improved SEO for the blog.
+- **Morning intention**: Setting the tone for how you want to show up
+- **Mindful action**: Choices that align with your inner values
+- **Evening reflection**: Noticing where you were light and where you grew
+- **Gratitude practice**: Acknowledging the light you see in others
 
-![Last Modified Date feature in AstroPaper](https://github.com/satnaing/astro-paper/assets/53733092/cc89585e-148e-444d-9da1-0d496e867175)
+## Chapter Four Revelation
 
-You can add a `modDatetime` to your blog post if you've made modifications. Now, the sorting behavior of the posts is slightly different. All posts are sorted by both `pubDatetime` and `modDatetime`. If a post has both a `pubDatetime` and `modDatetime`, its sorting position will be determined by the `modDatetime`. If not, only `pubDatetime` will be considered to determine the post's sorting order.
+This chapter reveals that your inner light isn't meant to be kept hidden or protected. It's meant to be shared, to illuminate, to inspire, and to transform both your life and the lives of those around you.
 
-### Implement Back-to-Top Button [#188](https://github.com/satnaing/astro-paper/pull/188)
+Your inner light is a gift - to yourself, to your community, and to the world. The more you honor and share it, the brighter it becomes for everyone.
 
-Enhance user navigation on your blog detail post with the newly implemented back-to-top button.
-
-![Back to top button in AstroPaper](https://github.com/satnaing/astro-paper/assets/53733092/79854957-7877-4f19-936e-ad994b772074)
-
-### Add Pagination in Tag Posts [#201](https://github.com/satnaing/astro-paper/pull/201)
-
-Improve content organization and navigation with the addition of pagination in tag posts, making it easier for users to explore related content. This ensures that if a tag has many posts, readers won't be overwhelmed by all the tag-related posts.
-
-<video autoplay loop="loop" muted="muted" plays-inline="true" class="border border-skin-line">
-  <source src="https://github.com/satnaing/astro-paper/assets/53733092/9bad87f5-dcf5-4b79-b67a-d6c7244cd616" type="video/mp4">
-</video>
-
-### Dynamically Generate robots.txt [#130](https://github.com/satnaing/astro-paper/pull/130)
-
-AstroPaper v4 now dynamically generates the robots.txt file, giving you more control over search engine indexing and web crawling. Besides, sitemap URL will also be added inside `robot.txt` file.
-
-### Add Docker-Compose File [#174](https://github.com/satnaing/astro-paper/pull/174)
-
-Managing your AstroPaper environment is now easier than ever with the addition of a Docker-Compose file, simplifying deployment and configuration.
-
-## Refactoring & Bug Fixes
-
-### Replace Slugified Title with Unslugified Tag Name [#198](https://github.com/satnaing/astro-paper/pull/198)
-
-To improve clarity, user experience and SEO, titles (`Tag: some-tag`) in tag page are no longer slugified (`Tag: Some Tag`).
-
-![Unslugified Tag Names](https://github.com/satnaing/astro-paper/assets/53733092/2fe90d6e-ec52-467b-9c44-95009b3ae0b7)
-
-### Implement 100svh for Min-Height ([79d569d](https://github.com/satnaing/astro-paper/commit/79d569d053036f2113519f41b0d257523d035b76))
-
-We've updated the min-height on the body to use 100svh, offering a better UX for mobile users.
-
-### Update Site URL as Single Source of Truth [#143](https://github.com/satnaing/astro-paper/pull/143)
-
-The site URL is now a single source of truth, streamlining configuration and avoiding inconsistencies. Read more at this [PR](https://github.com/satnaing/astro-paper/pull/143) and its related issue(s).
-
-### Solve Invisible Text Code Block Issue in Light Mode [#163](https://github.com/satnaing/astro-paper/pull/163)
-
-We've fixed the invisible text code block issue in light mode.
-
-### Decode Unicode Tag Characters in Breadcrumb [#175](https://github.com/satnaing/astro-paper/pull/175)
-
-The last part of Tag in the breadcrumb is now decoded, making non-English Unicode characters display better.
-
-### Update LOCALE Config to Cover Overall Locales ([cd02b04](https://github.com/satnaing/astro-paper/commit/cd02b047d2b5e3b4a2940c0ff30568cdebcec0b8))
-
-The LOCALE configuration has been updated to cover a broader range of locales, catering to a more diverse audience.
-
-## Outtro
-
-We believe these updates will significantly elevate your AstroPaper experience. Thank you to everyone who contributed, solved issues, and gave stars to AstroPaper. We look forward to seeing the amazing content you create with AstroPaper v4!
-
-Happy Blogging!
-
-[Sat Naing](https://satnaing.dev) <br/>
-Creator of AstroPaper
+May Chapter Four help you recognize the beautiful light that has always been within you, and give you the courage to let it shine in ways that are authentic, meaningful, and uniquely yours.

@@ -1,101 +1,92 @@
 ---
+author: Dxmond Tecku
 pubDatetime: 2025-03-08T08:18:19.693Z
-title: AstroPaper 5.0
-slug: astro-paper-v5
+title: Chapter Five: The Journey Home
+slug: chapter-five-the-journey-home
 featured: true
-ogImage: ../../../assets/images/AstroPaper-v5.png
+ogImage: ../../../assets/images/chapter-five-journey-home.jpg
 tags:
-  - release
-description: "AstroPaper v5: keep the clean look, updates under the hood."
+  - Life Journey
+  - Personal Growth
+  - Coming Home
+description: "Simply You Blog Chapter 5: Remembering that home isn't a place but a feeling - and you've been there all along."
 ---
 
-At last, the long-awaited AstroPaper v5 is finally here. AstroPaper v5 keeps the same minimal & clean look, but comes with significant updates under the hood.
+Chapter five brings the profound realization that the home you've been seeking isn't a destination - it's the inner state of belonging and peace you carry within you wherever you go.
 
-![AstroPaper v5](@/assets/images/AstroPaper-v5.png)
+<figure>
+  <img
+    src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    alt="Person finding peace and home within themselves"
+  />
+    <figcaption class="text-center">
+      Home is the feeling of being completely and authentically yourself
+    </figcaption>
+</figure>
 
 ## Table of contents
 
-## Major Changes
+## The Recognition of Home
 
-### Upgrade to Astro v5 [#455](https://github.com/satnaing/astro-paper/pull/455)
+Chapter five begins with the beautiful moment of recognition - that home isn't somewhere you arrive, but something you cultivate within:
 
-AstroPaper now comes with Astro v5, bringing all the new features and improvements that come with it.
+- The peace that comes from accepting yourself completely
+- The comfort of being in your own skin, wherever you are
+- The freedom that comes from releasing the need for external validation
+- The joy of recognizing you've had the answers all along
 
-### Tailwind v4
+## Elements of Home
 
-AstroPaper has been upgraded to Tailwind v4, which includes many style changes under the hood. The `tailwind.config.js` file has been removed, and now all the configuration is located within the `src/styles/global.css` file. Typography-related styles have been extracted and moved to `src/styles/typography.css`.
+Your inner home consists of these essential elements:
 
-Due to the new behavior in TailwindCSS v4, styles inside `<style>` blocks within components have been removed and replaced with inline Tailwind classes.
+### The Foundation of Self-Acceptance
+- Loving yourself, including your flaws and quirks
+- Recognizing your inherent worth and value
+- Releasing the need for perfection and performance
+- Honoring your unique pace and rhythm
 
-Additionally, the color palette across the UI has been updated. The new palette now consists of only five colors:
+### The Walls of Boundaries
+- Healthy limits that protect your energy and wellbeing
+- The courage to say no when something doesn't align with your values
+- The wisdom to know which boundaries serve and which restrict
+- The flexibility to adjust as you grow and learn
 
-```css
-:root,
-html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
-}
+### The Windows of Authenticity
+- Openings that let your true self shine through
+- Vulnerability shared with those who earn your trust
+- Consistency between your inner and outer expression
+- The bravery to be different and to stand by your choices
 
-html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60bf;
-  --border: #ab4b08;
-}
-```
+### The Garden of Growth
+- Nurturing your dreams and aspirations
+- Learning from both successes and failures
+- Creating space for new possibilities to emerge
+- Celebrating small victories and milestones along the way
 
-### Remove React + Fuse.js in favor of Pagefind search
+## The Journey Homeward
 
-In previous versions, React.js and Fuse.js were used for search functionality and OG image generation. In AstroPaper v5, React.js has been removed and replaced with [Pagefind](https://pagefind.app/), a static site search tool.
+The path home isn't always linear or clear:
 
-The search experience is almost identical to previous versions, but now all contents, not just titles and descriptions, are indexed and searchable, thanks to Pagefind.
+- Sometimes it involves returning to familiar places with new understanding
+- Other times it means venturing into unknown territory with self-trust
+- Often it includes periods of feeling lost before finding your way back
+- Always it includes learning that home was never about the destination, but the traveler
 
-The idea of using Pagefind in dev mode was inspired by [this blog post](https://chrispennington.blog/blog/pagefind-static-search-for-astro-sites/).
+## The Community of Home
 
-### Updated import alias
+Your sense of home expands to include others:
 
-The import alias has been updated from `@directory` to `@/directory`, which means you now have to import like this:
+- **Chosen family**: Friends who become relatives through love and choice
+- **Safe spaces**: People and places where you can be completely yourself
+- **Shared traditions**: Rituals and practices that create belonging
+- **Mutual support**: Networks that catch each other and provide safety nets
 
-```astro
----
-import { slugifyStr } from "@/utils/slugify";
-import IconHash from "@/assets/icons/IconHash.svg";
----
-```
+## Chapter Five Wisdom
 
-### Move to `pnpm`
+This chapter reveals that home has been your constant companion - the inner voice of wisdom, comfort, and guidance you've carried throughout every other chapter. Now you recognize that this voice wasn't external guidance, but your own deep knowing.
 
-AstroPaper has switched from `npm` to `pnpm`, which offers faster and more efficient package management.
+Your journey homeward is complete not because you've arrived at a final destination, but because you've finally learned to trust and inhabit the home that has always been within you.
 
-### Replace icons/svg with Astro's Svg Component
+Chapter five celebrates the beautiful truth that you've been home all along, and the peace that comes from finally recognizing it. May this realization bring you the comfort of knowing you belong, the freedom of being enough, and the joy of coming home to yourself in every moment.
 
-AstroPaper v5 replaces inline SVGs with Astro’s experimental [SVG Component](https://docs.astro.build/en/reference/experimental-flags/svg/). This update reduces the need for predefined SVG code in the `socialIcons` object, making the codebase cleaner and more maintainable.
-
-### Separate Constants and Config
-
-The project structure has been reorganized. The `src/config.ts` file now only contains the `SITE` object, which holds the main configuration for the project. All constants, such as `LOCALE`, `SOCIALS`, and `SHARE_LINKS`, have been moved to the `src/constants.ts` file.
-
-## Other notable changes
-
-- The blog posts directory has been updated from `src/content/blog/` to `src/data/blog/`.
-- Collection definitions file (`src/content/config.ts`) is now replaced with `src/content.config.ts`.
-- Various dependencies have been upgraded for improved performance and security.
-- Removed `IBM Plex Mono` font and switched to the default system mono font.
-- The `Go back` button logic has been updated. Now, instead of triggering the browser's history API, AstroPaper v5 uses the browser session to temporarily store the back URL. If no back URL exists in the session, it will redirect to the homepage.
-- There are some minor styles and layout changes as well.
-
-## Outtro
-
-AstroPaper v5 brings many changes, but the core experience remains the same. Enjoy a smoother, more efficient blogging platform while keeping the clean and minimal design that AstroPaper is known for!
-
-Feel free to explore the changes and share your thoughts. As always, thank you for your support!
-
-If you enjoy this theme, please consider starring the repo. You can also support me via GitHub Sponsors or you can buy me a coffee if you'd like. However, of course, these actions are entirely optional and not required.
-
-Enjoy!
-
-[Sat Naing](https://satnaing.dev/)
+Welcome home - you've been here all along.

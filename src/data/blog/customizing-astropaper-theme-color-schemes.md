@@ -1,148 +1,67 @@
 ---
-author: Sat Naing
+author: Dxmond Tecku
 pubDatetime: 2022-09-25T15:20:35Z
 modDatetime: 2026-01-09T15:00:15.170Z
-title: Customizing AstroPaper theme color schemes
+title: Creating Your Personal Color Palette
+slug: creating-your-personal-color-palette
 featured: false
 draft: false
 tags:
-  - color-schemes
-  - docs
+  - Personal Style
+  - Home Environment
+  - Creativity
 description:
-  How you can enable/disable light & dark mode; and customize color schemes
-  of AstroPaper theme.
+  How to create a personal color palette that reflects your unique personality
+  and brings joy to your living spaces.
 ---
 
-This post will explain how you can enable/disable light & dark mode for the website. Moreover, you'll learn how you can customize color schemes of the entire website.
+This post will explain how you can create a personal color palette that makes your heart sing and transforms your living spaces into reflections of who you truly are.
 
 ## Table of contents
 
-## Enable/disable light & dark mode
+## Discover Your Colors
 
-AstroPaper theme will include light and dark mode by default. In other words, there will be two color schemes\_ one for light mode and another for dark mode. This default behavior can be disabled in `SITE` configuration object.
+Finding colors that resonate with your soul is a deeply personal journey. It's not about following trends - it's about discovering the hues that make you feel alive, centered, and authentically you.
 
-```js file="src/config.ts"
-export const SITE = {
-  website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
-  author: "Sat Naing",
-  profile: "https://satnaing.dev/",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "AstroPaper",
-  ogImage: "astropaper-og.jpg",
-  lightAndDarkMode: true, // [!code highlight]
-  postPerIndex: 4,
-  postPerPage: 4,
-  scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
-  showArchives: true,
-  showBackButton: true, // show back button in post detail
-  editPost: {
-    enabled: true,
-    text: "Suggest Changes",
-    url: "https://github.com/satnaing/astro-paper/edit/main/",
-  },
-  dynamicOgImage: true,
-  lang: "en", // html lang code. Set this empty and default will be "en"
-  timezone: "Asia/Bangkok", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-} as const;
-```
+<figure>
+  <img
+    src="https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    alt="Color swatches and paint supplies"
+  />
+    <figcaption class="text-center">
+      Colors that speak to your heart create spaces that nurture your soul
+    </figcaption>
+</figure>
 
-To disable `light & dark mode` set `SITE.lightAndDarkMode` to `false`.
+## Start with Feelings
 
-## Choose initial color scheme
+Before you choose specific colors, ask yourself: How do I want to feel in this space? Calm? Energized? Creative? Peaceful? Let your emotions guide your initial color choices.
 
-By default, if we disable `SITE.lightAndDarkMode`, we will only get system's prefers-color-scheme.
+## Test Your Palette
 
-Thus, to choose an initial color scheme instead of prefers-color-scheme, we have to set color scheme in the `initialColorScheme` variable inside `theme.ts`.
+Live with your color choices for a while. Notice how they make you feel at different times of day. Do they still bring you joy after a week? A month?
 
-```ts file="src/scripts/theme.ts"
-// Initial color scheme
-// Can be "light", "dark", or empty string for system's prefers-color-scheme
-const initialColorScheme = ""; // "light" | "dark" // [!code hl]
+## Create Harmony
 
-function getPreferTheme(): string {
-  // get theme data from local storage (user's explicit choice)
-  const currentTheme = localStorage.getItem("theme");
-  if (currentTheme) return currentTheme;
+Your color palette should work together in harmony. Think about:
 
-  // return initial color scheme if it is set (site default)
-  if (initialColorScheme) return initialColorScheme;
+- **Main colors**: 2-3 primary colors that define your space
+- **Accent colors**: 1-2 colors that add interest and energy
+- **Neutral tones**: Colors that ground and balance the palette
 
-  // return user device's prefer color scheme (system fallback)
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
+## Personal Color Stories
 
-// ...
-```
+Every color can tell a story:
 
-The **initialColorScheme** variable can hold two values\_ `"light"`, `"dark"`. You can leave the empty string (default) if you don't want to specify an initial color scheme.
+- **Blue** might represent your love of ocean walks and peaceful mornings
+- **Green** could reflect your connection to nature and growth
+- **Warm yellows** might capture your sunny disposition and optimism
+- **Soft purples** could express your creative and intuitive side
 
-- `""` - system's prefers-color-scheme. (default)
-- `"light"` - use light mode as initial color scheme.
-- `"dark"` - use dark mode as initial color scheme.
+## Seasonal Adjustments
 
-<details>
-<summary>Why initialColorScheme is not inside config.ts?</summary>
-To avoid color flickering on page reload, we have to place the theme initialization JavaScript code as early as possible when the page loads. The theme script is split into two parts: a minimal inline script in the `<head>` that sets the theme immediately, and the full script that loads asynchronously. This approach prevents FOUC (Flash of Unstyled Content) while maintaining optimal performance.
-</details>
+Your color needs might change with seasons. Light, airy colors in spring. Warm, rich tones in autumn. Don't be afraid to adjust your palette as you evolve.
 
-## Customize color schemes
+## Trust Your Instincts
 
-Both light & dark color schemes of AstroPaper theme can be customized in the `global.css` file.
-
-```css file="src/styles/global.css"
-@import "tailwindcss";
-@import "./typography.css";
-
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-
-:root,
-html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
-}
-
-html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60bf;
-  --border: #ab4b08;
-}
-/* ... */
-```
-
-In the AstroPaper theme, the `:root` and `html[data-theme="light"]` selectors define the light color scheme, while `html[data-theme="dark"]` defines the dark color scheme.
-
-To customize your own color scheme, specify your light colors inside `:root, html[data-theme="light"]`, and your dark colors inside `html[data-theme="dark"]`.
-
-Here is the detail explanation of color properties.
-
-| Color Property | Definition & Usage                                            |
-| -------------- | ------------------------------------------------------------- |
-| `--background` | Primary color of the website. Usually the main background.    |
-| `--foreground` | Secondary color of the website. Usually the text color.       |
-| `--accent`     | Accent color of the website. Link color, hover color etc.     |
-| `--muted`      | Card and scrollbar background color for hover state etc.      |
-| `--border`     | Border color. Used for border utilities and visual separation |
-
-Here is an example of changing the light color scheme.
-
-```css file="src/styles/global.css"
-/* ... */
-:root,
-html[data-theme="light"] {
-  --background: #f6eee1;
-  --foreground: #012c56;
-  --accent: #e14a39;
-  --muted: #efd8b0;
-  --border: #dc9891;
-}
-/* ... */
-```
-
-> Check out some [predefined color schemes](https://astro-paper.pages.dev/posts/predefined-color-schemes/) AstroPaper has already crafted for you.
+Ultimately, you're the best judge of what colors feel right for you. If a color makes your heart happy every time you see it, that's validation enough. Your personal color palette should be a celebration of your unique spirit.
