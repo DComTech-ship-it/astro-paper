@@ -85,14 +85,15 @@ export const SHARE_LINKS: Social[] = [
 
 export const GISCUS: GiscusProps = {
   repo: "DComTech-ship-it/astro-paper",
-  repoId: "R_kgDOHxJlJQ",
-  category: "General",
-  categoryId: "DIC_kwDOHxJlJc4Cf6J",
+  repoId: "R_kgDORQtqow",
+  category: "Announcements",
+  categoryId: "DIC_kwDORQtqo84C2ipQ",
   mapping: "pathname",
   strict: "0",
   reactionsEnabled: "1",
-  emitMetadata: "0",
-  inputPosition: "bottom",
+  emitMetadata: "1",
+  inputPosition: "top",
+  theme: "preferred_color_scheme",
   lang: "en",
   loading: "lazy",
 };
