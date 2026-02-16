@@ -84,10 +84,10 @@ export const SHARE_LINKS: Social[] = [
 ] as const;
 
 export const GISCUS: GiscusProps = {
-  repo: "DComTech-ship-it/astro-paper",
-  repoId: "R_kgDOHxJlJQ",
+  repo: "YOUR_USERNAME/astro-paper", // Replace with your actual GitHub username
+  repoId: "R_kgDOHxJlJQ", // Update with your actual repo ID
   category: "General",
-  categoryId: "DIC_kwDOHxJlJc4Cf6J",
+  categoryId: "DIC_kwDOHxJlJc4Cf6J", // Update with your actual category ID
   mapping: "pathname",
   reactionsEnabled: "1",
   emitMetadata: "0",
