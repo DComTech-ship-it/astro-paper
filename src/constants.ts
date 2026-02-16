@@ -91,9 +91,8 @@ export const GISCUS: GiscusProps = {
   mapping: "pathname",
   strict: "0",
   reactionsEnabled: "1",
-  emitMetadata: "1",
-  inputPosition: "top",
-  theme: "preferred_color_scheme",
+  emitMetadata: "0",
+  inputPosition: "bottom",
   lang: "en",
   loading: "lazy",
 };
