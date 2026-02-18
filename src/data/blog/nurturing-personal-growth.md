@@ -5,7 +5,6 @@ pubDatetime: 2023-07-20T15:33:05.569Z
 slug: nurturing-your-personal-growth
 featured: false
 draft: false
-ogImage: ../../assets/images/personal-growth-journey.jpg
 tags:
   - Personal Growth
   - Self Care
