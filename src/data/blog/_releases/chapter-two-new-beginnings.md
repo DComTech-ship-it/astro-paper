@@ -4,7 +4,7 @@ pubDatetime: 2023-01-30T15:57:52.737Z
 title: Chapter Two: New Beginnings
 slug: chapter-two-new-beginnings
 featured: false
-ogImage: https://images.pexels.com/photos/1024989/pexels-photo-1024989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+ogImage: "https://images.pexels.com/photos/1024989/pexels-photo-1024989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 tags:
   - Life Journey
   - Personal Growth

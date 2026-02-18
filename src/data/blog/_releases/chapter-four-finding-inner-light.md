@@ -2,7 +2,7 @@
 author: Dxmond Tecku
 pubDatetime: 2024-01-04T09:30:41.816Z
 title: Chapter Four: Finding Your Inner Light
-slug: chapter-four-finding-your-inner-light
+slug: chapter-four-finding-inner-light
 featured: false
 ogImage: ../../../assets/images/chapter-four-inner-light.jpg
 tags:
