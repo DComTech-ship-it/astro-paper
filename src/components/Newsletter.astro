@@ -1,0 +1,62 @@
+---
+import { SITE } from "@/config";
+
+interface NewsletterProps {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  className?: string;
+}
+
+const {
+  title = "Get Weekly Inspiration",
+  description = "Join our community and get exclusive content delivered to your inbox",
+  buttonText = "Subscribe Now",
+  className = ""
+} = Astro.props;
+---
+
+<div class={`newsletter-signup ${className}`}>
+  <div class="max-w-md mx-auto">
+    <div class="text-center mb-6">
+      <h3 class="text-xl font-bold text-foreground mb-2">{title}</h3>
+      <p class="text-sm text-muted-foreground leading-relaxed">{description}</p>
+    </div>
+    
+    <form 
+      action="https://buttondown.email/api/emails/embed-subscribe/your-email" 
+      method="post"
+      target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/your-email', 'popupwindow')"
+      class="flex flex-col sm:flex-row gap-3"
+    >
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter your email address"
+        required
+        class="flex-1 px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
+      />
+      <button
+        type="submit"
+        class="px-6 py-3 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors font-medium whitespace-nowrap"
+      >
+        {buttonText}
+      </button>
+    </form>
+    
+    <p class="text-xs text-muted-foreground text-center mt-4">
+      Join 1,000+ readers. No spam, unsubscribe anytime.
+    </p>
+  </div>
+</div>
+
+<style>
+  .newsletter-signup {
+    @apply bg-background border border-border rounded-xl p-6 shadow-sm;
+  }
+  
+  .newsletter-signup input:focus {
+    @apply ring-2 ring-accent/20;
+  }
+</style>

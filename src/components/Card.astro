@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@/utils/slugify";
 import { getPath } from "@/utils/getPath";
+import { calculateReadingTime, formatReadingTime } from "@/utils/readingTime";
 import Datetime from "./Datetime.astro";
 
 type Props = {
@@ -10,7 +11,11 @@ type Props = {
 
 const { variant: Heading = "h2", id, data, filePath } = Astro.props;
 
-const { title, description, ...props } = data;
+const { title, description, body } = data;
+
+// Calculate reading time
+const readingTime = calculateReadingTime(body);
+const readingTimeText = formatReadingTime(readingTime);
 ---
 
 <li class="my-6">
@@ -28,6 +33,11 @@ const { title, description, ...props } = data;
       {title}
     </Heading>
   </a>
-  <Datetime {...props} />
+  <Datetime {...data} />
+  <div class="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+    <span>{readingTimeText}</span>
+    <span>•</span>
+    <span>Blog Post</span>
+  </div>
   <p>{description}</p>
 </li>

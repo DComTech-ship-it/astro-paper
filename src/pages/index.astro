@@ -6,6 +6,7 @@ import Footer from "@/components/Footer.astro";
 import Socials from "@/components/Socials.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
+import Newsletter from "@/components/Newsletter.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
 import IconRss from "@/assets/icons/IconRss.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
@@ -106,6 +107,14 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
             </div>
           )
         }
+        
+        <div class="mt-12">
+          <Newsletter 
+            title="Join Our Community"
+            description="Get weekly inspiration and exclusive content delivered to your inbox"
+            buttonText="Subscribe Now"
+          />
+        </div>
       </div>
     </section>
 
