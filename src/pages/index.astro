@@ -32,10 +32,10 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       <!-- Hero Content -->
       <div class="relative z-10">
         <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-6xl lg:text-7xl bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
-          Simply You Blog
+          Mia woezɔ
         </h1>
         
-        <div class="flex items-center gap-4 mt-6">
+        <div class="flex items-center gap-4 ml-4">
           <a
             target="_blank"
             href="/rss.xml"
@@ -52,21 +52,35 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           </a>
         </div>
 
-        <div class="max-w-3xl mx-auto mt-8 space-y-6 text-center">
-          <p class="text-xl leading-relaxed text-foreground">
-            Mia woezɔ
+        <div class="max-w-4xl mx-auto mt-12 space-y-6 text-center">
+          <p class="text-2xl md:text-3xl font-bold leading-tight text-foreground">
+            Your Space for Authentic Living
           </p>
-          <p class="text-lg leading-relaxed text-muted-foreground">
-            Simply·You·Blog is your go-to space for everything that sparks curiosity, creativity, and inspiration. From lifestyle and personal stories to tips, ideas, and everyday musings, we explore it all with a fresh perspective and a focus on what makes life uniquely yours.
+          <p class="text-xl leading-relaxed text-muted-foreground max-w-3xl mx-auto">
+            Where curiosity meets creativity, and every story celebrates what makes you uniquely you. Join us on a journey of personal growth, everyday joy, and mindful living.
           </p>
-          <p class="text-base leading-relaxed text-muted-foreground font-medium">
-            Read writing guides, monetization strategies, and creator tools to build your audience and generate income.
-          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+            <a
+              href="/posts"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors font-medium"
+            >
+              Explore Stories
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </a>
+            <a
+              href="/about"
+              class="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-accent/50 transition-colors font-medium"
+            >
+              About Us
+            </a>
+          </div>
         </div>
         
         {
           SOCIALS.length > 0 && (
-            <div class="mt-12 flex flex-col items-center gap-6">
+            <div class="mt-16 flex flex-col items-center gap-6">
               <h3 class="text-lg font-semibold text-foreground">Connect With Our Community</h3>
               <Socials />
             </div>
