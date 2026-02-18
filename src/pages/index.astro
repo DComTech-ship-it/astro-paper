@@ -38,8 +38,25 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
             Mia woezɔ
           </h1>
           
+          <!-- RSS Button -->
+          <div class="flex items-center justify-center gap-3 mb-6">
+            <a
+              target="_blank"
+              href="/rss.xml"
+              class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors"
+              aria-label="rss feed for Mia woezɔ"
+              title="Mia woezɔ RSS Feed"
+            >
+              <IconRss
+                width={16}
+                height={16}
+                class="stroke-background"
+              />
+            </a>
+          </div>
+          
           <!-- Tagline -->
-          <p class="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed">
+          <p class="text-lg sm:text-xl text-muted-foreground mb-6 leading-relaxed">
             Where authentic stories meet practical inspiration
           </p>
           
@@ -63,6 +80,15 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h1V4m0 0v-4h1m0 4h1v4m0 0v4h1"/>
               </svg>
             </a>
+          </div>
+          
+          <!-- Newsletter -->
+          <div class="mt-8">
+            <Newsletter 
+              title="Join Our Community"
+              description="Get weekly inspiration and exclusive content delivered to your inbox"
+              buttonText="Subscribe Now"
+            />
           </div>
           
           <!-- Social Icons -->
