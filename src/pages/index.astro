@@ -3,15 +3,12 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import Socials from "@/components/Socials.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
-import Newsletter from "@/components/Newsletter.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
-import IconRss from "@/assets/icons/IconRss.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
-import { SOCIALS } from "@/constants";
+import Newsletter from "@/components/Newsletter.astro";
 
 const posts = await getCollection("blog");
 
@@ -23,88 +20,52 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 <Layout>
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
-    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <!-- Hero Background -->
-      <div class="absolute inset-0 bg-gradient-to-br from-accent/10 via-background to-accent/5 dark:from-accent/20 dark:via-background dark:to-accent/10"></div>
-      <div class="absolute inset-0 opacity-5">
-        <div class="h-full w-full bg-repeat" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAnIGZpbGw9Im5vbmUiPjwvYXBwb3JhZG91bmQ9IjAiPjwvc3ZnPg=='); background-size: 60px 60px;"></div>
+    <section id="hero" class="relative pt-8 pb-6">
+      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
+        Mia woezɔ
+      </h1>
+      <a
+        target="_blank"
+        href="/rss.xml"
+        class="inline-block"
+        aria-label="rss feed"
+        title="RSS Feed"
+      >
+        <IconRss
+          width={20}
+          height={20}
+          class="scale-125 stroke-accent stroke-3"
+        />
+        <span class="sr-only">RSS Feed</span>
+      </a>
+
+      <p class="text-center max-w-4xl mx-auto mt-8 text-2xl md:text-3xl font-bold leading-tight text-foreground">
+        Where authentic stories meet practical inspiration
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+        <a
+          href="/posts"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors font-medium"
+        >
+          Explore Stories
+        </a>
+        <a
+          href="/about"
+          class="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-accent/50 transition-colors font-medium"
+        >
+          Learn More
+        </a>
       </div>
-      
-      <!-- Hero Content -->
-      <div class="relative z-10 text-center px-6 sm:px-8">
-        <div class="max-w-4xl mx-auto space-y-6">
-          <!-- Brand Name -->
-          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-3 leading-tight">
-            Mia woezɔ
-          </h1>
-          
-          <!-- RSS Button -->
-          <div class="flex items-center justify-center gap-3 mb-6">
-            <a
-              target="_blank"
-              href="/rss.xml"
-              class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors"
-              aria-label="rss feed for Mia woezɔ"
-              title="Mia woezɔ RSS Feed"
-            >
-              <IconRss
-                width={16}
-                height={16}
-                class="stroke-background"
-              />
-            </a>
-          </div>
-          
-          <!-- Tagline -->
-          <p class="text-lg sm:text-xl text-muted-foreground mb-6 leading-relaxed">
-            Where authentic stories meet practical inspiration
-          </p>
-          
-          <!-- Call-to-Action Buttons -->
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href="/posts"
-              class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-background rounded-lg hover:bg-accent/90 transition-all duration-300 font-medium"
-            >
-              <span>Explore Stories</span>
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-              </svg>
-            </a>
-            <a
-              href="/about"
-              class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-accent/50 transition-all duration-300 font-medium"
-            >
-              <span>Learn More</span>
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h1V4m0 0v-4h1m0 4h1v4m0 0v4h1"/>
-              </svg>
-            </a>
-          </div>
-          
-          <!-- Newsletter -->
-          <div class="mt-8">
-            <Newsletter 
-              title="Join Our Community"
-              description="Get weekly inspiration and exclusive content delivered to your inbox"
-              buttonText="Subscribe Now"
-            />
-          </div>
-          
-          <!-- Social Icons -->
-          {
-            SOCIALS.length > 0 && (
-              <div class="flex items-center justify-center gap-4">
-                <h3 class="text-sm font-medium text-muted-foreground mb-2">Connect With Us</h3>
-                <Socials />
-              </div>
-            )
-          }
-        </div>
+
+      <div class="mt-8">
+        <Newsletter 
+          title="Join Our Community"
+          description="Get weekly inspiration and exclusive content delivered to your inbox"
+          buttonText="Subscribe Now"
+        />
       </div>
     </section>
 
-    
     {
       featuredPosts.length > 0 && (
         <section
