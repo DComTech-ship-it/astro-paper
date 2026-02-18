@@ -11,10 +11,11 @@ type Props = {
 
 const { variant: Heading = "h2", id, data, filePath } = Astro.props;
 
-const { title, description, body } = data;
+const { title, description } = data;
 
-// Calculate reading time
-const readingTime = calculateReadingTime(body);
+// Calculate reading time - use content as fallback if body is not available
+const content = data.body || data.content || '';
+const readingTime = calculateReadingTime(content);
 const readingTimeText = formatReadingTime(readingTime);
 ---
 
