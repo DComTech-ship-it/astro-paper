@@ -5,7 +5,7 @@ title: "About"
 
 Simply·You·Blog is your go-to space for everything that sparks curiosity, creativity, and inspiration. From lifestyle and personal stories to tips, ideas, and everyday musings, we explore it all with a fresh perspective and a focus on what makes life uniquely yours.
 
-![Simply You Blog](public/simply-you-og.jpg)
+![Simply You Blog](/astropaper-og.jpg)
 
 This blog is a celebration of authenticity, personal growth, and the beautiful journey of becoming yourself. Here, we believe that everyone has a unique story to tell and wisdom to share.
 
