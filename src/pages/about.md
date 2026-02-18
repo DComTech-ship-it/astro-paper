@@ -12,7 +12,7 @@ Simply·You·Blog is your go-to space for everything that sparks curiosity, crea
 
 
 
-![Simply You Blog](public/simply-you-og.jpg)
+![Simply You Blog](/astropaper-og.jpg)
 
 
 
