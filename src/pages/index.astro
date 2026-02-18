@@ -70,15 +70,6 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           buttonText="Subscribe Now"
         />
       </div>
-      {
-        // only display if at least one social link is enabled
-        SOCIALS.length > 0 && (
-          <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
-            <div class="mr-2 mb-1 whitespace-nowrap sm:mb-0">Connect With Us:</div>
-            <Socials />
-          </div>
-        )
-      }
     </section>
 
     {
