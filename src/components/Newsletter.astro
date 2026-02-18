@@ -35,7 +35,7 @@ const {
         name="email"
         placeholder="Enter your email address"
         required
-        class="flex-1 px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
+        class="flex-1 px-4 py-3 border border-border rounded-lg bg-white dark:bg-gray-900 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
       />
       <button
         type="submit"
@@ -53,10 +53,15 @@ const {
 
 <style>
   .newsletter-signup {
-    @apply bg-background border border-border rounded-xl p-6 shadow-sm;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   }
   
   .newsletter-signup input:focus {
-    @apply ring-2 ring-accent/20;
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
   }
 </style>
