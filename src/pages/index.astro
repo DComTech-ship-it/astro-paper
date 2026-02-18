@@ -27,58 +27,60 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
     <section id="hero" class="relative pt-8 pb-6">
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Mia woezɔ
-      </h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="inline-block"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <IconRss
-          width={20}
-          height={20}
-          class="scale-125 stroke-accent stroke-3"
-        />
-        <span class="sr-only">RSS Feed</span>
-      </a>
-
-      <p class="text-center max-w-4xl mx-auto mt-8 text-2xl md:text-3xl font-bold leading-tight text-foreground">
-        Where authentic stories meet practical inspiration for your creative journey
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
+          Mia woezɔ
+        </h1>
         <a
-          href="/posts"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors font-medium"
+          target="_blank"
+          href="/rss.xml"
+          class="inline-block ml-4"
+          aria-label="rss feed"
+          title="RSS Feed"
         >
-          Explore Stories
+          <IconRss
+            width={20}
+            height={20}
+            class="scale-125 stroke-accent stroke-3"
+          />
+          <span class="sr-only">RSS Feed</span>
         </a>
-        <a
-          href="/about"
-          class="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-accent/50 transition-colors font-medium"
-        >
-          Learn More
-        </a>
-      </div>
 
-      <div class="mt-8">
-        <Newsletter 
-          title="Join Our Community"
-          description="Get weekly inspiration and exclusive content delivered to your inbox"
-          buttonText="Subscribe Now"
-        />
+        <p class="mt-8 text-2xl md:text-3xl font-bold leading-tight text-foreground">
+          Where authentic stories meet practical inspiration for your creative journey
+        </p>
+        
+        <p class="mt-6 text-lg leading-relaxed">
+          Welcome to a space where creativity flourishes and authentic voices are celebrated. 
+          Here we share stories that inspire, practical tips that empower, and a community 
+          that supports your growth as a creative individual. Every post is crafted with care 
+          to bring you valuable insights and meaningful connections.
+        </p>
+
+        <p class="mt-6 text-lg leading-relaxed">
+          Join Our Community and get weekly inspiration and exclusive content delivered to your inbox. 
+          Be the first to discover new stories, behind-the-scenes content, and special resources 
+          designed to fuel your creative passion and help you thrive in your artistic journey.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <input
+            type="email"
+            placeholder="Enter your email address"
+            class="flex-1 max-w-md px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+          />
+          <button class="px-6 py-3 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors font-medium">
+            Subscribe Now
+          </button>
+        </div>
+
+        <p class="mt-8 text-lg">
+          Connect With Us:
+        </p>
+        <div class="mt-2 flex justify-center">
+          <Socials />
+        </div>
       </div>
-      {
-        // only display if at least one social link is enabled
-        SOCIALS.length > 0 && (
-          <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
-            <div class="mr-2 mb-1 whitespace-nowrap sm:mb-0">Connect With Us:</div>
-            <Socials />
-          </div>
-        )
-      }
     </section>
 
     {
