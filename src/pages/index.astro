@@ -70,6 +70,15 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           buttonText="Subscribe Now"
         />
       </div>
+      {
+        // only display if at least one social link is enabled
+        SOCIALS.length > 0 && (
+          <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
+            <div class="mr-2 mb-1 whitespace-nowrap sm:mb-0">Connect With Us:</div>
+            <Socials />
+          </div>
+        )
+      }
     </section>
 
     {
@@ -87,15 +96,20 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
               <Card variant="h3" {...data} />
             ))}
           </ul>
-          <p class="mt-2">
-            Read the blog posts or check
-            <LinkButton
-              class="underline underline-offset-4 hover:text-accent"
-              href="https://github.com/ziteh/astro-paper-s#readme"
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+            <a
+              href="/posts"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors font-medium"
             >
-              README
-            </LinkButton> for more info.
-          </p>
+              Explore Stories
+            </a>
+            <a
+              href="/about"
+              class="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-accent/50 transition-colors font-medium"
+            >
+              Learn More
+            </a>
+          </div>
           {
             // only display if at least one social link is enabled
             SOCIALS.length > 0 && (
