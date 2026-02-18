@@ -52,17 +52,37 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           </a>
         </div>
 
-        <div class="max-w-4xl mx-auto mt-12 space-y-6 text-center">
-          <p class="text-2xl md:text-3xl font-bold leading-tight text-foreground">
-            Your Space for Authentic Living
+        <div class="max-w-5xl mx-auto mt-16 space-y-10 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold leading-tight text-foreground mb-6">
+            Welcome to Your Creative Space
+          </h2>
+          <p class="text-xl leading-relaxed text-muted-foreground max-w-4xl mx-auto mb-8">
+            Where authentic stories meet practical inspiration. Your journey to living unapologetically you starts here.
           </p>
-          <p class="text-xl leading-relaxed text-muted-foreground max-w-3xl mx-auto">
-            Where curiosity meets creativity, and every story celebrates what makes you uniquely you. Join us on a journey of personal growth, everyday joy, and mindful living.
-          </p>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-10">
+            <div class="text-center">
+              <h3 class="text-lg font-semibold text-foreground mb-3">Discover</h3>
+              <p class="text-base leading-relaxed text-muted-foreground">
+                Lifestyle tips and personal growth strategies
+              </p>
+            </div>
+            <div class="text-center">
+              <h3 class="text-lg font-semibold text-foreground mb-3">Create</h3>
+              <p class="text-base leading-relaxed text-muted-foreground">
+                Creative ideas and everyday inspiration
+              </p>
+            </div>
+            <div class="text-center">
+              <h3 class="text-lg font-semibold text-foreground mb-3">Connect</h3>
+              <p class="text-base leading-relaxed text-muted-foreground">
+                Join our community of authentic storytellers
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
             <a
               href="/posts"
-              class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors font-medium"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors font-medium text-base"
             >
               Explore Stories
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -71,9 +91,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
             </a>
             <a
               href="/about"
-              class="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-accent/50 transition-colors font-medium"
+              class="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-accent/50 transition-colors font-medium text-base"
             >
-              About Us
+              Learn More
             </a>
           </div>
         </div>
