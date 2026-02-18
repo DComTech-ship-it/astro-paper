@@ -3,13 +3,17 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import Socials from "@/components/Socials.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
+import Hr from "@/components/Hr.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
 import IconRss from "@/assets/icons/IconRss.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
-import Newsletter from "@/components/Newsletter.astro";
+import { SOCIALS } from "@/constants";
+import { _t } from "@/i18n/lang";
+import getDescription from "@/utils/getDescription";
 
 const posts = await getCollection("blog");
 
@@ -82,6 +86,24 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
               <Card variant="h3" {...data} />
             ))}
           </ul>
+          <p class="mt-2">
+            Read the blog posts or check
+            <LinkButton
+              class="underline underline-offset-4 hover:text-accent"
+              href="https://github.com/ziteh/astro-paper-s#readme"
+            >
+              README
+            </LinkButton> for more info.
+          </p>
+          {
+            // only display if at least one social link is enabled
+            SOCIALS.length > 0 && (
+              <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
+                <div class="mr-2 mb-1 whitespace-nowrap sm:mb-0">Connect With Us:</div>
+                <Socials />
+              </div>
+            )
+          }
         </section>
       )
     }
