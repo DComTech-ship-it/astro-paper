@@ -22,46 +22,119 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 <Layout>
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
-    <section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Mia woezɔ
-      </h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="inline-block"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <IconRss
-          width={20}
-          height={20}
-          class="scale-125 stroke-accent stroke-3 rtl:-rotate-90"
-        />
-        <span class="sr-only">RSS Feed</span>
-      </a>
+    <section id="hero" class="relative pt-20 pb-16 overflow-hidden">
+      <!-- Hero Background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/5 dark:from-accent/20 dark:via-transparent dark:to-accent/10"></div>
+      <div class="absolute inset-0 opacity-5 dark:opacity-10">
+        <div class="h-full w-full bg-repeat" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwMDcwZjMiIGZpbGwtb3BhY2l0eT0iMC4zIj48cGF0aCBkPSJNMzYgMzR2LTRoLTJ2NGgtNHYyaDR2NGgydi00aDR2LTJoLTR6bTAtMzBWMGgtMnY0aC00djJoNHY0aDJWNmg0VjRoLTR6TTYgMzR2LTRINHY0SDB2Mmg0djRoMnYtNGg0djJINnptNi00VjBINHY0SDB2Mmg0djRoMnYtNmgtNHoiLz48L2c+PC9nPjwvc3ZnPg=='); background-size: 60px 60px;"></div>
+      </div>
+      
+      <!-- Hero Content -->
+      <div class="relative z-10">
+        <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-6xl lg:text-7xl bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
+          Simply You Blog
+        </h1>
+        
+        <div class="flex items-center gap-4 mt-6">
+          <a
+            target="_blank"
+            href="/rss.xml"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors"
+            aria-label="rss feed"
+            title="RSS Feed"
+          >
+            <IconRss
+              width={20}
+              height={20}
+              class="stroke-background"
+            />
+            <span class="font-medium">Subscribe</span>
+          </a>
+        </div>
 
-      <p>
-        Simply·You·Blog is your go-to space for everything that sparks curiosity, creativity, and inspiration. From lifestyle and personal stories to tips, ideas , and everyday musings, we explore it all with a fresh perspective and a focus on what makes life uniquely yours.
-      </p>
-      <p class="mt-2">
-        Read writing guides, monetization strategies, and creator tools to build your audience and generate income.
-        <LinkButton
-          class="underline decoration-dashed underline-offset-4 hover:text-accent"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton> for more info.
-      </p>
-      {
-        // only display if at least one social link is enabled
-        SOCIALS.length > 0 && (
-          <div class="mt-4 flex max-sm:flex-col sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">Social Links:</div>
-            <Socials />
+        <div class="max-w-2xl mt-8 space-y-4">
+          <p class="text-lg leading-relaxed">
+            Your go-to space for everything that sparks curiosity, creativity, and inspiration. From lifestyle and personal stories to tips, ideas, and everyday musings, we explore it all with a fresh perspective.
+          </p>
+          <p class="text-muted-foreground">
+            Discover authentic stories, practical tips, and join a community that celebrates being unapologetically you.
+          </p>
+        </div>
+        
+        {
+          SOCIALS.length > 0 && (
+            <div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <div class="font-medium">Connect with us:</div>
+              <Socials />
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+    <!-- Feature Cards Section -->
+    <section class="py-16 border-b border-border">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 rounded-xl border border-border bg-background hover:border-accent/50 transition-colors">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 stroke-accent" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
           </div>
-        )
-      }
+          <h3 class="text-xl font-semibold mb-2">Personal Growth</h3>
+          <p class="text-muted-foreground">Tips for self-discovery and continuous evolution on your unique journey.</p>
+        </div>
+        
+        <div class="p-6 rounded-xl border border-border bg-background hover:border-accent/50 transition-colors">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 stroke-accent" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Everyday Joy</h3>
+          <p class="text-muted-foreground">Finding magic in the small moments and celebrating daily victories.</p>
+        </div>
+        
+        <div class="p-6 rounded-xl border border-border bg-background hover:border-accent/50 transition-colors">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 stroke-accent" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Creative Living</h3>
+          <p class="text-muted-foreground">Nurturing your creativity and personal expression in everyday life.</p>
+        </div>
+        
+        <div class="p-6 rounded-xl border border-border bg-background hover:border-accent/50 transition-colors">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 stroke-accent" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Mindful Wellness</h3>
+          <p class="text-muted-foreground">Balancing technology, health, and inner peace in modern life.</p>
+        </div>
+        
+        <div class="p-6 rounded-xl border border-border bg-background hover:border-accent/50 transition-colors">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 stroke-accent" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Connection & Community</h3>
+          <p class="text-muted-foreground">Building meaningful relationships and finding your tribe.</p>
+        </div>
+        
+        <div class="p-6 rounded-xl border border-border bg-background hover:border-accent/50 transition-colors">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 stroke-accent" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Home & Spaces</h3>
+          <p class="text-muted-foreground">Creating environments that reflect your true self and values.</p>
+        </div>
+      </div>
     </section>
 
     {
