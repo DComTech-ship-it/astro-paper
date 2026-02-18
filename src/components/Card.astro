@@ -4,6 +4,8 @@ import { slugifyStr } from "@/utils/slugify";
 import { getPath } from "@/utils/getPath";
 import { calculateReadingTime } from "@/utils/readingTime";
 import Datetime from "./Datetime.astro";
+import IconUser from "@/assets/icons/IconUser.svg";
+import IconClock from "@/assets/icons/IconClock.svg";
 
 type Props = {
   variant?: "h2" | "h3";
@@ -33,9 +35,17 @@ const readingTime = calculateReadingTime(data.body || "");
       {title}
     </Heading>
   </a>
-  <div class="flex items-center gap-4 text-sm text-muted opacity-80 mb-2">
-    {author && <span>By {author}</span>}
-    <span>• {readingTime} min read</span>
+  <div class="flex items-center gap-4 text-sm text-foreground mb-2">
+    {author && (
+      <span class="flex items-center gap-1">
+        <IconUser class="inline-block w-4 h-4" />
+        {author}
+      </span>
+    )}
+    <span class="flex items-center gap-1">
+      <IconClock class="inline-block w-4 h-4" />
+      {readingTime} min read
+    </span>
   </div>
   <Datetime {...data} />
   <p>{description}</p>
