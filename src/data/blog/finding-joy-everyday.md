@@ -1,6 +1,7 @@
 ---
 author: Dxmond Tecku
 pubDatetime: 2024-03-15T14:20:00Z
+title: Finding Joy Everyday
 slug: finding-joy-everyday
 featured: true
 draft: false

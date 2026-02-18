@@ -1,6 +1,7 @@
 ---
 author: Dxmond Tecku
 pubDatetime: 2024-02-15T10:30:00Z
+title: Tech Wellness Tips
 slug: tech-wellness-tips
 featured: false
 draft: false

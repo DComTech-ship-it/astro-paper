@@ -1,6 +1,7 @@
 ---
 author: Dxmond Tecku
 pubDatetime: 2024-02-10T16:45:00Z
+title: Creative Hobbies for Wellbeing
 slug: creative-hobbies-for-wellbeing
 featured: false
 draft: false

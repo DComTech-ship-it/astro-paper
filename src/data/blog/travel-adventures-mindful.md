@@ -1,6 +1,7 @@
 ---
 author: Dxmond Tecku
 pubDatetime: 2024-02-20T09:00:00Z
+title: Travel Adventures Mindful
 slug: travel-adventures-mindful
 featured: false
 draft: false

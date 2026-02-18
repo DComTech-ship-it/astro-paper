@@ -1,6 +1,7 @@
 ---
 author: Dxmond Tecku
 pubDatetime: 2024-01-15T12:00:00Z
+title: Cooking with Love
 slug: cooking-with-love
 featured: false
 draft: false
