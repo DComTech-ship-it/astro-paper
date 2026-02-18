@@ -44,10 +44,19 @@ const isActive = (path: string) => {
   >
     <a
       href="/"
-      class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none italic"
-      style="font-family: cursive;"
+      class="absolute py-1 text-xl leading-8 font-bold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
+      style="
+        font-family: 'Brush Script MT', cursive;
+        font-style: italic;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      "
     >
-      Bigger Minds
+      <span class="bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
+        𝓑𝓲𝓰𝓮𝓻 𝓜𝓲𝓷𝓭𝓼
+      </span>
     </a>
     <nav
       id="nav-menu"
