@@ -10,7 +10,7 @@ tags:
   - Relationships
   - Community
   - Personal Growth
-description: Creating authentic connections and building a supportive community around your personal journey.
+description: "Creating authentic connections and building a supportive community around your personal journey."
 ---
 
 Building meaningful connections with others is one of the most rewarding aspects of a fulfilling life. While we often think of connection as something that happens naturally, creating authentic relationships requires intention, vulnerability, and presence.

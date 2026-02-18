@@ -10,9 +10,7 @@ tags:
   - Personal Growth
   - Daily Rhythms
   - Mindful Living
-description:
-  Some of the well-crafted, personal rhythms for creating a life that flows
-  naturally and authentically.
+description: "Some of the well-crafted, personal rhythms for creating a life that flows naturally and authentically."
 ---
 
 I've crafted some personal rhythms for creating a life that flows with your natural energy and honors your authentic patterns. You can replace these rhythms with the original ones, but I encourage you to discover what works best for your unique self.

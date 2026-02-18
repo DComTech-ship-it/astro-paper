@@ -8,8 +8,7 @@ tags:
   - Personal Growth
   - Mindfulness
   - Life Balance
-description: "EXAMPLE POST: Discovering how to create harmony between work, rest, and play
-  in your everyday routine for a more fulfilling life."
+description: "EXAMPLE POST: Discovering how to create harmony between work, rest, and play in your everyday routine for a more fulfilling life."
 ---
 
 This document demonstrates how to find balance in your daily life through mindful choices and intentional living. Balance is about creating harmony between different aspects of your life.

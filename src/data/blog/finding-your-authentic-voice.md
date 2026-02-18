@@ -10,9 +10,7 @@ tags:
   - Personal Growth
   - Creativity
   - Writing
-description:
-  Discovering your authentic writing voice and sharing your unique perspective
-  with the world through personal storytelling.
+description: "Discovering your authentic writing voice and sharing your unique perspective with the world through personal storytelling."
 ---
 
 Finding your authentic writing voice is one of the most rewarding journeys you can embark on. It's not about following rules or templates - it's about discovering the unique way only you can express your thoughts and experiences.

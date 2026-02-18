@@ -10,7 +10,7 @@ tags:
   - Personal Growth
   - Self Care
   - Life Journey
-description: How to nurture your continuous evolution and embrace the beautiful journey of becoming yourself.
+description: "How to nurture your continuous evolution and embrace the beautiful journey of becoming yourself."
 ---
 
 Nurturing your personal growth is one of the most loving commitments you can make to yourself. It's not about fixing what's broken, but about tending to the garden of your becoming with patience, compassion, and curiosity.

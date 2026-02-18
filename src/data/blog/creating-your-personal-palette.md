@@ -10,9 +10,7 @@ tags:
   - Personal Style
   - Home Environment
   - Creativity
-description:
-  How to create a personal color palette that reflects your unique personality
-  and brings joy to your living spaces.
+description: "How to create a personal color palette that reflects your unique personality and brings joy to your living spaces."
 ---
 
 This post will explain how you can create a personal color palette that makes your heart sing and transforms your living spaces into reflections of who you truly are.
