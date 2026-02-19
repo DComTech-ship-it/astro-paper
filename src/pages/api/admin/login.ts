@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 // In production, store these in environment variables
 const ADMIN_EMAIL = 'admin@miawoezo.com';
-const ADMIN_PASSWORD_HASH = '$2a$10$rOzJqQjQjQjQjQjQjQjQu'; // This is a hash of 'admin123'
+const ADMIN_PASSWORD_HASH = '$2a$10$rOzJqQjQjQjQjQjQjQu'; // This is a hash of 'admin123'
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 
 export const POST: APIRoute = async ({ request, cookies }) => {
