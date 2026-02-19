@@ -63,6 +63,16 @@
   scrollbar-width: thin;
 }
 
+/* Light theme application */
+[data-theme="light"] {
+  background-color: #ffffff;
+  color: #111827;
+  
+  /* Scrollbar styling */
+  scrollbar-color: #f1f5f9 #e2e8f0;
+  scrollbar-width: thin;
+}
+
 /* Component-specific styling */
 [data-theme="dark"] .bg-white {
   background-color: var(--surface-primary) !important;
