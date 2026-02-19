@@ -10,14 +10,14 @@ export const onRequest = defineMiddleware((context, next) => {
     if (url.pathname === "/admin/login") {
       // If already logged in, redirect to dashboard
       if (isAuthenticated(cookies)) {
-        return Response.redirect(new URL("/admin", url));
+        return Response.redirect(new URL("/admin", url.origin));
       }
       return next();
     }
     
     // Protect all other admin routes
     if (!isAuthenticated(cookies)) {
-      return Response.redirect(new URL("/admin/login", url));
+      return Response.redirect(new URL("/admin/login", url.origin));
     }
   }
   
