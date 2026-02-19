@@ -16,6 +16,8 @@ export async function getStaticPaths() {
   }));
 }
 
+export const prerender = true;
+
 const { post } = Astro.props;
 
 const posts = await getCollection("blog");

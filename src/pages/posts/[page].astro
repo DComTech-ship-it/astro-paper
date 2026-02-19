@@ -15,6 +15,8 @@ export async function getStaticPaths({ paginate }) {
   return paginate(getSortedPosts(posts), { pageSize: SITE.postPerPage });
 }
 
+export const prerender = true;
+
 const { page } = Astro.props;
 
 ---
