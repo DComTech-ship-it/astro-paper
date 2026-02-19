@@ -10,15 +10,10 @@ type Props = {
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
-  const postResult = posts.map(post => ({
+  return posts.map(post => ({
     params: { slug: getPath(post.id, post.filePath, false) },
     props: { post },
   }));
-
-  return {
-    paths: postResult,
-    fallback: true
-  };
 }
 
 const { post } = Astro.props;
