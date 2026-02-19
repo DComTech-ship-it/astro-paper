@@ -45,13 +45,43 @@ function updateThemeCSS(theme) {
   const root = document.documentElement;
   
   if (theme === DARK) {
-    root.style.setProperty('--vercel-bg-primary', '#0A0A0A');
-    root.style.setProperty('--vercel-text-primary', '#FAFAFA');
-    root.style.setProperty('--vercel-accent', '#FFFFFF');
+    root.style.setProperty('--bg-primary', '#0A0A0A');
+    root.style.setProperty('--bg-secondary', '#111111');
+    root.style.setProperty('--bg-tertiary', '#1A1A1A');
+    root.style.setProperty('--bg-card', '#1A1A1A');
+    root.style.setProperty('--bg-hover', '#262626');
+    root.style.setProperty('--bg-border', '#2A2A2A');
+    root.style.setProperty('--surface-primary', '#111111');
+    root.style.setProperty('--surface-secondary', '#191919');
+    root.style.setProperty('--surface-elevated', '#262626');
+    root.style.setProperty('--text-primary', '#FAFAFA');
+    root.style.setProperty('--text-secondary', '#E5E5E5');
+    root.style.setProperty('--text-tertiary', '#A1A1A1');
+    root.style.setProperty('--text-muted', '#6B7280');
+    root.style.setProperty('--accent-primary', '#FFFFFF');
+    root.style.setProperty('--accent-secondary', '#F8FAFC');
+    root.style.setProperty('--accent-hover', '#FFFFFF');
+    root.style.setProperty('--border-primary', '#2A2A2A');
+    root.style.setProperty('--border-secondary', '#333333');
   } else {
-    root.style.setProperty('--vercel-bg-primary', '#ffffff');
-    root.style.setProperty('--vercel-text-primary', '#111827');
-    root.style.setProperty('--vercel-accent', '#000000');
+    root.style.setProperty('--bg-primary', '#ffffff');
+    root.style.setProperty('--bg-secondary', '#f8fafc');
+    root.style.setProperty('--bg-tertiary', '#f1f5f9');
+    root.style.setProperty('--bg-card', '#ffffff');
+    root.style.setProperty('--bg-hover', '#f8fafc');
+    root.style.setProperty('--bg-border', '#e2e8f0');
+    root.style.setProperty('--surface-primary', '#ffffff');
+    root.style.setProperty('--surface-secondary', '#f8fafc');
+    root.style.setProperty('--surface-elevated', '#ffffff');
+    root.style.setProperty('--text-primary', '#111827');
+    root.style.setProperty('--text-secondary', '#64748b');
+    root.style.setProperty('--text-tertiary', '#94a3b8');
+    root.style.setProperty('--text-muted', '#6b7280');
+    root.style.setProperty('--accent-primary', '#000000');
+    root.style.setProperty('--accent-secondary', '#111827');
+    root.style.setProperty('--accent-hover', '#000000');
+    root.style.setProperty('--border-primary', '#e2e8f0');
+    root.style.setProperty('--border-secondary', '#cbd5e1');
   }
 }
 
