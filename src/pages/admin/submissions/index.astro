@@ -384,65 +384,104 @@ if (response.ok) {
     const modal = document.getElementById('submission-modal');
     const content = document.getElementById('modal-content');
     
-    // Use DOM manipulation instead of innerHTML to avoid template literal issues
+    // Clear content
     content.innerHTML = '';
     
-    // Create elements
+    // Create container
     const container = document.createElement('div');
     container.className = 'space-y-6';
     
     // Title section
     const titleDiv = document.createElement('div');
-    titleDiv.innerHTML = `<h4 class="text-lg font-medium mb-2">${submission.title}</h4>`;
+    const titleH4 = document.createElement('h4');
+    titleH4.className = 'text-lg font-medium mb-2';
+    titleH4.textContent = submission.title;
+    titleDiv.appendChild(titleH4);
     container.appendChild(titleDiv);
     
     // Author info
     const authorInfoDiv = document.createElement('div');
-    authorInfoDiv.innerHTML = `
-      <div class="flex items-center space-x-4 text-sm text-gray-500">
-        <span>${submission.authorName}</span>
-        <span>•</span>
-        <span>${submission.authorEmail}</span>
-        <span>•</span>
-        <span>${new Date(submission.createdAt).toLocaleDateString()}</span>
-      </div>
-    `;
+    authorInfoDiv.className = 'flex items-center space-x-4 text-sm text-gray-500';
+    
+    const authorNameSpan = document.createElement('span');
+    authorNameSpan.textContent = submission.authorName;
+    authorInfoDiv.appendChild(authorNameSpan);
+    
+    const dot1 = document.createElement('span');
+    dot1.textContent = '•';
+    authorInfoDiv.appendChild(dot1);
+    
+    const authorEmailSpan = document.createElement('span');
+    authorEmailSpan.textContent = submission.authorEmail;
+    authorInfoDiv.appendChild(authorEmailSpan);
+    
+    const dot2 = document.createElement('span');
+    dot2.textContent = '•';
+    authorInfoDiv.appendChild(dot2);
+    
+    const dateSpan = document.createElement('span');
+    dateSpan.textContent = new Date(submission.createdAt).toLocaleDateString();
+    authorInfoDiv.appendChild(dateSpan);
+    
     container.appendChild(authorInfoDiv);
     
     // Author bio
     const bioDiv = document.createElement('div');
-    bioDiv.innerHTML = `
-      <h5 class="font-medium mb-2">Author Bio</h5>
-      <p class="text-gray-600">${submission.authorBio}</p>
-      <p class="text-sm text-gray-500 mt-1">
-        ${Object.entries(submission.socialLinks || {}).map(([key, value]) => `${key}: ${value}`).join(' | ')}
-      </p>
-    `;
+    const bioH5 = document.createElement('h5');
+    bioH5.className = 'font-medium mb-2';
+    bioH5.textContent = 'Author Bio';
+    bioDiv.appendChild(bioH5);
+    
+    const bioP = document.createElement('p');
+    bioP.className = 'text-gray-600';
+    bioP.textContent = submission.authorBio;
+    bioDiv.appendChild(bioP);
+    
+    const socialP = document.createElement('p');
+    socialP.className = 'text-sm text-gray-500 mt-1';
+    const socialLinks = Object.entries(submission.socialLinks || {});
+    const socialLinksText = socialLinks.map(([key, value]) => key + ': ' + value).join(' | ');
+    socialP.textContent = socialLinksText;
+    bioDiv.appendChild(socialP);
+    
     container.appendChild(bioDiv);
     
     // Content
     const contentDiv = document.createElement('div');
-    contentDiv.innerHTML = `
-      <h5 class="font-medium mb-2">Content</h5>
-      <div class="prose max-w-none bg-gray-50 p-4 rounded">
-        ${submission.content}
-      </div>
-    `;
+    const contentH5 = document.createElement('h5');
+    contentH5.className = 'font-medium mb-2';
+    contentH5.textContent = 'Content';
+    contentDiv.appendChild(contentH5);
+    
+    const contentInnerDiv = document.createElement('div');
+    contentInnerDiv.className = 'prose max-w-none bg-gray-50 p-4 rounded';
+    contentInnerDiv.textContent = submission.content;
+    contentDiv.appendChild(contentInnerDiv);
+    
     container.appendChild(contentDiv);
     
     // Attachments
     if (submission.attachments && submission.attachments.length > 0) {
       const attachmentsDiv = document.createElement('div');
-      attachmentsDiv.innerHTML = `
-        <h5 class="font-medium mb-2">Attachments</h5>
-        <ul class="list-disc list-inside text-sm text-gray-600">
-          ${submission.attachments.map(att => `<li>${att}</li>`).join('')}
-        </ul>
-      `;
+      const attachmentsH5 = document.createElement('h5');
+      attachmentsH5.className = 'font-medium mb-2';
+      attachmentsH5.textContent = 'Attachments';
+      attachmentsDiv.appendChild(attachmentsH5);
+      
+      const attachmentsUl = document.createElement('ul');
+      attachmentsUl.className = 'list-disc list-inside text-sm text-gray-600';
+      
+      submission.attachments.forEach(att => {
+        const li = document.createElement('li');
+        li.textContent = att;
+        attachmentsUl.appendChild(li);
+      });
+      
+      attachmentsDiv.appendChild(attachmentsUl);
       container.appendChild(attachmentsDiv);
     }
     
-    modal.appendChild(container);
+    content.appendChild(container);
     modal.classList.remove('hidden');
   }
 
