@@ -229,15 +229,12 @@ const currentPage = Astro.url.pathname;
     backdrop?.classList.add('hidden');
   });
 
-  // Theme toggle
+  // Enhanced theme toggle with Vercel-inspired design
   const themeToggle = document.getElementById('theme-toggle');
   
   themeToggle?.addEventListener('click', () => {
-    const html = document.documentElement;
-    const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    html.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    if (window.enhancedTheme) {
+      window.enhancedTheme.toggleTheme();
+    }
   });
 </script>

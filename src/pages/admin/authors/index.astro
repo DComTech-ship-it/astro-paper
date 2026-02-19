@@ -8,75 +8,23 @@ if (!user) {
   return Astro.redirect("/admin/login");
 }
 
-// Mock authors data - in real app, this would come from your authors.json
-const authors = [
-  {
-    id: 1,
-    name: "Dxmond Tecku",
-    email: "dxmond@biggerminds.com",
-    role: "admin",
-    bio: "Founder and main author of Bigger Minds. Passionate about exploring ideas that spark curiosity and creativity.",
-    avatar: "/images/authors/dxmond-tecku.jpg",
-    socialLinks: {
-      twitter: "@dxmondtecku",
-      linkedin: "dxmond-tecku",
-      website: "dxmondtecku.com"
-    },
-    postCount: 42,
-    joinDate: "2024-01-15",
-    status: "active"
-  },
-  {
-    id: 2,
-    name: "Emily Rodriguez",
-    email: "emily.rodriguez@example.com",
-    role: "guest",
-    bio: "Wellness coach and mindfulness practitioner with over 10 years of experience helping people find balance in their daily lives.",
-    avatar: "/images/authors/emily-rodriguez.jpg",
-    socialLinks: {
-      twitter: "@emilywellness",
-      instagram: "@mindfulemily"
-    },
-    postCount: 3,
-    joinDate: "2024-07-25",
-    status: "active"
-  },
-  {
-    id: 3,
-    name: "Michael Chen",
-    email: "michael.chen@example.com",
-    role: "guest",
-    bio: "Tech wellness advocate who helps people find balance between digital and physical worlds.",
-    avatar: "",
-    socialLinks: {
-      linkedin: "michaelchen"
-    },
-    postCount: 1,
-    joinDate: "2024-07-24",
-    status: "active"
-  },
-  {
-    id: 4,
-    name: "Sarah Thompson",
-    email: "sarah.thompson@example.com",
-    role: "guest",
-    bio: "Environmental consultant and sustainability educator.",
-    avatar: "/images/authors/sarah-thompson.jpg",
-    socialLinks: {
-      website: "sarahsustainable.com"
-    },
-    postCount: 0,
-    joinDate: "2024-07-23",
-    status: "pending"
+// Fetch authors from API
+const response = await fetch(`${Astro.site.origin}/api/admin/authors`, {
+  headers: {
+    'Cookie': Astro.request.headers.get('cookie') || ''
   }
-];
+});
 
-const stats = {
-  total: authors.length,
-  active: authors.filter(a => a.status === 'active').length,
-  pending: authors.filter(a => a.status === 'pending').length,
-  guest: authors.filter(a => a.role === 'guest').length
-};
+let authors = [];
+let stats = { total: 0, active: 0, pending: 0, guest: 0 };
+
+if (response.ok) {
+  const data = await response.json();
+  authors = data.authors || [];
+  stats = data.stats || { total: 0, active: 0, pending: 0, guest: 0 };
+} else {
+  console.error('Failed to fetch authors');
+}
 ---
 
 <AdminLayout>

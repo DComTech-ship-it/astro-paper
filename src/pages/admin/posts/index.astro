@@ -8,71 +8,23 @@ if (!user) {
   return Astro.redirect("/admin/login");
 }
 
-// Mock data - in real app, this would come from your blog posts
-const posts = [
-  {
-    id: 1,
-    title: "Building Meaningful Connections",
-    slug: "building-meaningful-connections",
-    author: "Dxmond Tecku",
-    status: "published",
-    date: "2024-07-25",
-    views: 1234,
-    tags: ["Relationships", "Community"],
-    excerpt: "Discover how to forge genuine connections in an increasingly digital world..."
-  },
-  {
-    id: 2,
-    title: "Creative Hobbies for Wellbeing",
-    slug: "creative-hobbies-for-wellbeing",
-    author: "Jane Smith",
-    status: "published",
-    date: "2024-07-24",
-    views: 892,
-    tags: ["Creativity", "Wellbeing"],
-    excerpt: "Explore how creative activities can boost your mental and emotional health..."
-  },
-  {
-    id: 3,
-    title: "Finding Balance in Daily Life",
-    slug: "finding-balance-in-daily-life",
-    author: "John Doe",
-    status: "draft",
-    date: "2024-07-23",
-    views: 0,
-    tags: ["Lifestyle", "Balance"],
-    excerpt: "Learn practical strategies for maintaining work-life balance..."
-  },
-  {
-    id: 4,
-    title: "Tech Wellness Tips",
-    slug: "tech-wellness-tips",
-    author: "Sarah Johnson",
-    status: "published",
-    date: "2024-07-22",
-    views: 567,
-    tags: ["Technology", "Wellness"],
-    excerpt: "How to maintain digital wellness in our connected world..."
-  },
-  {
-    id: 5,
-    title: "Sustainable Living Guide",
-    slug: "sustainable-living-guide",
-    author: "Mike Chen",
-    status: "scheduled",
-    date: "2024-07-26",
-    views: 0,
-    tags: ["Sustainability", "Lifestyle"],
-    excerpt: "A comprehensive guide to sustainable living practices..."
+// Fetch posts from API
+const response = await fetch(`${Astro.site.origin}/api/admin/posts`, {
+  headers: {
+    'Cookie': Astro.request.headers.get('cookie') || ''
   }
-];
+});
 
-const stats = {
-  total: posts.length,
-  published: posts.filter(p => p.status === 'published').length,
-  drafts: posts.filter(p => p.status === 'draft').length,
-  scheduled: posts.filter(p => p.status === 'scheduled').length
-};
+let posts = [];
+let stats = { total: 0, published: 0, drafts: 0, scheduled: 0 };
+
+if (response.ok) {
+  const data = await response.json();
+  posts = data.posts || [];
+  stats = data.stats || { total: 0, published: 0, drafts: 0, scheduled: 0 };
+} else {
+  console.error('Failed to fetch posts');
+}
 ---
 
 <AdminLayout>
@@ -341,9 +293,27 @@ const stats = {
 <script>
   function confirmDelete(postId, postTitle) {
     if (confirm(`Are you sure you want to delete "${postTitle}"? This action cannot be undone.`)) {
-      // In a real app, this would make an API call to delete the post
-      console.log('Deleting post:', postId);
-      // window.location.href = `/admin/posts/delete/${postId}`;
+      deletePost(postId);
+    }
+  }
+
+  async function deletePost(postId) {
+    try {
+      const response = await fetch(`/api/admin/posts/${postId}`, {
+        method: 'DELETE'
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        alert('Post deleted successfully');
+        window.location.reload();
+      } else {
+        alert(result.error || 'Failed to delete post');
+      }
+    } catch (error) {
+      console.error('Delete post error:', error);
+      alert('Error deleting post. Please try again.');
     }
   }
 
@@ -361,8 +331,34 @@ const stats = {
     });
   });
 
-  function filterPosts() {
-    // Implement client-side filtering logic
-    console.log('Filtering posts...');
+  async function filterPosts() {
+    try {
+      const search = document.getElementById('search')?.value || '';
+      const status = document.getElementById('status-filter')?.value || '';
+      const author = document.getElementById('author-filter')?.value || '';
+      const dateRange = document.getElementById('date-filter')?.value || '';
+
+      // Build query string
+      const params = new URLSearchParams();
+      if (search) params.append('search', search);
+      if (status) params.append('status', status);
+      if (author) params.append('author', author);
+      if (dateRange) params.append('dateRange', dateRange);
+
+      // Fetch filtered posts
+      const response = await fetch(`/api/admin/posts?${params.toString()}`);
+      const data = await response.json();
+
+      if (response.ok) {
+        // Update the posts table with new data
+        // In a real implementation, you'd update the DOM with the new posts
+        console.log('Filtered posts:', data.posts);
+        window.location.reload(); // Simple reload for now
+      } else {
+        console.error('Filter failed:', data.error);
+      }
+    } catch (error) {
+      console.error('Filter error:', error);
+    }
   }
 </script>

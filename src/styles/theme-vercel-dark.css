@@ -1,0 +1,223 @@
+/* Vercel-Inspired Modern Dark Theme */
+
+:root {
+  /* Deep neutral background - inspired by Vercel's dark surfaces */
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1A1A1A;
+  --bg-card: #1A1A1A;
+  --bg-hover: #262626;
+  --bg-border: #2A2A2A;
+  
+  /* Soft charcoal surfaces - Vercel-inspired */
+  --surface-primary: #111111;
+  --surface-secondary: #191919;
+  --surface-elevated: #262626;
+  
+  /* High-contrast typography */
+  --text-primary: #FAFAFA;
+  --text-secondary: #E5E5E5;
+  --text-tertiary: #A1A1A1;
+  --text-muted: #6B7280;
+  
+  /* Minimal accent - pure white for premium feel */
+  --accent-primary: #FFFFFF;
+  --accent-secondary: #F8FAFC;
+  --accent-hover: #FFFFFF;
+  
+  /* Subtle borders and dividers */
+  --border-primary: #2A2A2A;
+  --border-secondary: #333333;
+  --border-subtle: #1E1E1E;
+  
+  /* Status colors - minimal and clean */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #3B82F6;
+  
+  /* Shadow system - soft and refined */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  
+  /* Button and interactive elements */
+  --button-radius: 6px;
+  --button-padding-sm: 6px 12px;
+  --button-padding-md: 8px 16px;
+  --button-padding-lg: 12px 24px;
+  
+  /* Transitions - smooth and premium */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark theme application */
+[data-theme="dark"] {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  
+  /* Scrollbar styling */
+  scrollbar-color: var(--bg-secondary) var(--bg-border);
+  scrollbar-width: thin;
+}
+
+/* Component-specific styling */
+[data-theme="dark"] .bg-white {
+  background-color: var(--surface-primary) !important;
+}
+
+[data-theme="dark"] .bg-gray-50 {
+  background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] .text-gray-900 {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .text-gray-600 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .text-gray-500 {
+  color: var(--text-tertiary) !important;
+}
+
+[data-theme="dark"] .border-gray-200 {
+  border-color: var(--border-primary) !important;
+}
+
+[data-theme="dark"] .border-gray-300 {
+  border-color: var(--border-secondary) !important;
+}
+
+/* Premium button styling */
+[data-theme="dark"] .btn-primary {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--button-radius);
+  padding: var(--button-padding-md);
+  font-weight: 500;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Card and surface styling */
+[data-theme="dark"] .card {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .card-elevated {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+}
+
+/* Form elements */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  border-radius: var(--button-radius);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation and header */
+[data-theme="dark"] .nav-item {
+  color: var(--text-secondary);
+  transition: color var(--transition-base);
+}
+
+[data-theme="dark"] .nav-item:hover {
+  color: var(--accent-primary);
+}
+
+[data-theme="dark"] .nav-item.active {
+  color: var(--accent-primary);
+  background: var(--surface-elevated);
+}
+
+/* Status indicators */
+[data-theme="dark"] .status-success {
+  color: var(--success);
+}
+
+[data-theme="dark"] .status-warning {
+  color: var(--warning);
+}
+
+[data-theme="dark"] .status-error {
+  color: var(--error);
+}
+
+/* Code and syntax highlighting */
+[data-theme="dark"] code {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+[data-theme="dark"] pre {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--button-radius);
+  padding: 16px;
+  overflow-x: auto;
+}
+
+/* Premium focus states */
+[data-theme="dark"] *:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+[data-theme="dark"] button,
+[data-theme="dark"] a,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  transition: all var(--transition-base);
+}
+
+/* Subtle animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.4s ease-out;
+}

@@ -123,16 +123,13 @@ if (token?.value) {
     const errorText = document.getElementById('error-text');
     const submitButton = form.querySelector('button[type="submit"]');
 
-    // Theme toggle
+    // Enhanced theme toggle with Vercel-inspired design
     const themeToggle = document.getElementById('theme-toggle');
     
     themeToggle?.addEventListener('click', () => {
-      const html = document.documentElement;
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
-      html.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
+      if (window.enhancedTheme) {
+        window.enhancedTheme.toggleTheme();
+      }
     });
 
     form.addEventListener('submit', async (e) => {

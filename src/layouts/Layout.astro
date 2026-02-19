@@ -67,6 +67,9 @@ const structuredData = {
       preload={[{ subset: "latin", weight: 400, style: "normal" }]}
     />
 
+    <!-- Load Vercel-inspired dark theme -->
+    <link rel="stylesheet" href="/styles/theme-vercel-dark.css" />
+
     <!-- General Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -140,28 +143,21 @@ const structuredData = {
     <!-- Minimal inline script to prevent FOUC - sets theme immediately -->
     <script is:inline>
       (function () {
-        const initialColorScheme = ""; // "light" | "dark"
         const currentTheme = localStorage.getItem("theme");
-
-        function getPreferTheme() {
-          if (currentTheme) return currentTheme;
-          if (initialColorScheme) return initialColorScheme;
-          return window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
-        }
-
-        const themeValue = getPreferTheme();
+        const preferDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = currentTheme || (preferDark ? "dark" : "light");
 
         // Set theme immediately to prevent flash
-        document.firstElementChild?.setAttribute("data-theme", themeValue);
+        document.firstElementChild?.setAttribute("data-theme", theme);
 
         // Export minimal API for external script
         window.theme = {
-          themeValue: themeValue,
+          themeValue: theme,
           getTheme: () => window.theme.themeValue,
           setTheme: val => {
             window.theme.themeValue = val;
+            document.documentElement.setAttribute("data-theme", val);
+            localStorage.setItem("theme", val);
           },
         };
       })();
@@ -170,7 +166,7 @@ const structuredData = {
   <body>
     <slot />
 
-    <!-- Load full theme logic -->
-    <script src="../scripts/theme.ts"></script>
+    <!-- Load new theme script for enhanced functionality -->
+    <script src="../scripts/theme-enhanced.js"></script>
   </body>
 </html>

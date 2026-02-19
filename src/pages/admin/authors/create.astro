@@ -315,14 +315,26 @@ if (!user) {
       if (avatarFile && avatarFile.size > 0) {
         // In a real app, upload to server and get URL
         console.log('Avatar file:', avatarFile);
+        authorData.avatar = `/uploads/authors/${avatarFile.name}`;
       }
 
       try {
-        // In a real app, send to API
-        console.log('Creating author:', authorData);
-        
-        alert('Author created successfully!');
-        window.location.href = '/admin/authors';
+        const response = await fetch('/api/admin/authors', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(authorData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          alert('Author created successfully!');
+          window.location.href = '/admin/authors';
+        } else {
+          alert(result.error || 'Error creating author. Please try again.');
+        }
       } catch (error) {
         console.error('Error creating author:', error);
         alert('Error creating author. Please try again.');

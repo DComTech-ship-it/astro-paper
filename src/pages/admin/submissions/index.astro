@@ -45,63 +45,19 @@ Lie down and mentally scan your body from head to toe, noticing any sensations w
 
 ### 3. Mindful Walking
 Pay attention to each step as you walk, feeling your feet connect with the ground.
-
-## Making it a Habit
-
-Start with just 5 minutes daily and gradually increase the time. Consistency is more important than duration.
-
-Remember: mindfulness is a practice, not perfection. Be kind to yourself as you develop this life-changing skill.`,
-    bio: "Emily Rodriguez is a wellness coach and mindfulness practitioner with over 10 years of experience helping people find balance in their daily lives.",
-    socialLinks: "Twitter: @emilywellness | Instagram: @mindfulemily",
-    hasAvatar: true,
-    avatarUrl: "/images/authors/emily-rodriguez.jpg",
-    attachments: []
-  },
-  {
-    id: 2,
-    title: "Digital Detox Strategies",
-    author: "Michael Chen",
-    email: "michael.chen@example.com",
-    date: "2024-07-24",
-    status: "pending",
-    category: "Technology",
-    excerpt: "Learn how to implement effective digital detox strategies to reconnect with the physical world and improve your mental health.",
-    content: `# Digital Detox Strategies
-
-Our constant connectivity to digital devices has created a new kind of stress. Here's how to reclaim your time and attention.`,
-    bio: "Michael Chen is a tech wellness advocate who helps people find balance between digital and physical worlds.",
-    socialLinks: "LinkedIn: /in/michaelchen",
-    hasAvatar: false,
-    avatarUrl: "",
-    attachments: ["digital-detox-guide.pdf"]
-  },
-  {
-    id: 3,
-    title: "Sustainable Lifestyle Choices",
-    author: "Sarah Thompson",
-    email: "sarah.thompson@example.com",
-    date: "2024-07-23",
-    status: "reviewing",
-    category: "Environment",
-    excerpt: "Practical tips for making sustainable choices that benefit both you and the planet without overwhelming your lifestyle.",
-    content: `# Sustainable Lifestyle Choices
-
-Making eco-friendly choices doesn't have to be complicated or expensive.`,
-    bio: "Sarah Thompson is an environmental consultant and sustainability educator.",
-    socialLinks: "Website: sarahsustainable.com",
-    hasAvatar: true,
-    avatarUrl: "/images/authors/sarah-thompson.jpg",
-    attachments: ["sustainability-checklist.pdf", "eco-tips.docx"]
   }
-];
+});
 
-const stats = {
-  total: submissions.length,
-  pending: submissions.filter(s => s.status === 'pending').length,
-  reviewing: submissions.filter(s => s.status === 'reviewing').length,
-  approved: submissions.filter(s => s.status === 'approved').length,
-  rejected: submissions.filter(s => s.status === 'rejected').length
-};
+let submissions = [];
+let stats = { total: 0, pending: 0, reviewing: 0, approved: 0, rejected: 0 };
+
+if (response.ok) {
+  const data = await response.json();
+  submissions = data.submissions || [];
+  stats = data.stats || { total: 0, pending: 0, reviewing: 0, approved: 0, rejected: 0 };
+} else {
+  console.error('Failed to fetch submissions');
+}
 ---
 
 <AdminLayout>
@@ -408,52 +364,151 @@ const stats = {
 </AdminLayout>
 
 <script>
-  function viewSubmission(id) {
+  async function reviewSubmission(id) {
+    try {
+      const response = await fetch(`/api/admin/submissions/${id}`);
+      const data = await response.json();
+
+      if (response.ok) {
+        displaySubmissionModal(data);
+      } else {
+        alert('Failed to load submission');
+      }
+    } catch (error) {
+      console.error('Error loading submission:', error);
+      alert('Error loading submission');
+    }
+  }
+
+  async function displaySubmissionModal(submission) {
     const modal = document.getElementById('submission-modal');
     const content = document.getElementById('modal-content');
     
-    // In a real app, this would fetch the submission data
     content.innerHTML = `
       <div class="space-y-6">
         <div>
-          <h4 class="text-lg font-medium mb-2">The Art of Mindful Living</h4>
+          <h4 class="text-lg font-medium mb-2">${submission.title}</h4>
           <div class="flex items-center space-x-4 text-sm text-gray-500">
-            <span>Emily Rodriguez</span>
+            <span>${submission.authorName}</span>
             <span>•</span>
-            <span>emily.rodriguez@example.com</span>
+            <span>${submission.authorEmail}</span>
             <span>•</span>
-            <span>2024-07-25</span>
+            <span>${new Date(submission.createdAt).toLocaleDateString()}</span>
           </div>
         </div>
         
         <div>
           <h5 class="font-medium mb-2">Author Bio</h5>
-          <p class="text-gray-600">Emily Rodriguez is a wellness coach and mindfulness practitioner with over 10 years of experience helping people find balance in their daily lives.</p>
-          <p class="text-sm text-gray-500 mt-1">Twitter: @emilywellness | Instagram: @mindfulemily</p>
+          <p class="text-gray-600">${submission.authorBio}</p>
+          <p class="text-sm text-gray-500 mt-1">
+            ${Object.entries(submission.socialLinks || {}).map(([key, value]) => `${key}: ${value}`).join(' | ')}
+          </p>
         </div>
         
         <div>
           <h5 class="font-medium mb-2">Content</h5>
           <div class="prose max-w-none bg-gray-50 p-4 rounded">
-            <h1>The Art of Mindful Living</h1>
-            <p>In our fast-paced world, finding moments of peace and clarity can feel like an impossible task. Yet, mindfulness offers a path to tranquility that's accessible to everyone.</p>
-            <h2>What is Mindfulness?</h2>
-            <p>Mindfulness is the practice of being fully present and engaged in the current moment, without judgment...</p>
+            ${submission.content}
           </div>
         </div>
         
-        <div class="flex justify-end space-x-3">
-          <button onclick="closeModal()" class="px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-            Close
-          </button>
-          <button onclick="updateStatus(${id}, 'approved'); closeModal();" class="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
-            Approve & Publish
-          </button>
-        </div>
+        ${submission.attachments && submission.attachments.length > 0 ? `
+          <div>
+            <h5 class="font-medium mb-2">Attachments</h5>
+            <ul class="list-disc list-inside text-sm text-gray-600">
+              ${submission.attachments.map(att => `<li>${att}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
       </div>
     `;
     
     modal.classList.remove('hidden');
+  }
+
+  async function approveSubmission(id) {
+    if (confirm('Are you sure you want to approve this submission and publish it as a post?')) {
+      try {
+        const response = await fetch('/api/admin/submissions/action', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            submissionId: id,
+            action: 'approve'
+          })
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          alert('Submission approved and published successfully!');
+          window.location.reload();
+        } else {
+          alert(result.error || 'Failed to approve submission');
+        }
+      } catch (error) {
+        console.error('Error approving submission:', error);
+        alert('Error approving submission');
+      }
+    }
+  }
+
+  async function rejectSubmission(id) {
+    if (confirm('Are you sure you want to reject this submission?')) {
+      try {
+        const response = await fetch('/api/admin/submissions/action', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            submissionId: id,
+            action: 'reject'
+          })
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          alert('Submission rejected successfully!');
+          window.location.reload();
+        } else {
+          alert(result.error || 'Failed to reject submission');
+        }
+      } catch (error) {
+        console.error('Error rejecting submission:', error);
+        alert('Error rejecting submission');
+      }
+    }
+  }
+
+  async function startReview(id) {
+    try {
+      const response = await fetch('/api/admin/submissions/action', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          submissionId: id,
+          action: 'review'
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        alert('Submission marked for review!');
+        window.location.reload();
+      } else {
+        alert(result.error || 'Failed to mark for review');
+      }
+    } catch (error) {
+      console.error('Error marking for review:', error);
+      alert('Error marking for review');
+    }
   }
 
   function closeModal() {

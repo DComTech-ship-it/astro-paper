@@ -451,21 +451,55 @@ const generateSlug = (title: string) => {
     }
   }
 
-  function savePost(status) {
+  async function savePost(status) {
     const formData = new FormData();
-    formData.append('title', document.getElementById('post-title').value);
-    formData.append('slug', document.getElementById('post-slug').value);
-    formData.append('excerpt', document.getElementById('post-excerpt').value);
-    formData.append('content', document.getElementById('post-content').value);
-    formData.append('status', status);
-    formData.append('publishDate', document.getElementById('publish-date').value);
-    formData.append('author', document.getElementById('post-author').value);
-    formData.append('featured', document.getElementById('post-featured').checked);
-    formData.append('tags', JSON.stringify(currentTags));
-    
-    // In a real app, this would send to your API
-    console.log('Saving post:', Object.fromEntries(formData));
-    alert(`Post ${status === 'published' ? 'published' : 'saved as draft'}!`);
+    const postData = {
+      title: document.getElementById('post-title').value,
+      slug: document.getElementById('post-slug').value,
+      excerpt: document.getElementById('post-excerpt').value,
+      content: document.getElementById('post-content').value,
+      status: status,
+      publishDate: document.getElementById('publish-date').value,
+      author: document.getElementById('post-author').value,
+      featured: document.getElementById('post-featured').checked,
+      tags: currentTags
+    };
+
+    try {
+      // Get current post ID from URL if editing
+      const urlPath = window.location.pathname;
+      const isEdit = urlPath.includes('/edit/');
+      let apiUrl = '/api/admin/posts';
+      let method = 'POST';
+
+      if (isEdit) {
+        const postId = urlPath.split('/edit/')[1];
+        apiUrl = `/api/admin/posts/${postId}`;
+        method = 'PUT';
+      }
+
+      const response = await fetch(apiUrl, {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        alert(`Post ${status === 'published' ? 'published' : 'saved as draft'} successfully!`);
+        if (!isEdit) {
+          window.location.href = '/admin/posts';
+        }
+      } else {
+        alert(result.error || 'Failed to save post');
+      }
+    } catch (error) {
+      console.error('Save post error:', error);
+      alert('Error saving post. Please try again.');
+    }
   }
 
   // Mark slug as manually edited
