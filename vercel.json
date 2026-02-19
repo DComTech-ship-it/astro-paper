@@ -2,5 +2,6 @@
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "framework": "astro",
-  "domains": ["astro-paper-bice-pi.vercel.app"]
+  "domains": ["astro-paper-bice-pi.vercel.app"],
+  "version": 2
 }
