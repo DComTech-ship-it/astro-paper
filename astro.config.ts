@@ -55,6 +55,7 @@ export default defineConfig({
     schema: {
       PUBLIC_GOOGLE_SITE_VERIFICATION: envField.string({
         access: "public",
+        context: "server",
         optional: true,
       }),
     },
