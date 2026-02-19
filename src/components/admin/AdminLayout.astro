@@ -12,26 +12,26 @@ const currentPage = Astro.url.pathname;
 ---
 
 <Layout title={`Admin Dashboard | Bigger Minds`}>
-  <div class="min-h-screen bg-gray-50/30">
+  <div class="min-h-screen bg-gray-50/30 flex">
     <!-- Mobile sidebar backdrop -->
     <div id="sidebar-backdrop" class="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm lg:hidden hidden"></div>
     
     <!-- Sidebar -->
     <aside
       id="sidebar"
-      class="fixed inset-y-0 left-0 z-50 w-64 bg-white/95 backdrop-blur-xl border-r border-gray-200/60 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 lg:flex lg:flex-col"
+      class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-900/10 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col"
     >
       <!-- Sidebar Header -->
-      <div class="flex items-center justify-between h-16 px-6 border-b border-gray-200/60 bg-white/50">
+      <div class="flex items-center justify-between h-16 px-6 border-b border-gray-900/10 bg-white">
         <div class="flex items-center space-x-3">
-          <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+          <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
           </div>
-          <h1 class="text-lg font-semibold text-gray-900">Admin Panel</h1>
+          <h1 class="text-lg font-semibold text-black">Admin Panel</h1>
         </div>
-        <button id="close-sidebar" class="lg:hidden p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100/60 transition-colors">
+        <button id="close-sidebar" class="lg:hidden p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors">
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -46,8 +46,8 @@ const currentPage = Astro.url.pathname;
             class:list={[
               "group flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200",
               currentPage === "/admin" 
-                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25" 
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/60"
+                ? "bg-black text-white shadow-lg" 
+                : "text-gray-700 hover:text-black hover:bg-gray-100"
             ]}
           >
             <svg class="mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,8 +61,8 @@ const currentPage = Astro.url.pathname;
             class:list={[
               "group flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200",
               currentPage.startsWith("/admin/posts") 
-                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25" 
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/60"
+                ? "bg-black text-white shadow-lg" 
+                : "text-gray-700 hover:text-black hover:bg-gray-100"
             ]}
           >
             <svg class="mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,8 +76,8 @@ const currentPage = Astro.url.pathname;
             class:list={[
               "group flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200",
               currentPage.startsWith("/admin/submissions") 
-                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25" 
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/60"
+                ? "bg-black text-white shadow-lg" 
+                : "text-gray-700 hover:text-black hover:bg-gray-100"
             ]}
           >
             <svg class="mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,8 +91,8 @@ const currentPage = Astro.url.pathname;
             class:list={[
               "group flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200",
               currentPage.startsWith("/admin/authors") 
-                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25" 
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/60"
+                ? "bg-black text-white shadow-lg" 
+                : "text-gray-700 hover:text-black hover:bg-gray-100"
             ]}
           >
             <svg class="mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,8 +106,8 @@ const currentPage = Astro.url.pathname;
             class:list={[
               "group flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200",
               currentPage.startsWith("/admin/media") 
-                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25" 
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/60"
+                ? "bg-black text-white shadow-lg" 
+                : "text-gray-700 hover:text-black hover:bg-gray-100"
             ]}
           >
             <svg class="mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -121,8 +121,8 @@ const currentPage = Astro.url.pathname;
             class:list={[
               "group flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200",
               currentPage.startsWith("/admin/settings") 
-                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25" 
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/60"
+                ? "bg-black text-white shadow-lg" 
+                : "text-gray-700 hover:text-black hover:bg-gray-100"
             ]}
           >
             <svg class="mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,25 +135,25 @@ const currentPage = Astro.url.pathname;
       </nav>
       
       <!-- User Profile Section -->
-      <div class="p-4 border-t border-gray-200/60 bg-white/50">
+      <div class="p-4 border-t border-gray-900/10 bg-white">
         <div class="flex items-center space-x-3">
           <div class="relative">
-            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+            <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center shadow-lg">
               <span class="text-white font-semibold text-sm">
                 {user.email.charAt(0).toUpperCase()}
               </span>
             </div>
-            <div class="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+            <div class="absolute -bottom-1 -right-1 w-3 h-3 bg-white border-2 border-black rounded-full"></div>
           </div>
           <div class="flex-1 min-w-0">
-            <p class="text-sm font-semibold text-gray-900 truncate">{user.email}</p>
+            <p class="text-sm font-semibold text-black truncate">{user.email}</p>
             <p class="text-xs text-gray-500">Administrator</p>
           </div>
         </div>
         <form action="/api/admin/logout" method="POST" class="mt-4">
           <button
             type="submit"
-            class="w-full flex items-center justify-center px-4 py-2.5 bg-gray-100/60 hover:bg-gray-200/60 text-gray-700 text-sm font-medium rounded-xl transition-all duration-200 border border-gray-200/60"
+            class="w-full flex items-center justify-center px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-black text-sm font-medium rounded-xl transition-all duration-200 border border-gray-200"
           >
             <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
@@ -165,24 +165,24 @@ const currentPage = Astro.url.pathname;
     </aside>
     
     <!-- Main Content Area -->
-    <div class="flex-1 flex flex-col lg:ml-64">
+    <div class="flex-1 flex flex-col">
       <!-- Top Navigation Bar -->
-      <header class="bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-sm sticky top-0 z-30">
+      <header class="bg-white border-b border-gray-900/10 shadow-sm sticky top-0 z-30">
         <div class="flex items-center justify-between h-16 px-6">
           <div class="flex items-center space-x-4">
-            <button id="open-sidebar" class="lg:hidden p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100/60 transition-colors">
+            <button id="open-sidebar" class="lg:hidden p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors">
               <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
               </svg>
             </button>
             <div class="hidden sm:block">
-              <h2 class="text-lg font-semibold text-gray-900">Dashboard</h2>
+              <h2 class="text-lg font-semibold text-black">Dashboard</h2>
               <p class="text-sm text-gray-500">Welcome back, {user.email}</p>
             </div>
           </div>
           
           <div class="flex items-center space-x-3">
-            <button class="p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100/60 transition-colors">
+            <button class="p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors">
               <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
               </svg>
