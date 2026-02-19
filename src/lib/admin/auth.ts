@@ -13,6 +13,7 @@ export function verifyToken(token: string): AdminUser | null {
     const decoded = jwt.verify(token, JWT_SECRET) as AdminUser;
     return decoded;
   } catch (error) {
+    console.error('Token verification error:', error);
     return null;
   }
 }
@@ -22,16 +23,26 @@ export function createToken(user: AdminUser, expiresIn: string = '24h'): string 
 }
 
 export function isAuthenticated(cookies: any): boolean {
-  const token = cookies.get("admin_token")?.value;
-  if (!token) return false;
-  
-  const user = verifyToken(token);
-  return user !== null;
+  try {
+    const token = cookies.get("admin_token")?.value;
+    if (!token) return false;
+    
+    const user = verifyToken(token);
+    return user !== null;
+  } catch (error) {
+    console.error('Authentication error:', error);
+    return false;
+  }
 }
 
 export function getCurrentUser(cookies: any): AdminUser | null {
-  const token = cookies.get("admin_token")?.value;
-  if (!token) return null;
-  
-  return verifyToken(token);
+  try {
+    const token = cookies.get("admin_token")?.value;
+    if (!token) return null;
+    
+    return verifyToken(token);
+  } catch (error) {
+    console.error('Get current user error:', error);
+    return null;
+  }
 }
