@@ -1,4 +1,46 @@
 ---
-// Redirect /posts to /posts/1 since pagination starts at page 1
-Astro.redirect('/posts/1');
+import { getCollection } from "astro:content";
+import Main from "@/layouts/Main.astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Card from "@/components/Card.astro";
+import Pagination from "@/components/Pagination.astro";
+import getSortedPosts from "@/utils/getSortedPosts";
+import { SITE } from "@/config";
+
+// Get first page of posts directly (same logic as pagination)
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+const sortedPosts = getSortedPosts(posts);
+const pageSize = SITE.postPerPage;
+const firstPagePosts = sortedPosts.slice(0, pageSize);
+
+// Create page object that matches pagination structure
+const page = {
+  data: firstPagePosts,
+  url: { 
+    current: "/posts", 
+    prev: null, 
+    next: sortedPosts.length > pageSize ? "/posts/2" : null 
+  },
+  start: 1,
+  end: Math.min(pageSize, sortedPosts.length),
+  total: sortedPosts.length,
+  size: pageSize,
+  currentPage: 1,
+  lastPage: Math.ceil(sortedPosts.length / pageSize)
+};
+
+export const prerender = true;
 ---
+
+<Layout title={`Posts | ${SITE.title}`}>
+  <Header />
+  <Main pageTitle="Posts" pageDesc="All articles I've posted.">
+    <ul>
+      {page.data.map(data => <Card {...data} />)}
+    </ul>
+  </Main>
+  <Pagination {page} />
+  <Footer noMarginTop={page.lastPage > 1} />
+</Layout>
