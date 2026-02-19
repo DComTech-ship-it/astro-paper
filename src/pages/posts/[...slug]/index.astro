@@ -15,7 +15,10 @@ export async function getStaticPaths() {
     props: { post },
   }));
 
-  return postResult;
+  return {
+    paths: postResult,
+    fallback: true
+  };
 }
 
 const { post } = Astro.props;
