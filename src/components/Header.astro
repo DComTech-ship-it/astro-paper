@@ -177,15 +177,10 @@ const isActive = (path: string) => {
     });
   }
 
-  // Enhanced theme toggle
+  // Original theme toggle functionality is handled by theme.ts
   function initThemeToggle() {
-    const themeBtn = document.querySelector("#theme-btn");
-    
-    if (themeBtn && window.enhancedTheme) {
-      themeBtn.addEventListener("click", () => {
-        window.enhancedTheme.toggleTheme();
-      });
-    }
+    // Theme functionality is automatically set up by theme.ts
+    // No additional initialization needed
   }
 
   toggleNav();
