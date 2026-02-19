@@ -2,6 +2,15 @@
 import AdminLayout from "@/components/admin/AdminLayout.astro";
 import PostEditor from "@/components/admin/PostEditor.astro";
 import { getCurrentUser } from "@/lib/admin/auth";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return [
+    { params: { id: "1" } },
+    { params: { id: "2" } },
+    { params: { id: "3" } }
+  ];
+};
 
 // Check authentication
 const user = getCurrentUser(Astro.cookies);
@@ -47,7 +56,7 @@ Meaningful connections provide:
 *Building connections is a skill that improves with practice.*`,
   excerpt: "Discover how to forge genuine connections in an increasingly digital world through presence, vulnerability, and quality over quantity.",
   tags: ["Relationships", "Community", "Wellbeing"],
-  status: "published",
+  status: "published" as const,
   publishDate: "2024-07-25",
   author: "Dxmond Tecku",
   featured: true
