@@ -380,49 +380,62 @@ if (response.ok) {
     }
   }
 
-  async function displaySubmissionModal(submission) {
+  function displaySubmissionModal(submission) {
     const modal = document.getElementById('submission-modal');
     const content = document.getElementById('modal-content');
     
-    content.innerHTML = `
-      <div class="space-y-6">
-        <div>
-          <h4 class="text-lg font-medium mb-2">${submission.title}</h4>
-          <div class="flex items-center space-x-4 text-sm text-gray-500">
-            <span>${submission.authorName}</span>
-            <span>•</span>
-            <span>${submission.authorEmail}</span>
-            <span>•</span>
-            <span>${new Date(submission.createdAt).toLocaleDateString()}</span>
-          </div>
-        </div>
-        
-        <div>
-          <h5 class="font-medium mb-2">Author Bio</h5>
-          <p class="text-gray-600">${submission.authorBio}</p>
-          <p class="text-sm text-gray-500 mt-1">
-            ${Object.entries(submission.socialLinks || {}).map(([key, value]) => `${key}: ${value}`).join(' | ')}
-          </p>
-        </div>
-        
-        <div>
-          <h5 class="font-medium mb-2">Content</h5>
-          <div class="prose max-w-none bg-gray-50 p-4 rounded">
-            ${submission.content}
-          </div>
-        </div>
-        
-        ${submission.attachments && submission.attachments.length > 0 ? `
-          <div>
-            <h5 class="font-medium mb-2">Attachments</h5>
-            <ul class="list-disc list-inside text-sm text-gray-600">
-              ${submission.attachments.map(att => `<li>${att}</li>`).join('')}
-            </ul>
-          </div>
-        ` : ''}
-      </div>
-    `;
+    // Build HTML string manually to avoid template literal issues
+    let html = '<div class="space-y-6">';
     
+    // Title section
+    html += '<div>';
+    html += '<h4 class="text-lg font-medium mb-2">' + submission.title + '</h4>';
+    html += '<div class="flex items-center space-x-4 text-sm text-gray-500">';
+    html += '<span>' + submission.authorName + '</span>';
+    html += '<span>•</span>';
+    html += '<span>' + submission.authorEmail + '</span>';
+    html += '<span>•</span>';
+    html += '<span>' + new Date(submission.createdAt).toLocaleDateString() + '</span>';
+    html += '</div>';
+    html += '</div>';
+    
+    // Author bio
+    html += '<div>';
+    html += '<h5 class="font-medium mb-2">Author Bio</h5>';
+    html += '<p class="text-gray-600">' + submission.authorBio + '</p>';
+    html += '<p class="text-sm text-gray-500 mt-1">';
+    
+    // Social links
+    const socialLinks = Object.entries(submission.socialLinks || {});
+    const socialLinksHtml = socialLinks.map(([key, value]) => key + ': ' + value).join(' | ');
+    html += socialLinksHtml;
+    
+    html += '</p>';
+    html += '</div>';
+    
+    // Content
+    html += '<div>';
+    html += '<h5 class="font-medium mb-2">Content</h5>';
+    html += '<div class="prose max-w-none bg-gray-50 p-4 rounded">';
+    html += submission.content;
+    html += '</div>';
+    html += '</div>';
+    
+    // Attachments
+    if (submission.attachments && submission.attachments.length > 0) {
+      html += '<div>';
+      html += '<h5 class="font-medium mb-2">Attachments</h5>';
+      html += '<ul class="list-disc list-inside text-sm text-gray-600">';
+      submission.attachments.forEach(att => {
+        html += '<li>' + att + '</li>';
+      });
+      html += '</ul>';
+      html += '</div>';
+    }
+    
+    html += '</div>';
+    
+    content.innerHTML = html;
     modal.classList.remove('hidden');
   }
 
