@@ -157,7 +157,7 @@ const currentPage = Astro.url.pathname;
     <!-- Main content -->
     <div class="lg:pl-64">
       <!-- Top header -->
-      <header class="bg-white shadow-sm border-b border-gray-200">
+      <header class="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-40 lg:left-64">
         <div class="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
           <button id="open-sidebar" class="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -174,7 +174,7 @@ const currentPage = Astro.url.pathname;
       </header>
       
       <!-- Page content -->
-      <main class="flex-1">
+      <main class="flex-1 pt-16">
         <slot />
       </main>
     </div>
