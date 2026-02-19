@@ -177,8 +177,23 @@ const isActive = (path: string) => {
     });
   }
 
+  // Enhanced theme toggle
+  function initThemeToggle() {
+    const themeBtn = document.querySelector("#theme-btn");
+    
+    if (themeBtn && window.enhancedTheme) {
+      themeBtn.addEventListener("click", () => {
+        window.enhancedTheme.toggleTheme();
+      });
+    }
+  }
+
   toggleNav();
+  initThemeToggle();
 
   // Runs on view transitions navigation
-  document.addEventListener("astro:after-swap", toggleNav);
+  document.addEventListener("astro:after-swap", () => {
+    toggleNav();
+    initThemeToggle();
+  });
 </script>
