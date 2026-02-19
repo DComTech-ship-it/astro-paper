@@ -19,8 +19,8 @@ import getDescription from "@/utils/getDescription";
 const posts = await getCollection("blog");
 
 const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured === true);
+const recentPosts = sortedPosts.filter(({ data }) => data.featured !== true);
 ---
 
 <Layout>
