@@ -1,7 +1,58 @@
 import type { APIRoute } from "astro";
 
 export const POST: APIRoute = async ({ request }) => {
-  if (request.headers.get("content-type") !== "application/json") {
+  const contentType = request.headers.get("content-type");
+  
+  // Handle file upload if present
+  let attachmentInfo = '';
+  let data: any = {};
+  
+  if (contentType && contentType.includes("multipart/form-data")) {
+    const formData = await request.formData();
+    const file = formData.get("file-upload") as File;
+    
+    // Extract form data
+    data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      title: formData.get("title"),
+      category: formData.get("category"),
+      content: formData.get("content"),
+      bio: formData.get("bio"),
+      socialLinks: formData.get("social-links"),
+      agreement: formData.get("agreement")
+    };
+    
+    if (file) {
+      // Validate file size (10MB limit)
+      if (file.size > 10 * 1024 * 1024) {
+        return new Response(
+          JSON.stringify({ error: "File size exceeds 10MB limit" }),
+          { status: 400 }
+        );
+      }
+      
+      // Convert file to base64 for email attachment
+      const arrayBuffer = await file.arrayBuffer();
+      const uint8Array = new Uint8Array(arrayBuffer);
+      let binary = '';
+      for (let i = 0; i < uint8Array.length; i++) {
+        binary += String.fromCharCode(uint8Array[i]);
+      }
+      const base64 = btoa(binary);
+      const mimeType = file.type || 'application/octet-stream';
+      
+      attachmentInfo = `
+        {
+          "filename": "${file.name}",
+          "content": "${base64}",
+          "type": "${mimeType}"
+        }
+      `;
+    }
+  } else if (contentType === "application/json") {
+    data = await request.json();
+  } else {
     return new Response(
       JSON.stringify({ error: "Invalid content type" }),
       { status: 400 }
@@ -9,13 +60,36 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   try {
-    const data = await request.json();
     const { name, email, title, category, content, bio, socialLinks, agreement } = data;
 
     // Validate required fields
     if (!name || !email || !title || !category || !content || !agreement) {
       return new Response(
         JSON.stringify({ error: "Missing required fields" }),
+        { status: 400 }
+      );
+    }
+
+    // Sanitize and validate inputs
+    const sanitizedName = name.trim().slice(0, 100);
+    const sanitizedTitle = title.trim().slice(0, 200);
+    const sanitizedContent = content.trim().slice(0, 10000);
+    const sanitizedBio = bio ? bio.trim().slice(0, 500) : '';
+    const sanitizedSocialLinks = socialLinks ? socialLinks.trim().slice(0, 500) : '';
+
+    // Content length validation
+    if (sanitizedContent.length < 300) {
+      return new Response(
+        JSON.stringify({ error: "Content must be at least 300 characters" }),
+        { status: 400 }
+      );
+    }
+
+    // Basic XSS protection
+    const xssPattern = /<script|javascript:|on\w+=/i;
+    if (xssPattern.test(sanitizedName) || xssPattern.test(sanitizedTitle) || xssPattern.test(sanitizedContent)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid content detected" }),
         { status: 400 }
       );
     }
@@ -38,35 +112,11 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Handle file upload if present
-    let attachmentInfo = '';
-    const contentType = request.headers.get("content-type");
-    
-    if (contentType && contentType.includes("multipart/form-data")) {
-      const formData = await request.formData();
-      const file = formData.get("file-upload") as File;
-      
-      if (file) {
-        // Convert file to base64 for email attachment
-        const arrayBuffer = await file.arrayBuffer();
-        const base64 = Buffer.from(arrayBuffer).toString('base64');
-        const mimeType = file.type || 'application/octet-stream';
-        
-        attachmentInfo = `
-          {
-            "filename": "${file.name}",
-            "content": "${base64}",
-            "type": "${mimeType}"
-          }
-        `;
-      }
-    }
-
     // Send notification email to admin
     const adminEmail = {
-      from: 'noreply@miawoezɔ.com',
-      to: ['admin@miawoezɔ.com'],
-      subject: `New Guest Post Submission: ${title}`,
+      from: 'noreply@miawoezo.com',
+      to: ['admin@miawoezo.com'],
+      subject: `New Guest Post Submission: ${sanitizedTitle}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px;">
@@ -76,27 +126,27 @@ export const POST: APIRoute = async ({ request }) => {
           <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #555; margin-top: 0;">Submission Details:</h3>
             
-            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Name:</strong> ${sanitizedName}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Category:</strong> ${category}</p>
-            <p><strong>Title:</strong> ${title}</p>
+            <p><strong>Title:</strong> ${sanitizedTitle}</p>
             
             <div style="background: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
               <h4 style="color: #333; margin-top: 0;">Story Content:</h4>
-              <div style="color: #666; line-height: 1.6; white-space: pre-wrap;">${content}</div>
+              <div style="color: #666; line-height: 1.6; white-space: pre-wrap;">${sanitizedContent}</div>
             </div>
             
-            ${bio ? `
+            ${sanitizedBio ? `
             <div style="background: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
               <h4 style="color: #333; margin-top: 0;">Author Bio:</h4>
-              <div style="color: #666;">${bio}</div>
+              <div style="color: #666;">${sanitizedBio}</div>
             </div>
             ` : ''}
             
-            ${socialLinks ? `
+            ${sanitizedSocialLinks ? `
             <div style="background: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
               <h4 style="color: #333; margin-top: 0;">Social Links:</h4>
-              <div style="color: #666;">${socialLinks}</div>
+              <div style="color: #666;">${sanitizedSocialLinks}</div>
             </div>
             ` : ''}
             
@@ -116,7 +166,7 @@ export const POST: APIRoute = async ({ request }) => {
           
           <div style="background: #e8f5e8; padding: 20px; border-radius: 8px; margin-top: 20px;">
             <p style="color: #666; margin: 0;">
-              This submission was made through the guest post form on Mia woezɔ blog.
+              This submission was made through the guest post form on Mia_woezo blog.
             </p>
           </div>
         </div>
@@ -143,7 +193,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Send confirmation email to submitter
     const confirmationEmail = {
-      from: 'noreply@miawoezɔ.com',
+      from: 'noreply@miawoezo.com',
       to: [email],
       subject: 'Thank you for your story submission!',
       html: `
@@ -153,7 +203,7 @@ export const POST: APIRoute = async ({ request }) => {
           <div style="background: #f0f8ff; padding: 30px; border-radius: 8px; margin: 20px 0; text-align: center;">
             <h3 style="color: #333; margin-top: 0;">Your Story Has Been Received</h3>
             <p style="color: #666; line-height: 1.6;">
-              Thank you for submitting your story "<strong>${title}</strong>" to Mia woezɔ! 
+              Thank you for submitting your story "<strong>${sanitizedTitle}</strong>" to Mia_woezo! 
               We appreciate your contribution and will review it carefully.
             </p>
             ${attachmentInfo ? `
