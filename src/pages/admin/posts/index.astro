@@ -1,0 +1,368 @@
+---
+import AdminLayout from "@/components/admin/AdminLayout.astro";
+import { getCurrentUser } from "@/lib/admin/auth";
+
+// Check authentication
+const user = getCurrentUser(Astro.cookies);
+if (!user) {
+  return Astro.redirect("/admin/login");
+}
+
+// Mock data - in real app, this would come from your blog posts
+const posts = [
+  {
+    id: 1,
+    title: "Building Meaningful Connections",
+    slug: "building-meaningful-connections",
+    author: "Dxmond Tecku",
+    status: "published",
+    date: "2024-07-25",
+    views: 1234,
+    tags: ["Relationships", "Community"],
+    excerpt: "Discover how to forge genuine connections in an increasingly digital world..."
+  },
+  {
+    id: 2,
+    title: "Creative Hobbies for Wellbeing",
+    slug: "creative-hobbies-for-wellbeing",
+    author: "Jane Smith",
+    status: "published",
+    date: "2024-07-24",
+    views: 892,
+    tags: ["Creativity", "Wellbeing"],
+    excerpt: "Explore how creative activities can boost your mental and emotional health..."
+  },
+  {
+    id: 3,
+    title: "Finding Balance in Daily Life",
+    slug: "finding-balance-in-daily-life",
+    author: "John Doe",
+    status: "draft",
+    date: "2024-07-23",
+    views: 0,
+    tags: ["Lifestyle", "Balance"],
+    excerpt: "Learn practical strategies for maintaining work-life balance..."
+  },
+  {
+    id: 4,
+    title: "Tech Wellness Tips",
+    slug: "tech-wellness-tips",
+    author: "Sarah Johnson",
+    status: "published",
+    date: "2024-07-22",
+    views: 567,
+    tags: ["Technology", "Wellness"],
+    excerpt: "How to maintain digital wellness in our connected world..."
+  },
+  {
+    id: 5,
+    title: "Sustainable Living Guide",
+    slug: "sustainable-living-guide",
+    author: "Mike Chen",
+    status: "scheduled",
+    date: "2024-07-26",
+    views: 0,
+    tags: ["Sustainability", "Lifestyle"],
+    excerpt: "A comprehensive guide to sustainable living practices..."
+  }
+];
+
+const stats = {
+  total: posts.length,
+  published: posts.filter(p => p.status === 'published').length,
+  drafts: posts.filter(p => p.status === 'draft').length,
+  scheduled: posts.filter(p => p.status === 'scheduled').length
+};
+---
+
+<AdminLayout>
+  <div class="p-6">
+    <!-- Page Header -->
+    <div class="mb-6 flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900">Posts</h1>
+        <p class="mt-1 text-sm text-gray-600">
+          Manage your blog posts and content
+        </p>
+      </div>
+      <a
+        href="/admin/posts/create"
+        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-accent hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+      >
+        <svg class="mr-2 -ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+        </svg>
+        New Post
+      </a>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Total Posts</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.total}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Published</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.published}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Drafts</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.drafts}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-purple-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Scheduled</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.scheduled}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters and Search -->
+    <div class="bg-white shadow rounded-lg mb-6">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div>
+            <label for="search" class="block text-sm font-medium text-gray-700 mb-2">Search</label>
+            <input
+              type="text"
+              id="search"
+              placeholder="Search posts..."
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            />
+          </div>
+          
+          <div>
+            <label for="status-filter" class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+            <select
+              id="status-filter"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            >
+              <option value="">All Status</option>
+              <option value="published">Published</option>
+              <option value="draft">Draft</option>
+              <option value="scheduled">Scheduled</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="author-filter" class="block text-sm font-medium text-gray-700 mb-2">Author</label>
+            <select
+              id="author-filter"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            >
+              <option value="">All Authors</option>
+              <option value="Dxmond Tecku">Dxmond Tecku</option>
+              <option value="Jane Smith">Jane Smith</option>
+              <option value="John Doe">John Doe</option>
+              <option value="Sarah Johnson">Sarah Johnson</option>
+              <option value="Mike Chen">Mike Chen</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="date-filter" class="block text-sm font-medium text-gray-700 mb-2">Date Range</label>
+            <select
+              id="date-filter"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            >
+              <option value="">All Time</option>
+              <option value="today">Today</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+              <option value="year">This Year</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Posts Table -->
+    <div class="bg-white shadow rounded-lg overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Title
+              </th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Author
+              </th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Status
+              </th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Date
+              </th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Views
+              </th>
+              <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            {posts.map((post) => (
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">
+                      {post.title}
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      {post.excerpt}
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{post.author}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class:list={[
+                    "inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                    post.status === 'published' ? "bg-green-100 text-green-800" :
+                    post.status === 'draft' ? "bg-yellow-100 text-yellow-800" :
+                    "bg-blue-100 text-blue-800"
+                  ]}>
+                    {post.status}
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {post.date}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {post.views.toLocaleString()}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <div class="flex justify-end space-x-2">
+                    <a
+                      href={`/posts/${post.slug}`}
+                      target="_blank"
+                      class="text-gray-400 hover:text-gray-600"
+                      title="View post"
+                    >
+                      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                      </svg>
+                    </a>
+                    <a
+                      href={`/admin/posts/edit/${post.id}`}
+                      class="text-accent hover:text-accent/80"
+                      title="Edit post"
+                    >
+                      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                      </svg>
+                    </a>
+                    <button
+                      class="text-red-600 hover:text-red-800"
+                      title="Delete post"
+                      onclick="confirmDelete({post.id}, '{post.title}')"
+                    >
+                      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</AdminLayout>
+
+<script>
+  function confirmDelete(postId, postTitle) {
+    if (confirm(`Are you sure you want to delete "${postTitle}"? This action cannot be undone.`)) {
+      // In a real app, this would make an API call to delete the post
+      console.log('Deleting post:', postId);
+      // window.location.href = `/admin/posts/delete/${postId}`;
+    }
+  }
+
+  // Add filtering logic here
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search');
+    const statusFilter = document.getElementById('status-filter');
+    const authorFilter = document.getElementById('author-filter');
+    const dateFilter = document.getElementById('date-filter');
+
+    // Add event listeners for filtering
+    [searchInput, statusFilter, authorFilter, dateFilter].forEach(element => {
+      element?.addEventListener('change', filterPosts);
+      element?.addEventListener('input', filterPosts);
+    });
+  });
+
+  function filterPosts() {
+    // Implement client-side filtering logic
+    console.log('Filtering posts...');
+  }
+</script>

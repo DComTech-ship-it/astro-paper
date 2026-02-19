@@ -1,0 +1,648 @@
+---
+import AdminLayout from "@/components/admin/AdminLayout.astro";
+import { getCurrentUser } from "@/lib/admin/auth";
+
+// Check authentication
+const user = getCurrentUser(Astro.cookies);
+if (!user) {
+  return Astro.redirect("/admin/login");
+}
+
+// Mock media files data
+const mediaFiles = [
+  {
+    id: 1,
+    name: "blog-hero-image.jpg",
+    type: "image",
+    size: 245760,
+    url: "/images/blog-hero-image.jpg",
+    alt: "Blog hero image",
+    uploadedBy: "Dxmond Tecku",
+    uploadDate: "2024-07-25",
+    dimensions: "1920x1080",
+    tags: ["blog", "hero", "featured"]
+  },
+  {
+    id: 2,
+    name: "author-avatar-1.jpg",
+    type: "image",
+    size: 65536,
+    url: "/images/authors/emily-rodriguez.jpg",
+    alt: "Emily Rodriguez avatar",
+    uploadedBy: "System",
+    uploadDate: "2024-07-25",
+    dimensions: "400x400",
+    tags: ["author", "avatar"]
+  },
+  {
+    id: 3,
+    name: "digital-detox-guide.pdf",
+    type: "document",
+    size: 1048576,
+    url: "/files/digital-detox-guide.pdf",
+    alt: "",
+    uploadedBy: "Guest Author",
+    uploadDate: "2024-07-24",
+    dimensions: "",
+    tags: ["guide", "detox", "pdf"]
+  },
+  {
+    id: 4,
+    name: "sustainability-checklist.pdf",
+    type: "document",
+    size: 524288,
+    url: "/files/sustainability-checklist.pdf",
+    alt: "",
+    uploadedBy: "Guest Author",
+    uploadDate: "2024-07-23",
+    dimensions: "",
+    tags: ["sustainability", "checklist", "pdf"]
+  },
+  {
+    id: 5,
+    name: "mindfulness-meditation.jpg",
+    type: "image",
+    size: 327680,
+    url: "/images/mindfulness-meditation.jpg",
+    alt: "Mindfulness meditation practice",
+    uploadedBy: "Dxmond Tecku",
+    uploadDate: "2024-07-22",
+    dimensions: "1200x800",
+    tags: ["mindfulness", "meditation", "wellness"]
+  },
+  {
+    id: 6,
+    name: "eco-tips.docx",
+    type: "document",
+    size: 262144,
+    url: "/files/eco-tips.docx",
+    alt: "",
+    uploadedBy: "Guest Author",
+    uploadDate: "2024-07-23",
+    dimensions: "",
+    tags: ["eco", "tips", "document"]
+  }
+];
+
+const stats = {
+  total: mediaFiles.length,
+  images: mediaFiles.filter(f => f.type === 'image').length,
+  documents: mediaFiles.filter(f => f.type === 'document').length,
+  totalSize: mediaFiles.reduce((acc, f) => acc + f.size, 0)
+};
+
+function formatFileSize(bytes) {
+  if (bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+---
+
+<AdminLayout>
+  <div class="p-6">
+    <!-- Page Header -->
+    <div class="mb-6 flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900">Media Library</h1>
+        <p class="mt-1 text-sm text-gray-600">
+          Manage images, documents, and other media files
+        </p>
+      </div>
+      <div class="flex items-center space-x-3">
+        <button
+          onclick="document.getElementById('upload-modal').classList.remove('hidden')"
+          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-accent hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+        >
+          <svg class="mr-2 -ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+          </svg>
+          Upload Files
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Total Files</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.total}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Images</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.images}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Documents</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.documents}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-purple-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Total Size</dt>
+                <dd class="text-lg font-medium text-gray-900">{formatFileSize(stats.totalSize)}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters and Search -->
+    <div class="bg-white shadow rounded-lg mb-6">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div>
+            <label for="type-filter" class="block text-sm font-medium text-gray-700 mb-2">Type</label>
+            <select
+              id="type-filter"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            >
+              <option value="">All Types</option>
+              <option value="image">Images</option>
+              <option value="document">Documents</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="date-filter" class="block text-sm font-medium text-gray-700 mb-2">Date</label>
+            <select
+              id="date-filter"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            >
+              <option value="">All Time</option>
+              <option value="today">Today</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="tag-filter" class="block text-sm font-medium text-gray-700 mb-2">Tags</label>
+            <select
+              id="tag-filter"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            >
+              <option value="">All Tags</option>
+              <option value="blog">Blog</option>
+              <option value="author">Author</option>
+              <option value="hero">Hero</option>
+              <option value="featured">Featured</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="search" class="block text-sm font-medium text-gray-700 mb-2">Search</label>
+            <input
+              type="text"
+              id="search"
+              placeholder="Search files..."
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Media Grid -->
+    <div class="bg-white shadow rounded-lg overflow-hidden">
+      <div class="px-4 py-5 sm:p-6 border-b border-gray-200">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-medium text-gray-900">Media Files</h3>
+          <div class="flex items-center space-x-2">
+            <button
+              onclick="setView('grid')"
+              id="grid-view-btn"
+              class="p-2 text-accent bg-accent/10 rounded"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+              </svg>
+            </button>
+            <button
+              onclick="setView('list')"
+              id="list-view-btn"
+              class="p-2 text-gray-400 hover:text-gray-600 rounded"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Grid View -->
+      <div id="grid-view" class="p-6">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {mediaFiles.map((file) => (
+            <div class="group relative">
+              <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden">
+                {file.type === 'image' ? (
+                  <img 
+                    src={file.url} 
+                    alt={file.alt}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center">
+                    <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                  </div>
+                )}
+              </div>
+              
+              <div class="mt-2">
+                <p class="text-sm font-medium text-gray-900 truncate">{file.name}</p>
+                <p class="text-xs text-gray-500">{formatFileSize(file.size)}</p>
+              </div>
+              
+              <!-- Hover Actions -->
+              <div class="absolute inset-0 bg-black bg-opacity-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                <div class="flex space-x-2">
+                  <button
+                    onclick="previewFile({file.id})"
+                    class="p-2 bg-white rounded-full text-gray-700 hover:text-accent"
+                    title="Preview"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                  </button>
+                  <button
+                    onclick="copyUrl('{file.url}')"
+                    class="p-2 bg-white rounded-full text-gray-700 hover:text-accent"
+                    title="Copy URL"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    </svg>
+                  </button>
+                  <button
+                    onclick="deleteFile({file.id}, '{file.name}')"
+                    class="p-2 bg-white rounded-full text-gray-700 hover:text-red-600"
+                    title="Delete"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- List View (Hidden by default) -->
+      <div id="list-view" class="hidden">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  File
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Type
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Size
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Uploaded By
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Date
+                </th>
+                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              {mediaFiles.map((file) => (
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      {file.type === 'image' ? (
+                        <img 
+                          src={file.url} 
+                          alt={file.alt}
+                          class="h-10 w-10 rounded object-cover mr-3"
+                        />
+                      ) : (
+                        <div class="h-10 w-10 rounded bg-gray-200 flex items-center justify-center mr-3">
+                          <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                          </svg>
+                        </div>
+                      )}
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">{file.name}</div>
+                        {file.dimensions && (
+                          <div class="text-sm text-gray-500">{file.dimensions}</div>
+                        )}
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span class:list={[
+                      "inline-flex px-2 py-1 text-xs font-medium rounded",
+                      file.type === 'image' ? "bg-green-100 text-green-800" :
+                      "bg-blue-100 text-blue-800"
+                    ]}>
+                      {file.type}
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {formatFileSize(file.size)}
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {file.uploadedBy}
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {file.uploadDate}
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <div class="flex justify-end space-x-2">
+                      <button
+                        onclick="previewFile({file.id})"
+                        class="text-accent hover:text-accent/80"
+                        title="Preview"
+                      >
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                      </button>
+                      <button
+                        onclick="copyUrl('{file.url}')"
+                        class="text-gray-400 hover:text-gray-600"
+                        title="Copy URL"
+                      >
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                      </button>
+                      <button
+                        onclick="deleteFile({file.id}, '{file.name}')"
+                        class="text-red-600 hover:text-red-800"
+                        title="Delete"
+                      >
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="upload-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+      <div class="flex min-h-screen items-center justify-center p-4">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75" onclick="closeUploadModal()"></div>
+        
+        <div class="relative bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-hidden">
+          <div class="flex items-center justify-between p-4 border-b">
+            <h3 class="text-lg font-medium">Upload Files</h3>
+            <button
+              type="button"
+              onclick="closeUploadModal()"
+              class="text-gray-400 hover:text-gray-500"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+          
+          <div class="p-6">
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+              <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+              </svg>
+              <div class="mt-4">
+                <label for="file-upload" class="cursor-pointer">
+                  <span class="mt-2 block text-sm font-medium text-gray-900">
+                    Click to upload or drag and drop
+                  </span>
+                  <input id="file-upload" name="file-upload" type="file" class="sr-only" multiple onchange="handleFileSelect(event)" />
+                  <span class="mt-1 block text-xs text-gray-500">
+                    PNG, JPG, GIF, PDF, DOCX up to 10MB
+                  </span>
+                </label>
+              </div>
+            </div>
+            
+            <div id="upload-preview" class="mt-4 space-y-2"></div>
+            
+            <div class="mt-6 flex justify-end space-x-3">
+              <button
+                onclick="closeUploadModal()"
+                class="px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              >
+                Cancel
+              </button>
+              <button
+                onclick="uploadFiles()"
+                class="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-accent hover:bg-accent/90"
+              >
+                Upload Files
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</AdminLayout>
+
+<script>
+  let selectedFiles = [];
+
+  function setView(view) {
+    const gridView = document.getElementById('grid-view');
+    const listView = document.getElementById('list-view');
+    const gridBtn = document.getElementById('grid-view-btn');
+    const listBtn = document.getElementById('list-view-btn');
+
+    if (view === 'grid') {
+      gridView.classList.remove('hidden');
+      listView.classList.add('hidden');
+      gridBtn.classList.add('text-accent', 'bg-accent/10');
+      gridBtn.classList.remove('text-gray-400');
+      listBtn.classList.add('text-gray-400');
+      listBtn.classList.remove('text-accent', 'bg-accent/10');
+    } else {
+      gridView.classList.add('hidden');
+      listView.classList.remove('hidden');
+      listBtn.classList.add('text-accent', 'bg-accent/10');
+      listBtn.classList.remove('text-gray-400');
+      gridBtn.classList.add('text-gray-400');
+      gridBtn.classList.remove('text-accent', 'bg-accent/10');
+    }
+  }
+
+  function handleFileSelect(event) {
+    const files = Array.from(event.target.files);
+    selectedFiles = files;
+    
+    const preview = document.getElementById('upload-preview');
+    preview.innerHTML = files.map(file => `
+      <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+        <div class="flex items-center">
+          <svg class="w-8 h-8 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          <div>
+            <p class="text-sm font-medium text-gray-900">${file.name}</p>
+            <p class="text-xs text-gray-500">${formatFileSize(file.size)}</p>
+          </div>
+        </div>
+        <button onclick="removeFile(${files.indexOf(file)})" class="text-red-600 hover:text-red-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    `).join('');
+  }
+
+  function removeFile(index) {
+    selectedFiles.splice(index, 1);
+    handleFileSelect({ target: { files: selectedFiles } });
+  }
+
+  function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
+  function closeUploadModal() {
+    document.getElementById('upload-modal').classList.add('hidden');
+    selectedFiles = [];
+    document.getElementById('file-upload').value = '';
+    document.getElementById('upload-preview').innerHTML = '';
+  }
+
+  function uploadFiles() {
+    if (selectedFiles.length === 0) {
+      alert('Please select files to upload');
+      return;
+    }
+
+    // In a real app, this would upload to server
+    console.log('Uploading files:', selectedFiles);
+    
+    alert(`Successfully uploaded ${selectedFiles.length} file(s)!`);
+    closeUploadModal();
+    window.location.reload();
+  }
+
+  function previewFile(id) {
+    // In a real app, this would show file preview
+    console.log('Previewing file:', id);
+    alert('File preview functionality would be implemented here');
+  }
+
+  function copyUrl(url) {
+    navigator.clipboard.writeText(url);
+    alert('URL copied to clipboard!');
+  }
+
+  function deleteFile(id, name) {
+    if (confirm(`Are you sure you want to delete "${name}"? This action cannot be undone.`)) {
+      // In a real app, this would make an API call
+      console.log('Deleting file:', id);
+      alert('File deleted successfully');
+      window.location.reload();
+    }
+  }
+
+  // Add filtering logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const filters = ['type-filter', 'date-filter', 'tag-filter', 'search'];
+    filters.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.addEventListener('change', filterMedia);
+        element.addEventListener('input', filterMedia);
+      }
+    });
+  });
+
+  function filterMedia() {
+    console.log('Filtering media files...');
+    // Implement client-side filtering logic
+  }
+</script>

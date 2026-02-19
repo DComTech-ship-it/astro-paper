@@ -1,0 +1,521 @@
+---
+import AdminLayout from "@/components/admin/AdminLayout.astro";
+import { getCurrentUser } from "@/lib/admin/auth";
+
+// Check authentication
+const user = getCurrentUser(Astro.cookies);
+if (!user) {
+  return Astro.redirect("/admin/login");
+}
+
+// Mock site settings
+const siteSettings = {
+  general: {
+    siteTitle: "Bigger Minds",
+    siteDescription: "Bigger Minds is your go-to space for everything that sparks curiosity, creativity, and inspiration. From lifestyle and personal stories to tips, ideas, and everyday musings, we explore it all with a fresh perspective and a focus on what makes life uniquely yours.",
+    siteUrl: "https://biggerminds.com",
+    adminEmail: "admin@biggerminds.com",
+    timezone: "America/New_York",
+    language: "en"
+  },
+  appearance: {
+    theme: "light",
+    primaryColor: "#3b82f6",
+    postsPerPage: 4,
+    showArchives: true,
+    showBackButton: true,
+    lightAndDarkMode: true
+  },
+  features: {
+    editPost: {
+      enabled: false,
+      text: "Edit page",
+      url: "https://github.com/DComTech-ship-it/astro-paper/edit/main/"
+    },
+    authorProfiles: {
+      enabled: true,
+      showAvatars: true,
+      showSocialLinks: true,
+      showBio: true
+    },
+    guestSubmissions: {
+      enabled: true,
+      requireApproval: true,
+      allowAttachments: true,
+      maxFileSize: 10
+    }
+  },
+  seo: {
+    metaDescription: "Bigger Minds - Explore ideas that spark curiosity, creativity, and inspiration",
+    ogImage: "bigger-minds-og.jpg",
+    twitterCard: "summary_large_image",
+    favicon: "favicon.ico"
+  }
+};
+---
+
+<AdminLayout>
+  <div class="p-6">
+    <!-- Page Header -->
+    <div class="mb-6">
+      <h1 class="text-2xl font-bold text-gray-900">Settings</h1>
+      <p class="mt-1 text-sm text-gray-600">
+        Configure your site settings and preferences
+      </p>
+    </div>
+
+    <form id="settings-form" class="space-y-8">
+      <!-- General Settings -->
+      <div class="bg-white shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6 border-b border-gray-200">
+          <h2 class="text-lg font-medium text-gray-900">General Settings</h2>
+        </div>
+        <div class="px-4 py-5 sm:p-6 space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="site-title" class="block text-sm font-medium text-gray-700 mb-2">
+                Site Title
+              </label>
+              <input
+                type="text"
+                id="site-title"
+                name="siteTitle"
+                value={siteSettings.general.siteTitle}
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+              />
+            </div>
+            
+            <div>
+              <label for="site-url" class="block text-sm font-medium text-gray-700 mb-2">
+                Site URL
+              </label>
+              <input
+                type="url"
+                id="site-url"
+                name="siteUrl"
+                value={siteSettings.general.siteUrl}
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <label for="site-description" class="block text-sm font-medium text-gray-700 mb-2">
+              Site Description
+            </label>
+            <textarea
+              id="site-description"
+              name="siteDescription"
+              rows="3"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            >{siteSettings.general.siteDescription}</textarea>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="admin-email" class="block text-sm font-medium text-gray-700 mb-2">
+                Admin Email
+              </label>
+              <input
+                type="email"
+                id="admin-email"
+                name="adminEmail"
+                value={siteSettings.general.adminEmail}
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+              />
+            </div>
+            
+            <div>
+              <label for="timezone" class="block text-sm font-medium text-gray-700 mb-2">
+                Timezone
+              </label>
+              <select
+                id="timezone"
+                name="timezone"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+              >
+                <option value="America/New_York" selected={siteSettings.general.timezone === "America/New_York"}>America/New_York</option>
+                <option value="Europe/London" selected={siteSettings.general.timezone === "Europe/London"}>Europe/London</option>
+                <option value="Asia/Tokyo" selected={siteSettings.general.timezone === "Asia/Tokyo"}>Asia/Tokyo</option>
+                <option value="UTC" selected={siteSettings.general.timezone === "UTC"}>UTC</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Appearance Settings -->
+      <div class="bg-white shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6 border-b border-gray-200">
+          <h2 class="text-lg font-medium text-gray-900">Appearance</h2>
+        </div>
+        <div class="px-4 py-5 sm:p-6 space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="theme" class="block text-sm font-medium text-gray-700 mb-2">
+                Theme
+              </label>
+              <select
+                id="theme"
+                name="theme"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+              >
+                <option value="light" selected={siteSettings.appearance.theme === "light"}>Light</option>
+                <option value="dark" selected={siteSettings.appearance.theme === "dark"}>Dark</option>
+                <option value="auto" selected={siteSettings.appearance.theme === "auto"}>Auto</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="posts-per-page" class="block text-sm font-medium text-gray-700 mb-2">
+                Posts Per Page
+              </label>
+              <input
+                type="number"
+                id="posts-per-page"
+                name="postsPerPage"
+                min="1"
+                max="20"
+                value={siteSettings.appearance.postsPerPage}
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+              />
+            </div>
+          </div>
+          
+          <div class="space-y-4">
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                id="show-archives"
+                name="showArchives"
+                checked={siteSettings.appearance.showArchives}
+                class="rounded border-gray-300 text-accent focus:ring-accent"
+              />
+              <span class="ml-2 text-sm text-gray-700">Show Archives</span>
+            </label>
+            
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                id="show-back-button"
+                name="showBackButton"
+                checked={siteSettings.appearance.showBackButton}
+                class="rounded border-gray-300 text-accent focus:ring-accent"
+              />
+              <span class="ml-2 text-sm text-gray-700">Show Back Button</span>
+            </label>
+            
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                id="light-dark-mode"
+                name="lightAndDarkMode"
+                checked={siteSettings.appearance.lightAndDarkMode}
+                class="rounded border-gray-300 text-accent focus:ring-accent"
+              />
+              <span class="ml-2 text-sm text-gray-700">Enable Light/Dark Mode</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Settings -->
+      <div class="bg-white shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6 border-b border-gray-200">
+          <h2 class="text-lg font-medium text-gray-900">Features</h2>
+        </div>
+        <div class="px-4 py-5 sm:p-6 space-y-6">
+          <!-- Edit Post Feature -->
+          <div class="border-b border-gray-200 pb-6">
+            <h3 class="text-base font-medium text-gray-900 mb-4">Edit Post Feature</h3>
+            <div class="space-y-4">
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="edit-post-enabled"
+                  name="editPostEnabled"
+                  checked={siteSettings.features.editPost.enabled}
+                  class="rounded border-gray-300 text-accent focus:ring-accent"
+                />
+                <span class="ml-2 text-sm text-gray-700">Enable Edit Post</span>
+              </label>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="edit-post-text" class="block text-sm font-medium text-gray-700 mb-2">
+                    Button Text
+                  </label>
+                  <input
+                    type="text"
+                    id="edit-post-text"
+                    name="editPostText"
+                    value={siteSettings.features.editPost.text}
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                  />
+                </div>
+                
+                <div>
+                  <label for="edit-post-url" class="block text-sm font-medium text-gray-700 mb-2">
+                    GitHub URL
+                  </label>
+                  <input
+                    type="url"
+                    id="edit-post-url"
+                    name="editPostUrl"
+                    value={siteSettings.features.editPost.url}
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Author Profiles Feature -->
+          <div class="border-b border-gray-200 pb-6">
+            <h3 class="text-base font-medium text-gray-900 mb-4">Author Profiles</h3>
+            <div class="space-y-4">
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="author-profiles-enabled"
+                  name="authorProfilesEnabled"
+                  checked={siteSettings.features.authorProfiles.enabled}
+                  class="rounded border-gray-300 text-accent focus:ring-accent"
+                />
+                <span class="ml-2 text-sm text-gray-700">Enable Author Profiles</span>
+              </label>
+              
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="show-avatars"
+                    name="showAvatars"
+                    checked={siteSettings.features.authorProfiles.showAvatars}
+                    class="rounded border-gray-300 text-accent focus:ring-accent"
+                  />
+                  <span class="ml-2 text-sm text-gray-700">Show Avatars</span>
+                </label>
+                
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="show-social-links"
+                    name="showSocialLinks"
+                    checked={siteSettings.features.authorProfiles.showSocialLinks}
+                    class="rounded border-gray-300 text-accent focus:ring-accent"
+                  />
+                  <span class="ml-2 text-sm text-gray-700">Show Social Links</span>
+                </label>
+                
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="show-bio"
+                    name="showBio"
+                    checked={siteSettings.features.authorProfiles.showBio}
+                    class="rounded border-gray-300 text-accent focus:ring-accent"
+                  />
+                  <span class="ml-2 text-sm text-gray-700">Show Bio</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Guest Submissions Feature -->
+          <div>
+            <h3 class="text-base font-medium text-gray-900 mb-4">Guest Submissions</h3>
+            <div class="space-y-4">
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="guest-submissions-enabled"
+                  name="guestSubmissionsEnabled"
+                  checked={siteSettings.features.guestSubmissions.enabled}
+                  class="rounded border-gray-300 text-accent focus:ring-accent"
+                />
+                <span class="ml-2 text-sm text-gray-700">Enable Guest Submissions</span>
+              </label>
+              
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="require-approval"
+                    name="requireApproval"
+                    checked={siteSettings.features.guestSubmissions.requireApproval}
+                    class="rounded border-gray-300 text-accent focus:ring-accent"
+                  />
+                  <span class="ml-2 text-sm text-gray-700">Require Approval</span>
+                </label>
+                
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="allow-attachments"
+                    name="allowAttachments"
+                    checked={siteSettings.features.guestSubmissions.allowAttachments}
+                    class="rounded border-gray-300 text-accent focus:ring-accent"
+                  />
+                  <span class="ml-2 text-sm text-gray-700">Allow Attachments</span>
+                </label>
+                
+                <div>
+                  <label for="max-file-size" class="block text-sm font-medium text-gray-700 mb-2">
+                    Max File Size (MB)
+                  </label>
+                  <input
+                    type="number"
+                    id="max-file-size"
+                    name="maxFileSize"
+                    min="1"
+                    max="50"
+                    value={siteSettings.features.guestSubmissions.maxFileSize}
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Settings -->
+      <div class="bg-white shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6 border-b border-gray-200">
+          <h2 class="text-lg font-medium text-gray-900">SEO Settings</h2>
+        </div>
+        <div class="px-4 py-5 sm:p-6 space-y-6">
+          <div>
+            <label for="meta-description" class="block text-sm font-medium text-gray-700 mb-2">
+              Meta Description
+            </label>
+            <textarea
+              id="meta-description"
+              name="metaDescription"
+              rows="2"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            >{siteSettings.seo.metaDescription}</textarea>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <label for="og-image" class="block text-sm font-medium text-gray-700 mb-2">
+                OG Image
+              </label>
+              <input
+                type="text"
+                id="og-image"
+                name="ogImage"
+                value={siteSettings.seo.ogImage}
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+              />
+            </div>
+            
+            <div>
+              <label for="twitter-card" class="block text-sm font-medium text-gray-700 mb-2">
+                Twitter Card
+              </label>
+              <select
+                id="twitter-card"
+                name="twitterCard"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+              >
+                <option value="summary" selected={siteSettings.seo.twitterCard === "summary"}>Summary</option>
+                <option value="summary_large_image" selected={siteSettings.seo.twitterCard === "summary_large_image"}>Summary with Large Image</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="favicon" class="block text-sm font-medium text-gray-700 mb-2">
+                Favicon
+              </label>
+              <input
+                type="text"
+                id="favicon"
+                name="favicon"
+                value={siteSettings.seo.favicon}
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Save Button -->
+      <div class="flex justify-end">
+        <button
+          type="submit"
+          class="px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-accent hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+        >
+          Save Settings
+        </button>
+      </div>
+    </form>
+  </div>
+</AdminLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('settings-form');
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const settings = {
+        general: {
+          siteTitle: formData.get('siteTitle'),
+          siteDescription: formData.get('siteDescription'),
+          siteUrl: formData.get('siteUrl'),
+          adminEmail: formData.get('adminEmail'),
+          timezone: formData.get('timezone'),
+          language: 'en'
+        },
+        appearance: {
+          theme: formData.get('theme'),
+          primaryColor: '#3b82f6',
+          postsPerPage: formData.get('postsPerPage'),
+          showArchives: formData.get('showArchives') === 'on',
+          showBackButton: formData.get('showBackButton') === 'on',
+          lightAndDarkMode: formData.get('lightAndDarkMode') === 'on'
+        },
+        features: {
+          editPost: {
+            enabled: formData.get('editPostEnabled') === 'on',
+            text: formData.get('editPostText'),
+            url: formData.get('editPostUrl')
+          },
+          authorProfiles: {
+            enabled: formData.get('authorProfilesEnabled') === 'on',
+            showAvatars: formData.get('showAvatars') === 'on',
+            showSocialLinks: formData.get('showSocialLinks') === 'on',
+            showBio: formData.get('showBio') === 'on'
+          },
+          guestSubmissions: {
+            enabled: formData.get('guestSubmissionsEnabled') === 'on',
+            requireApproval: formData.get('requireApproval') === 'on',
+            allowAttachments: formData.get('allowAttachments') === 'on',
+            maxFileSize: formData.get('maxFileSize')
+          }
+        },
+        seo: {
+          metaDescription: formData.get('metaDescription'),
+          ogImage: formData.get('ogImage'),
+          twitterCard: formData.get('twitterCard'),
+          favicon: formData.get('favicon')
+        }
+      };
+
+      try {
+        // In a real app, this would save to your config
+        console.log('Saving settings:', settings);
+        
+        alert('Settings saved successfully!');
+      } catch (error) {
+        console.error('Error saving settings:', error);
+        alert('Error saving settings. Please try again.');
+      }
+    });
+  });
+</script>

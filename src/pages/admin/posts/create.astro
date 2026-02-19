@@ -1,0 +1,41 @@
+---
+import AdminLayout from "@/components/admin/AdminLayout.astro";
+import PostEditor from "@/components/admin/PostEditor.astro";
+import { getCurrentUser } from "@/lib/admin/auth";
+
+// Check authentication
+const user = getCurrentUser(Astro.cookies);
+if (!user) {
+  return Astro.redirect("/admin/login");
+}
+---
+
+<AdminLayout>
+  <div class="p-6">
+    <!-- Page Header -->
+    <div class="mb-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">Create New Post</h1>
+          <p class="mt-1 text-sm text-gray-600">
+            Write and publish a new blog post
+          </p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <a
+            href="/admin/posts"
+            class="text-gray-500 hover:text-gray-700"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Back to Posts
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post Editor -->
+    <PostEditor />
+  </div>
+</AdminLayout>

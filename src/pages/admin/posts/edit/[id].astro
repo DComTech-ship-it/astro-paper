@@ -1,0 +1,111 @@
+---
+import AdminLayout from "@/components/admin/AdminLayout.astro";
+import PostEditor from "@/components/admin/PostEditor.astro";
+import { getCurrentUser } from "@/lib/admin/auth";
+
+// Check authentication
+const user = getCurrentUser(Astro.cookies);
+if (!user) {
+  return Astro.redirect("/admin/login");
+}
+
+// Get post ID from URL params
+const { id } = Astro.params;
+
+// Mock post data - in real app, fetch from your blog posts
+const post = {
+  id: id,
+  title: "Building Meaningful Connections",
+  slug: "building-meaningful-connections",
+  content: `# Building Meaningful Connections
+
+In today's increasingly digital world, the art of building genuine connections has become both more challenging and more important than ever before.
+
+## The Digital Paradox
+
+We live in an age of unprecedented connectivity, yet many of us feel more isolated than ever. Social media platforms promise connection but often deliver superficial interactions.
+
+## Authentic Connection Strategies
+
+### 1. Be Present
+When talking with someone, put away your phone. Make eye contact. Listen actively.
+
+### 2. Share Vulnerability
+Real connections happen when we're willing to be authentic and vulnerable.
+
+### 3. Quality Over Quantity
+Focus on deep relationships rather than accumulating hundreds of superficial connections.
+
+## The Impact
+
+Meaningful connections provide:
+- Emotional support
+- Personal growth
+- Professional opportunities
+- Increased happiness
+
+*Building connections is a skill that improves with practice.*`,
+  excerpt: "Discover how to forge genuine connections in an increasingly digital world through presence, vulnerability, and quality over quantity.",
+  tags: ["Relationships", "Community", "Wellbeing"],
+  status: "published",
+  publishDate: "2024-07-25",
+  author: "Dxmond Tecku",
+  featured: true
+};
+
+// Handle post not found
+if (!post) {
+  return Astro.redirect("/admin/posts");
+}
+---
+
+<AdminLayout>
+  <div class="p-6">
+    <!-- Page Header -->
+    <div class="mb-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">Edit Post</h1>
+          <p class="mt-1 text-sm text-gray-600">
+            Modify your existing blog post
+          </p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <a
+            href={`/posts/${post.slug}`}
+            target="_blank"
+            class="inline-flex items-center px-3 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+            View
+          </a>
+          <a
+            href="/admin/posts"
+            class="inline-flex items-center px-3 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Back
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post Editor -->
+    <PostEditor 
+      title={post.title}
+      slug={post.slug}
+      content={post.content}
+      excerpt={post.excerpt}
+      tags={post.tags}
+      status={post.status}
+      publishDate={post.publishDate}
+      author={post.author}
+      featured={post.featured}
+    />
+  </div>
+</AdminLayout>

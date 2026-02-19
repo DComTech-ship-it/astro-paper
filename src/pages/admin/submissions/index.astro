@@ -1,0 +1,495 @@
+---
+import AdminLayout from "@/components/admin/AdminLayout.astro";
+import { getCurrentUser } from "@/lib/admin/auth";
+
+// Check authentication
+const user = getCurrentUser(Astro.cookies);
+if (!user) {
+  return Astro.redirect("/admin/login");
+}
+
+// Mock guest post submissions data
+const submissions = [
+  {
+    id: 1,
+    title: "The Art of Mindful Living",
+    author: "Emily Rodriguez",
+    email: "emily.rodriguez@example.com",
+    date: "2024-07-25",
+    status: "pending",
+    category: "Lifestyle",
+    excerpt: "Discover practical mindfulness techniques for everyday life and how they can transform your daily routine into a more peaceful experience.",
+    content: `# The Art of Mindful Living
+
+In our fast-paced world, finding moments of peace and clarity can feel like an impossible task. Yet, mindfulness offers a path to tranquility that's accessible to everyone.
+
+## What is Mindfulness?
+
+Mindfulness is the practice of being fully present and engaged in the current moment, without judgment. It's about noticing your thoughts, feelings, and surroundings without getting caught up in them.
+
+## Benefits of Daily Mindfulness
+
+Research shows that regular mindfulness practice can:
+- Reduce stress and anxiety
+- Improve focus and concentration
+- Enhance emotional regulation
+- Boost overall wellbeing
+
+## Simple Mindfulness Exercises
+
+### 1. Mindful Breathing
+Take 5 minutes to focus solely on your breath. Notice the sensation of air entering and leaving your body.
+
+### 2. Body Scan
+Lie down and mentally scan your body from head to toe, noticing any sensations without judgment.
+
+### 3. Mindful Walking
+Pay attention to each step as you walk, feeling your feet connect with the ground.
+
+## Making it a Habit
+
+Start with just 5 minutes daily and gradually increase the time. Consistency is more important than duration.
+
+Remember: mindfulness is a practice, not perfection. Be kind to yourself as you develop this life-changing skill.`,
+    bio: "Emily Rodriguez is a wellness coach and mindfulness practitioner with over 10 years of experience helping people find balance in their daily lives.",
+    socialLinks: "Twitter: @emilywellness | Instagram: @mindfulemily",
+    hasAvatar: true,
+    avatarUrl: "/images/authors/emily-rodriguez.jpg",
+    attachments: []
+  },
+  {
+    id: 2,
+    title: "Digital Detox Strategies",
+    author: "Michael Chen",
+    email: "michael.chen@example.com",
+    date: "2024-07-24",
+    status: "pending",
+    category: "Technology",
+    excerpt: "Learn how to implement effective digital detox strategies to reconnect with the physical world and improve your mental health.",
+    content: `# Digital Detox Strategies
+
+Our constant connectivity to digital devices has created a new kind of stress. Here's how to reclaim your time and attention.`,
+    bio: "Michael Chen is a tech wellness advocate who helps people find balance between digital and physical worlds.",
+    socialLinks: "LinkedIn: /in/michaelchen",
+    hasAvatar: false,
+    avatarUrl: "",
+    attachments: ["digital-detox-guide.pdf"]
+  },
+  {
+    id: 3,
+    title: "Sustainable Lifestyle Choices",
+    author: "Sarah Thompson",
+    email: "sarah.thompson@example.com",
+    date: "2024-07-23",
+    status: "reviewing",
+    category: "Environment",
+    excerpt: "Practical tips for making sustainable choices that benefit both you and the planet without overwhelming your lifestyle.",
+    content: `# Sustainable Lifestyle Choices
+
+Making eco-friendly choices doesn't have to be complicated or expensive.`,
+    bio: "Sarah Thompson is an environmental consultant and sustainability educator.",
+    socialLinks: "Website: sarahsustainable.com",
+    hasAvatar: true,
+    avatarUrl: "/images/authors/sarah-thompson.jpg",
+    attachments: ["sustainability-checklist.pdf", "eco-tips.docx"]
+  }
+];
+
+const stats = {
+  total: submissions.length,
+  pending: submissions.filter(s => s.status === 'pending').length,
+  reviewing: submissions.filter(s => s.status === 'reviewing').length,
+  approved: submissions.filter(s => s.status === 'approved').length,
+  rejected: submissions.filter(s => s.status === 'rejected').length
+};
+---
+
+<AdminLayout>
+  <div class="p-6">
+    <!-- Page Header -->
+    <div class="mb-6">
+      <h1 class="text-2xl font-bold text-gray-900">Guest Submissions</h1>
+      <p class="mt-1 text-sm text-gray-600">
+        Review and manage guest post submissions
+      </p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 mb-6">
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Total</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.total}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Pending</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.pending}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Reviewing</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.reviewing}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Approved</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.approved}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="p-5">
+          <div class="flex items-center">
+            <div class="shrink-0">
+              <div class="w-8 h-8 bg-red-500 rounded-md flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+              <dl>
+                <dt class="text-sm font-medium text-gray-500 truncate">Rejected</dt>
+                <dd class="text-lg font-medium text-gray-900">{stats.rejected}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="bg-white shadow rounded-lg mb-6">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div>
+            <label for="status-filter" class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+            <select
+              id="status-filter"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            >
+              <option value="">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="reviewing">Reviewing</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="category-filter" class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+            <select
+              id="category-filter"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            >
+              <option value="">All Categories</option>
+              <option value="Lifestyle">Lifestyle</option>
+              <option value="Technology">Technology</option>
+              <option value="Environment">Environment</option>
+              <option value="Wellness">Wellness</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="date-filter" class="block text-sm font-medium text-gray-700 mb-2">Date Range</label>
+            <select
+              id="date-filter"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            >
+              <option value="">All Time</option>
+              <option value="today">Today</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="search" class="block text-sm font-medium text-gray-700 mb-2">Search</label>
+            <input
+              type="text"
+              id="search"
+              placeholder="Search submissions..."
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submissions List -->
+    <div class="space-y-4">
+      {submissions.map((submission) => (
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+          <div class="p-6">
+            <div class="flex items-start justify-between">
+              <div class="flex-1">
+                <div class="flex items-center space-x-3 mb-2">
+                  <h3 class="text-lg font-medium text-gray-900">{submission.title}</h3>
+                  <span class:list={[
+                    "inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                    submission.status === 'pending' ? "bg-yellow-100 text-yellow-800" :
+                    submission.status === 'reviewing' ? "bg-blue-100 text-blue-800" :
+                    submission.status === 'approved' ? "bg-green-100 text-green-800" :
+                    "bg-red-100 text-red-800"
+                  ]}>
+                    {submission.status}
+                  </span>
+                  <span class="inline-flex px-2 py-1 text-xs font-medium rounded bg-gray-100 text-gray-800">
+                    {submission.category}
+                  </span>
+                </div>
+                
+                <div class="flex items-center space-x-4 text-sm text-gray-500 mb-3">
+                  <span>By {submission.author}</span>
+                  <span>•</span>
+                  <span>{submission.email}</span>
+                  <span>•</span>
+                  <span>{submission.date}</span>
+                </div>
+                
+                <p class="text-gray-600 mb-4">{submission.excerpt}</p>
+                
+                <div class="flex items-center space-x-4 text-sm">
+                  {submission.hasAvatar && (
+                    <span class="flex items-center text-green-600">
+                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      Avatar
+                    </span>
+                  )}
+                  {submission.attachments.length > 0 && (
+                    <span class="flex items-center text-blue-600">
+                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/>
+                      </svg>
+                      {submission.attachments.length} attachment{submission.attachments.length > 1 ? 's' : ''}
+                    </span>
+                  )}
+                </div>
+              </div>
+              
+              <div class="flex items-center space-x-2 ml-4">
+                <button
+                  onclick="viewSubmission({submission.id})"
+                  class="inline-flex items-center px-3 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                >
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                  </svg>
+                  Review
+                </button>
+                
+                {submission.status === 'pending' && (
+                  <button
+                    onclick="updateStatus({submission.id}, 'reviewing')"
+                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                  >
+                    Start Review
+                  </button>
+                )}
+                
+                {submission.status === 'reviewing' && (
+                  <>
+                    <button
+                      onclick="updateStatus({submission.id}, 'approved')"
+                      class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
+                    >
+                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                      </svg>
+                      Approve
+                    </button>
+                    <button
+                      onclick="updateStatus({submission.id}, 'rejected')"
+                      class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
+                    >
+                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                      </svg>
+                      Reject
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Submission Detail Modal -->
+    <div id="submission-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+      <div class="flex min-h-screen items-center justify-center p-4">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75" onclick="closeModal()"></div>
+        
+        <div class="relative bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
+          <div class="flex items-center justify-between p-4 border-b">
+            <h3 class="text-lg font-medium">Submission Review</h3>
+            <button
+              type="button"
+              onclick="closeModal()"
+              class="text-gray-400 hover:text-gray-500"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+          
+          <div id="modal-content" class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+            <!-- Content will be loaded here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</AdminLayout>
+
+<script>
+  function viewSubmission(id) {
+    const modal = document.getElementById('submission-modal');
+    const content = document.getElementById('modal-content');
+    
+    // In a real app, this would fetch the submission data
+    content.innerHTML = `
+      <div class="space-y-6">
+        <div>
+          <h4 class="text-lg font-medium mb-2">The Art of Mindful Living</h4>
+          <div class="flex items-center space-x-4 text-sm text-gray-500">
+            <span>Emily Rodriguez</span>
+            <span>•</span>
+            <span>emily.rodriguez@example.com</span>
+            <span>•</span>
+            <span>2024-07-25</span>
+          </div>
+        </div>
+        
+        <div>
+          <h5 class="font-medium mb-2">Author Bio</h5>
+          <p class="text-gray-600">Emily Rodriguez is a wellness coach and mindfulness practitioner with over 10 years of experience helping people find balance in their daily lives.</p>
+          <p class="text-sm text-gray-500 mt-1">Twitter: @emilywellness | Instagram: @mindfulemily</p>
+        </div>
+        
+        <div>
+          <h5 class="font-medium mb-2">Content</h5>
+          <div class="prose max-w-none bg-gray-50 p-4 rounded">
+            <h1>The Art of Mindful Living</h1>
+            <p>In our fast-paced world, finding moments of peace and clarity can feel like an impossible task. Yet, mindfulness offers a path to tranquility that's accessible to everyone.</p>
+            <h2>What is Mindfulness?</h2>
+            <p>Mindfulness is the practice of being fully present and engaged in the current moment, without judgment...</p>
+          </div>
+        </div>
+        
+        <div class="flex justify-end space-x-3">
+          <button onclick="closeModal()" class="px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+            Close
+          </button>
+          <button onclick="updateStatus(${id}, 'approved'); closeModal();" class="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
+            Approve & Publish
+          </button>
+        </div>
+      </div>
+    `;
+    
+    modal.classList.remove('hidden');
+  }
+
+  function closeModal() {
+    document.getElementById('submission-modal').classList.add('hidden');
+  }
+
+  function updateStatus(id, status) {
+    // In a real app, this would make an API call
+    console.log(`Updating submission ${id} to status: ${status}`);
+    
+    const statusMessages = {
+      reviewing: 'Submission marked for review',
+      approved: 'Submission approved and published',
+      rejected: 'Submission rejected'
+    };
+    
+    alert(statusMessages[status]);
+    
+    // Reload page to show updated status
+    window.location.reload();
+  }
+
+  // Add filtering logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const filters = ['status-filter', 'category-filter', 'date-filter', 'search'];
+    filters.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.addEventListener('change', filterSubmissions);
+        element.addEventListener('input', filterSubmissions);
+      }
+    });
+  });
+
+  function filterSubmissions() {
+    console.log('Filtering submissions...');
+    // Implement client-side filtering logic
+  }
+</script>
