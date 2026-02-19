@@ -2,9 +2,9 @@ import type { APIRoute } from "astro";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-// In production, store these in environment variables
-const ADMIN_EMAIL = 'admin@miawoezo.com';
-const ADMIN_PASSWORD_HASH = '$2a$10$rOzJqQjQjQjQjQjQjQu'; // This is a hash of 'admin123'
+// Use environment variables for admin credentials
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@miawoezo.com';
+const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH || '$2b$10$qCZ/SF779AO1sRvLqIAjn..g1Q5jbqPA7STIIN.UgCCvCcjVoxIw2'; // This is a hash of 'admin123'
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 
 export const POST: APIRoute = async ({ request, cookies }) => {
@@ -27,7 +27,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       );
     }
 
-    // Verify password (in production, use proper password hashing)
+    // Verify password using bcrypt
     const isValidPassword = await bcrypt.compare(password, ADMIN_PASSWORD_HASH);
     if (!isValidPassword) {
       return new Response(
