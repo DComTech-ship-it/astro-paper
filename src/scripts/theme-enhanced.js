@@ -9,7 +9,7 @@ const LIGHT = 'light';
 let currentTheme = LIGHT;
 
 // Get current theme
-function getCurrentTheme(): string {
+function getCurrentTheme() {
   if (typeof localStorage !== 'undefined') {
     return localStorage.getItem(THEME_KEY) || LIGHT;
   }
@@ -17,7 +17,7 @@ function getCurrentTheme(): string {
 }
 
 // Set theme with enhanced features
-function setTheme(theme: string): void {
+function setTheme(theme) {
   currentTheme = theme;
   
   if (typeof localStorage !== 'undefined') {
@@ -41,7 +41,7 @@ function setTheme(theme: string): void {
 }
 
 // Update CSS variables dynamically
-function updateThemeCSS(theme: string): void {
+function updateThemeCSS(theme) {
   const root = document.documentElement;
   
   if (theme === DARK) {
@@ -56,7 +56,7 @@ function updateThemeCSS(theme: string): void {
 }
 
 // Toggle theme with smooth transition
-function toggleTheme(): void {
+function toggleTheme() {
   const newTheme = currentTheme === DARK ? LIGHT : DARK;
   
   // Add transition class for smooth animation
@@ -69,7 +69,7 @@ function toggleTheme(): void {
 }
 
 // Initialize theme on page load
-function initTheme(): void {
+function initTheme() {
   const savedTheme = getCurrentTheme();
   
   // Detect system preference
@@ -107,7 +107,7 @@ if (typeof window !== 'undefined') {
     enableLight: () => setTheme(LIGHT),
     
     // Theme utilities
-    getCSSVariable: (name: string) => getComputedStyle(document.documentElement).getPropertyValue(`--${name}`),
+    getCSSVariable: (name) => getComputedStyle(document.documentElement).getPropertyValue(`--${name}`),
     
     // Auto-theme based on time
     enableAutoTheme: () => {
