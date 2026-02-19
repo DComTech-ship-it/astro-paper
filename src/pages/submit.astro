@@ -99,15 +99,32 @@ const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
 
           <div>
             <label for="bio" class="block text-sm font-medium mb-2">
-              Short Bio (Optional)
+              Short Bio *
             </label>
             <textarea
               id="bio"
               name="bio"
+              required
               rows="3"
               class="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
               placeholder="Tell us briefly about yourself..."
             ></textarea>
+          </div>
+
+          <div>
+            <label for="avatar-upload" class="block text-sm font-medium mb-2">
+              Profile Picture (Optional)
+            </label>
+            <input
+              type="file"
+              id="avatar-upload"
+              name="avatar-upload"
+              accept="image/*"
+              class="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+            />
+            <p class="text-sm text-muted mt-1">
+              Upload a profile picture (JPG, PNG). Square images work best. Max size: 2MB
+            </p>
           </div>
 
           <div>
@@ -210,10 +227,7 @@ const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
           // Send to Resend API
           const response = await fetch('/api/submit', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(submissionData)
+            body: formData // Send FormData directly for file uploads
           });
           
           if (response.ok) {

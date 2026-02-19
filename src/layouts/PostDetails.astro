@@ -10,6 +10,7 @@ import ShareLinks from "@/components/ShareLinks.astro";
 import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
 import Comments from "@/components/Comments";
+import AuthorProfile from "@/components/AuthorProfile.astro";
 import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
@@ -114,6 +115,23 @@ const nextPost =
     >
       <Content />
     </article>
+
+    <hr class="my-8 border-dashed" />
+
+    <!-- Author Profile Section -->
+    <section class="my-8">
+      <AuthorProfile 
+        author={{
+          id: author.toLowerCase().replace(/\s+/g, '-'),
+          name: author,
+          email: `${author.toLowerCase().replace(/\s+/g, '.')}@miawoezo.com`,
+          bio: `Passionate writer and contributor to Bigger Minds. Sharing insights on ${tags ? tags.slice(0, 3).join(', ') : 'various topics'} to inspire and educate readers.`,
+          isGuest: author !== "Dxmond Tecku"
+        }}
+        size="lg"
+        showSocialLinks={true}
+      />
+    </section>
 
     <hr class="my-8 border-dashed" />
 

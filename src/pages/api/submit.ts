@@ -5,11 +5,13 @@ export const POST: APIRoute = async ({ request }) => {
   
   // Handle file upload if present
   let attachmentInfo = '';
+  let avatarInfo = '';
   let data: any = {};
   
   if (contentType && contentType.includes("multipart/form-data")) {
     const formData = await request.formData();
     const file = formData.get("file-upload") as File;
+    const avatarFile = formData.get("avatar-upload") as File;
     
     // Extract form data
     data = {
@@ -22,6 +24,36 @@ export const POST: APIRoute = async ({ request }) => {
       socialLinks: formData.get("social-links"),
       agreement: formData.get("agreement")
     };
+    
+    // Handle avatar upload
+    let avatarInfo = '';
+    if (avatarFile && avatarFile.size > 0) {
+      // Validate avatar size (2MB limit)
+      if (avatarFile.size > 2 * 1024 * 1024) {
+        return new Response(
+          JSON.stringify({ error: "Avatar size exceeds 2MB limit" }),
+          { status: 400 }
+        );
+      }
+      
+      // Convert avatar to base64
+      const avatarArrayBuffer = await avatarFile.arrayBuffer();
+      const avatarUint8Array = new Uint8Array(avatarArrayBuffer);
+      let avatarBinary = '';
+      for (let i = 0; i < avatarUint8Array.length; i++) {
+        avatarBinary += String.fromCharCode(avatarUint8Array[i]);
+      }
+      const avatarBase64 = btoa(avatarBinary);
+      const avatarMimeType = avatarFile.type || 'image/jpeg';
+      
+      avatarInfo = `
+        {
+          "filename": "avatar-${Date.now()}.${avatarFile.name.split('.').pop()}",
+          "content": "${avatarBase64}",
+          "type": "${avatarMimeType}"
+        }
+      `;
+    }
     
     if (file) {
       // Validate file size (10MB limit)
@@ -150,11 +182,20 @@ export const POST: APIRoute = async ({ request }) => {
             </div>
             ` : ''}
             
+            ${avatarInfo ? `
+            <div style="background: #e3f2fd; padding: 15px; border-radius: 5px; margin: 15px 0;">
+              <h4 style="color: #333; margin-top: 0;">👤 Author Avatar:</h4>
+              <p style="color: #666; font-size: 14px;">
+                <strong>${JSON.parse(avatarInfo).filename}</strong> uploaded
+              </p>
+            </div>
+            ` : ''}
+            
             ${attachmentInfo ? `
             <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin: 15px 0;">
               <h4 style="color: #333; margin-top: 0;">📎 File Attachment:</h4>
               <p style="color: #666; font-size: 14px;">
-                <strong>${attachmentInfo.includes('filename') ? JSON.parse(attachmentInfo).filename : 'Unknown file'}</strong>
+                <strong>${attachmentInfo.indexOf('filename') !== -1 ? JSON.parse(attachmentInfo).filename : 'Unknown file'}</strong>
               </p>
             </div>
             ` : ''}

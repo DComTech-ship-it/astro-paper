@@ -1,0 +1,16 @@
+{
+  "dxmond": {
+    "id": "dxmond",
+    "name": "Dxmond Tecku",
+    "email": "admin@miawoezo.com",
+    "bio": "Founder and main author of Bigger Minds. Passionate about creativity, personal growth, and sharing inspiring stories that make a difference.",
+    "avatar": "/images/authors/dxmond-avatar.jpg",
+    "socialLinks": {
+      "website": "https://miawoezo.com",
+      "twitter": "https://twitter.com/dxmond",
+      "linkedin": "https://linkedin.com/in/dxmond"
+    },
+    "isGuest": false,
+    "joinedAt": "2024-01-01"
+  }
+}

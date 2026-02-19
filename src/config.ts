@@ -16,6 +16,15 @@ export const SITE = {
     text: "Edit page",
     url: "https://github.com/yourusername/simply-you-blog/edit/main/",
   },
+  authorProfiles: {
+    enabled: true,
+    showOnPosts: true,
+    defaultAvatar: "/images/authors/default-avatar.jpg",
+    socialLinks: {
+      showOnProfiles: true,
+      showOnPosts: true
+    }
+  },
   dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"
   lang: "en", // html lang code. Set this empty and default will be "en"
