@@ -27,3 +27,5 @@ pnpm-debug.log*
 # pagefind
 
 public/pagefind
+.vercel
+.env*.local
