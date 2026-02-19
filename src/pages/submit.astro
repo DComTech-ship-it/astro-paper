@@ -2,27 +2,24 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import BackButton from "@/components/BackButton.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import { SITE } from "@/config";
 
+const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
 ---
 
 <Layout title="Submit Your Story | Mia woezɔ">
   <Header />
-  <BackButton />
-  <main id="main-content" class="app-layout">
+  <Breadcrumb />
+  <main data-backUrl={backUrl} id="main-content" class="app-layout pb-4">
+    <h1 class="text-2xl font-semibold sm:text-3xl">Submit Your Story</h1>
+    
     <section class="max-w-4xl mx-auto px-4 py-12">
       <div class="max-w-2xl mx-auto">
-        <h1 class="text-4xl font-bold mb-8 text-center">
-          Submit Your Story
-        </h1>
-        
         <form 
-          name="guest-post-submission"
-          method="POST"
-          data-netlify="true"
+          id="guest-post-form"
           class="space-y-6"
         >
-          <input type="hidden" name="form-name" value="guest-post-submission" />
           <div class="grid md:grid-cols-2 gap-6">
             <div>
               <label for="name" class="block text-sm font-medium mb-2">
@@ -128,17 +125,17 @@ import BackButton from "@/components/BackButton.astro";
 
           <div>
             <label for="file-upload" class="block text-sm font-medium mb-2">
-              Upload Image (Optional)
+              Upload File (Optional)
             </label>
             <input
               type="file"
               id="file-upload"
               name="file-upload"
-              accept="image/*"
+              accept="image/*,.pdf,.doc,.docx,.txt"
               class="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
             />
             <p class="text-sm text-muted mt-1">
-              Accepted formats: JPG, PNG, GIF. Max size: 5MB
+              Accepted formats: Images (JPG, PNG, GIF), Documents (PDF, DOC, DOCX, TXT). Max size: 10MB
             </p>
           </div>
 
@@ -182,21 +179,57 @@ import BackButton from "@/components/BackButton.astro";
   </Layout>
 
 <script>
-  // Add form validation and user feedback
+  // Form submission with Resend API
   document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('form') as HTMLFormElement;
+    const form = document.getElementById('guest-post-form') as HTMLFormElement;
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    
     if (form) {
-      form.addEventListener('submit', (e) => {
-        const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
         if (submitBtn) {
           submitBtn.disabled = true;
           submitBtn.textContent = 'Submitting...';
+        }
+        
+        try {
+          const formData = new FormData(form);
+          const submissionData = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            title: formData.get('title'),
+            category: formData.get('category'),
+            content: formData.get('content'),
+            bio: formData.get('bio'),
+            socialLinks: formData.get('social-links'),
+            agreement: formData.get('agreement'),
+            submittedAt: new Date().toISOString()
+          };
           
-          // Reset button after 5 seconds (in case of error)
-          setTimeout(() => {
+          // Send to Resend API
+          const response = await fetch('/api/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(submissionData)
+          });
+          
+          if (response.ok) {
+            form.reset();
+            alert('Thank you! Your story has been submitted successfully. We\'ll review it and get back to you within 3-5 days.');
+          } else {
+            throw new Error('Submission failed');
+          }
+        } catch (error) {
+          console.error('Submission error:', error);
+          alert('Sorry, there was an error submitting your story. Please try again or contact us directly.');
+        } finally {
+          if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Submit Your Story';
-          }, 5000);
+          }
         }
       });
     }
