@@ -2,6 +2,7 @@ import { defineConfig, envField, fontProviders } from "astro/config";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import {
@@ -16,6 +17,7 @@ import { SITE } from "./src/config";
 export default defineConfig({
   site: SITE.website,
   output: "server",
+  adapter: vercel(),
   integrations: [
     react(),
     sitemap({
