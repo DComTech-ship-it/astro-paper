@@ -1,7 +1,6 @@
 ---
 author: Dxmond Tecku
 pubDatetime: 2024-03-15T14:20:00Z
-
 title: Finding Joy Everyday: Simple Practices for a Happier Life
 slug: finding-joy-everyday
 featured: true
