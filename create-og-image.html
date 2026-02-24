@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OG Image Generator</title>
+</head>
+<body>
+    <canvas id="canvas" width="1200" height="630" style="border:1px solid #000;"></canvas>
+    <br>
+    <button onclick="downloadImage()">Download OG Image</button>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Create gradient background
+        const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+        gradient.addColorStop(0, '#667eea');
+        gradient.addColorStop(1, '#764ba2');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 1200, 630);
+        
+        // Add title
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 72px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Bigger Minds', 600, 280);
+        
+        // Add subtitle
+        ctx.font = '28px Arial';
+        ctx.fillText('Curiosity, creativity, and inspiration', 600, 350);
+        
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = 'biggerminds-og.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>
