@@ -12,7 +12,7 @@ Simply·You·Blog is your go-to space for everything that sparks curiosity, crea
 
 
 
-![Simply You Blog](/astropaper-og.jpg)
+![Bigger Minds](https://astro-paper-bice-pi.vercel.app/biggerminds-og.png)
 
 
 
