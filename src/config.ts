@@ -4,7 +4,7 @@ export const SITE = {
   profile: "https://yourprofile.com",
   desc: "Bigger Minds is your go-to space for everything that sparks curiosity, creativity, and inspiration. From lifestyle and personal stories to tips, ideas, and everyday musings, we explore it all with a fresh perspective and a focus on what makes life uniquely yours.",
   title: "Bigger Minds",
-  ogImage: "simply-you-og.jpg",
+  ogImage: "biggerminds-og.svg",
   lightAndDarkMode: true,
   postPerIndex: 4,
   postPerPage: 4,
