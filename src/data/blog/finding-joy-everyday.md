@@ -1,7 +1,7 @@
 ---
 author: Dxmond Tecku
 pubDatetime: 2024-03-15T14:20:00Z
-title: Finding Joy Everyday
+title: Finding Joy Everyday: Simple Practices for a Happier Life
 slug: finding-joy-everyday
 featured: true
 draft: false
@@ -10,7 +10,10 @@ tags:
   - Mindfulness
   - Everyday Life
   - Personal Growth
-description: "Discovering and celebrating the small moments of joy that make life extraordinary."
+  - Happiness
+  - Wellbeing
+description: "Discover practical ways to find and celebrate small moments of joy in your daily life. Learn mindfulness techniques and simple practices that can transform ordinary moments into extraordinary experiences of happiness and contentment."
+keywords: "finding joy, everyday happiness, mindfulness practice, gratitude, small moments, wellbeing, personal growth, daily joy, positive psychology"
 ---
 
 Joy isn't found in grand achievements or rare occasions - it's woven into the fabric of everyday life, waiting to be noticed by those who take time to look.

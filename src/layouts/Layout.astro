@@ -33,18 +33,31 @@ const socialImageURL = new URL(ogImage, Astro.url);
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
+  "@type": pubDatetime ? "BlogPosting" : "WebPage",
   headline: `${title}`,
+  description: `${description}`,
   image: `${socialImageURL}`,
+  url: canonicalURL,
   datePublished: `${pubDatetime?.toISOString()}`,
   ...(modDatetime && { dateModified: modDatetime.toISOString() }),
-  author: [
-    {
-      "@type": "Person",
-      name: `${author}`,
-      ...(profile && { url: profile }),
-    },
-  ],
+  author: {
+    "@type": "Person",
+    name: `${author}`,
+    ...(profile && { url: profile }),
+  },
+  publisher: {
+    "@type": "Organization",
+    name: SITE.title,
+    ...(SITE.website && { url: SITE.website }),
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": canonicalURL,
+  },
+  ...(pubDatetime && {
+    articleSection: "Blog",
+    wordCount: 500,
+  }),
 };
 ---
 
@@ -79,13 +92,28 @@ const structuredData = {
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
+    <meta name="keywords" content={SITE.keywords || "blog, bigger minds, curiosity, creativity, inspiration, lifestyle, personal growth, wellness"} />
+    <meta name="language" content={SITE.lang || "en"} />
+    <meta name="robots" content="index, follow" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- WhatsApp specific -->
+    <meta property="og:image:secure_url" content={socialImageURL} />
+    <meta property="og:image:alt" content={`${SITE.title} - ${description}`} />
 
     <!-- Article Published/Modified time -->
     {
@@ -111,6 +139,12 @@ const structuredData = {
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
+    <meta property="twitter:creator" content={SITE.author} />
+    
+    <!-- Additional meta tags for WhatsApp -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
     <!-- Google JSON-LD Structured data -->
     <script
@@ -128,7 +162,7 @@ const structuredData = {
       href={new URL("rss.xml", Astro.site)}
     />
 
-    <meta name="theme-color" content="" />
+    <meta name="theme-color" content="#2563eb" />
 
     {
       // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
