@@ -20,7 +20,7 @@ export const SITE = {
   authorProfiles: {
     enabled: true,
     showOnPosts: true,
-    defaultAvatar: "/images/authors/default-avatar.jpg",
+    defaultAvatar: "/images/authors/favicon-32x32.png",
     socialLinks: {
       showOnProfiles: true,
       showOnPosts: true
