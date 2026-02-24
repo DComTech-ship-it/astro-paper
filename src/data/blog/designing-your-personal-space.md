@@ -1,7 +1,7 @@
 ---
 author: Dxmond Tecku
 pubDatetime: 2022-09-23T04:58:53Z
-modDatetime: 2026-01-10T13:04:53.851Z
+modDatetime: 2026-01-10T13:04:53Z
 title: Designing Your Personal Space
 slug: designing-your-personal-space
 featured: true

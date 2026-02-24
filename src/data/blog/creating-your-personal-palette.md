@@ -1,7 +1,7 @@
 ---
 author: Dxmond Tecku
 pubDatetime: 2022-09-25T15:20:35Z
-modDatetime: 2026-01-09T15:00:15.170Z
+modDatetime: 2026-01-09T15:00:15Z
 title: Creating Your Personal Color Palette
 slug: creating-your-personal-color-palette
 featured: false

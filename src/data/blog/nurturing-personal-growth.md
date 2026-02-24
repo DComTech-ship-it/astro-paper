@@ -1,7 +1,7 @@
 ---
 title: Nurturing Your Personal Growth
 author: Dxmond Tecku
-pubDatetime: 2023-07-20T15:33:05.569Z
+pubDatetime: 2023-07-20T15:33:05Z
 slug: nurturing-your-personal-growth
 featured: false
 draft: false

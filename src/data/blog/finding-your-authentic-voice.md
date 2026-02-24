@@ -1,7 +1,7 @@
 ---
 author: Dxmond Tecku
 pubDatetime: 2022-09-23T15:22:00Z
-modDatetime: 2025-06-13T16:52:45.934Z
+modDatetime: 2025-06-13T16:52:45Z
 title: Finding Your Writing Voice
 slug: finding-your-writing-voice
 featured: true
