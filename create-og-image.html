@@ -2,11 +2,39 @@
 <html>
 <head>
     <title>OG Image Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            max-width: 100%;
+            height: auto;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background: #5a6fd8;
+        }
+    </style>
 </head>
 <body>
-    <canvas id="canvas" width="1200" height="630" style="border:1px solid #000;"></canvas>
+    <h1>Bigger Minds - OG Image Generator</h1>
+    <p>Generate optimized Open Graph images for WhatsApp sharing</p>
+    
+    <canvas id="canvas" width="1200" height="630"></canvas>
     <br>
-    <button onclick="downloadImage()">Download OG Image</button>
+    <button onclick="downloadImage()">Download OG Image (1200x630)</button>
     
     <script>
         const canvas = document.getElementById('canvas');
@@ -15,26 +43,63 @@
         // Create gradient background
         const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
         gradient.addColorStop(0, '#667eea');
-        gradient.addColorStop(1, '#764ba2');
+        gradient.addColorStop(0.5, '#764ba2');
+        gradient.addColorStop(1, '#8b5cf6');
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 1200, 630);
         
-        // Add title
+        // Add subtle pattern overlay
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+        for (let i = 0; i < 20; i++) {
+            ctx.beginPath();
+            ctx.arc(Math.random() * 1200, Math.random() * 630, Math.random() * 100 + 50, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        // Add logo circle
         ctx.fillStyle = 'white';
-        ctx.font = 'bold 72px Arial';
+        ctx.beginPath();
+        ctx.arc(600, 200, 80, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Add logo text
+        ctx.fillStyle = '#667eea';
+        ctx.font = 'bold 48px Arial';
         ctx.textAlign = 'center';
-        ctx.fillText('Bigger Minds', 600, 280);
+        ctx.fillText('BM', 600, 220);
+        
+        // Add main title
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 72px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+        ctx.shadowBlur = 10;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+        ctx.fillText('Bigger Minds', 600, 380);
         
         // Add subtitle
-        ctx.font = '28px Arial';
-        ctx.fillText('Curiosity, creativity, and inspiration', 600, 350);
+        ctx.font = '28px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        ctx.shadowBlur = 5;
+        ctx.fillText('Curiosity, creativity & everyday inspiration', 600, 440);
+        
+        // Add website URL
+        ctx.font = '20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.shadowBlur = 0;
+        ctx.fillText('astro-paper-bice-pi.vercel.app', 600, 580);
         
         function downloadImage() {
             const link = document.createElement('a');
-            link.download = 'biggerminds-og.png';
-            link.href = canvas.toDataURL();
+            link.download = 'biggerminds-og-new.png';
+            link.href = canvas.toDataURL('image/png', 0.9);
             link.click();
         }
+        
+        // Auto-generate on load
+        window.onload = () => {
+            console.log('OG Image ready for download!');
+        };
     </script>
 </body>
 </html>
