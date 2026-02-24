@@ -22,14 +22,14 @@ const {
   author = SITE.author,
   profile = SITE.profile,
   description = SITE.desc,
-  ogImage = SITE.ogImage ? `/${SITE.ogImage}` : "/og.png",
+  ogImage = SITE.ogImage.startsWith("http") ? SITE.ogImage : `/${SITE.ogImage}`,
   canonicalURL = new URL(Astro.url.pathname, Astro.url),
   pubDatetime,
   modDatetime,
   scrollSmooth = false,
 } = Astro.props;
 
-const socialImageURL = new URL(ogImage, Astro.url);
+const socialImageURL = ogImage.startsWith("http") ? ogImage : new URL(ogImage, Astro.url);
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -111,6 +111,10 @@ const structuredData = {
     <meta property="og:image:type" content="image/png" />
     <meta property="og:site_name" content={SITE.title} />
     <meta property="og:locale" content="en_US" />
+    
+    <!-- Debug info -->
+    <meta name="debug:ogImage" content={ogImage} />
+    <meta name="debug:socialImageURL" content={socialImageURL} />
     
     <!-- WhatsApp specific optimizations -->
     <meta property="og:image:secure_url" content={socialImageURL} />
