@@ -30,14 +30,13 @@ const {
 } = Astro.props;
 
 const socialImageURL = new URL(ogImage, Astro.url);
-const absoluteImageURL = `${SITE.website}${ogImage.startsWith('/') ? ogImage.slice(1) : ogImage}`;
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": pubDatetime ? "BlogPosting" : "WebPage",
   headline: `${title}`,
   description: `${description}`,
-  image: `${absoluteImageURL}`,
+  image: `${socialImageURL}`,
   url: canonicalURL,
   datePublished: `${pubDatetime?.toISOString()}`,
   ...(modDatetime && { dateModified: modDatetime.toISOString() }),
@@ -71,16 +70,12 @@ const structuredData = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/favicon.ico" />
-    
-    <!-- Favicon meta tags -->
-    <meta name="msapplication-TileColor" content="#2563eb" />
-    <meta name="theme-color" content="#2563eb" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/authors/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/authors/favicon-16x16.png" />
+    <link rel="icon" type="image/x-icon" href="/images/authors/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/authors/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/images/authors/favicon.ico" />
+    <link rel="manifest" href="/images/authors/site.webmanifest" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
@@ -110,20 +105,28 @@ const structuredData = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content={absoluteImageURL} />
+    <meta property="og:image" content={socialImageURL} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:site_name" content={SITE.title} />
     <meta property="og:locale" content="en_US" />
     
-    <!-- WhatsApp specific -->
-    <meta property="og:image:secure_url" content={absoluteImageURL} />
+    <!-- WhatsApp specific optimizations -->
+    <meta property="og:image:secure_url" content={socialImageURL} />
     <meta property="og:image:alt" content={`${SITE.title} - ${description}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:creator" content={SITE.author} />
     
-    <!-- Additional WhatsApp optimization -->
-    <meta name="whatsapp:button" content="share" />
-    <meta property="og:updated_time" content={new Date().toISOString()} />
+    <!-- Additional WhatsApp/SEO meta tags -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#2563eb" />
 
     <!-- Article Published/Modified time -->
     {
@@ -143,19 +146,6 @@ const structuredData = {
       )
     }
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={absoluteImageURL} />
-    <meta property="twitter:creator" content={SITE.author} />
-    
-    <!-- Additional meta tags for WhatsApp -->
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-
     <!-- Google JSON-LD Structured data -->
     <script
       type="application/ld+json"
@@ -174,17 +164,12 @@ const structuredData = {
 
     <meta name="theme-color" content="#2563eb" />
 
-    {
-      // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
-      // include google-site-verification tag in the heading
-      // Learn more: https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag
-      PUBLIC_GOOGLE_SITE_VERIFICATION && (
-        <meta
-          name="google-site-verification"
-          content={PUBLIC_GOOGLE_SITE_VERIFICATION}
-        />
-      )
-    }
+    {PUBLIC_GOOGLE_SITE_VERIFICATION && (
+      <meta
+        name="google-site-verification"
+        content={PUBLIC_GOOGLE_SITE_VERIFICATION}
+      />
+    )}
 
     <ClientRouter />
 
