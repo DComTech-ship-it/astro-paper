@@ -4,7 +4,7 @@ export const SITE = {
   profile: "https://yourprofile.com",
   desc: "Bigger Minds is your go-to space for everything that sparks curiosity, creativity, and inspiration. From lifestyle and personal stories to tips, ideas, and everyday musings, we explore it all with a fresh perspective and a focus on what makes life uniquely yours.",
   title: "Bigger Minds",
-  ogImage: "https://astro-paper-bice-pi.vercel.app/biggerminds-og-small.png",
+  ogImage: "https://astro-paper-bice-pi.vercel.app/biggerminds-og-optimized.png",
   keywords: "bigger minds, curiosity, creativity, inspiration, lifestyle, personal growth, wellness, mindfulness, happiness, self-improvement, everyday life, personal development",
   lightAndDarkMode: true,
   postPerIndex: 4,

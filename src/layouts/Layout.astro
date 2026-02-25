@@ -113,11 +113,7 @@ const structuredData = {
     <meta property="og:image:alt" content={`${SITE.title} - ${description}`} />
     <meta property="og:site_name" content={SITE.title} />
     <meta property="og:locale" content="en_US" />
-    
-    <!-- Debug meta tags -->
-    <meta name="debug:ogImage" content={ogImage} />
-    <meta name="debug:socialImageURL" content={socialImageURL} />
-    <meta name="debug:imageSize" content="Small optimized version for WhatsApp" />
+    <meta property="og:image:secure_url" content={socialImageURL} />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
