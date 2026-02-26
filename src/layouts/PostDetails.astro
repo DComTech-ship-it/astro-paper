@@ -11,6 +11,7 @@ import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
 import Comments from "@/components/Comments";
 import AuthorProfile from "@/components/AuthorProfile.astro";
+import authorsData from "@/data/authors.json";
 import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
@@ -36,6 +37,16 @@ const {
   tags,
   hideEditPost,
 } = post.data;
+
+// Get author data from authors.json or create fallback
+const authorId = author.toLowerCase().replace(/\s+/g, '-');
+const authorData = authorsData[authorId] || {
+  id: authorId,
+  name: author,
+  email: `${author.toLowerCase().replace(/\s+/g, '.')}@miawoezo.com`,
+  bio: `Passionate writer and contributor to Bigger Minds. Sharing insights on ${tags ? tags.slice(0, 3).join(', ') : 'various topics'} to inspire and educate readers.`,
+  isGuest: author !== "Dxmond Tecku"
+};
 
 const { Content } = await render(post);
 
@@ -121,13 +132,7 @@ const nextPost =
     <!-- Author Profile Section -->
     <section class="my-8">
       <AuthorProfile 
-        author={{
-          id: author.toLowerCase().replace(/\s+/g, '-'),
-          name: author,
-          email: `${author.toLowerCase().replace(/\s+/g, '.')}@miawoezo.com`,
-          bio: `Passionate writer and contributor to Bigger Minds. Sharing insights on ${tags ? tags.slice(0, 3).join(', ') : 'various topics'} to inspire and educate readers.`,
-          isGuest: author !== "Dxmond Tecku"
-        }}
+        author={authorData}
         size="lg"
         showSocialLinks={true}
       />
