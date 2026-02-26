@@ -27,16 +27,16 @@ const sizeClasses = {
     bio: "text-xs"
   },
   md: {
-    container: "flex items-start gap-4 p-4 bg-background border border-border rounded-lg shadow-sm",
+    container: "flex items-center gap-4 p-4 bg-background border border-border rounded-lg shadow-sm",
     avatar: "w-12 h-12",
     name: "text-base font-medium",
     bio: "text-sm"
   },
   lg: {
-    container: "flex items-start gap-6 p-6 bg-background border border-border rounded-lg shadow-sm",
-    avatar: "w-16 h-16",
-    name: "text-lg font-medium",
-    bio: "text-base"
+    container: "flex items-center gap-4 p-4 bg-background border border-border rounded-lg shadow-sm sm:gap-6 sm:p-6",
+    avatar: "w-12 h-12 sm:w-16 sm:h-16",
+    name: "text-base font-medium sm:text-lg",
+    bio: "text-sm sm:text-base"
   }
 };
 
@@ -64,10 +64,10 @@ const classes = sizeClasses[size];
 
   <!-- Author Info -->
   <div class="flex-1 min-w-0">
-    <div class="flex items-center gap-2 flex-wrap">
-      <h3 class:list={[classes.name, "text-foreground"]}>{author.name}</h3>
+    <div class="flex items-center gap-2 flex-wrap sm:gap-3">
+      <h3 class:list={[classes.name, "text-foreground font-semibold"]}>{author.name}</h3>
       {author.isGuest && (
-        <span class="px-2 py-1 bg-accent/10 text-accent text-xs rounded-full border border-accent/20">
+        <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full border border-accent/30">
           Guest Author
         </span>
       )}
@@ -79,17 +79,17 @@ const classes = sizeClasses[size];
     </div>
 
     {showBio && author.bio && (
-      <p class:list={[classes.bio, "text-muted mt-1 line-clamp-2"]}>{author.bio}</p>
+      <p class:list={[classes.bio, "text-foreground/80 mt-2 line-clamp-3 leading-relaxed"]}>{author.bio}</p>
     )}
 
     {showSocialLinks && author.socialLinks && (
-      <div class="flex gap-3 mt-3">
+      <div class="flex gap-2 mt-3 sm:gap-3 sm:mt-4">
         {author.socialLinks.website && (
           <a 
             href={author.socialLinks.website} 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-muted hover:text-accent transition-colors duration-200 hover:scale-110 transform"
+            class="text-foreground/60 hover:text-accent transition-all duration-200 hover:scale-110 transform p-1 rounded hover:bg-accent/10"
             aria-label="Website"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -103,7 +103,7 @@ const classes = sizeClasses[size];
             href={author.socialLinks.twitter} 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-muted hover:text-accent transition-colors duration-200 hover:scale-110 transform"
+            class="text-foreground/60 hover:text-accent transition-all duration-200 hover:scale-110 transform p-1 rounded hover:bg-accent/10"
             aria-label="Twitter"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -116,7 +116,7 @@ const classes = sizeClasses[size];
             href={author.socialLinks.linkedin} 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-muted hover:text-accent transition-colors duration-200 hover:scale-110 transform"
+            class="text-foreground/60 hover:text-accent transition-all duration-200 hover:scale-110 transform p-1 rounded hover:bg-accent/10"
             aria-label="LinkedIn"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -129,7 +129,7 @@ const classes = sizeClasses[size];
             href={author.socialLinks.github} 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-muted hover:text-accent transition-colors duration-200 hover:scale-110 transform"
+            class="text-foreground/60 hover:text-accent transition-all duration-200 hover:scale-110 transform p-1 rounded hover:bg-accent/10"
             aria-label="GitHub"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
