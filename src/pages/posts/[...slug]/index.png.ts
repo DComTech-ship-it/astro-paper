@@ -29,6 +29,9 @@ export const GET: APIRoute = async ({ props }) => {
 
   const buffer = await generateOgImageForPost(props as CollectionEntry<"blog">);
   return new Response(new Uint8Array(buffer), {
-    headers: { "Content-Type": "image/png" },
+    headers: { 
+      "Content-Type": "image/png",
+      "Cache-Control": "public, max-age=86400, s-maxage=86400"
+    },
   });
 };
