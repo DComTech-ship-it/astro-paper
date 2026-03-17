@@ -69,7 +69,7 @@ export default defineConfig({
     schema: {
       PUBLIC_GOOGLE_SITE_VERIFICATION: envField.string({
         access: "public",
-        context: "server",
+        context: "client",
         optional: true,
       }),
     },
@@ -78,19 +78,11 @@ export default defineConfig({
     preserveScriptOrder: true,
     fonts: [
       {
-        name: "Roboto",
-        cssVariable: "--font-roboto",
-        provider: fontProviders.google(),
-        fallbacks: ["system-ui", "sans-serif"],
-        weights: [300, 400, 500, 700],
-        styles: ["normal", "italic"],
-      },
-      {
-        name: "Roboto Mono",
-        cssVariable: "--font-roboto-mono",
+        name: "Google Sans Code",
+        cssVariable: "--font-google-sans-code",
         provider: fontProviders.google(),
         fallbacks: ["monospace"],
-        weights: [400, 500],
+        weights: [300, 400, 500, 600, 700],
         styles: ["normal", "italic"],
       },
     ],
