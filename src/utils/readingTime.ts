@@ -4,8 +4,8 @@
  * @returns Reading time in minutes
  */
 export function calculateReadingTime(content: string): number {
-  // Average reading speed: 200 words per minute
-  const wordsPerMinute = 200;
+  // Average reading speed: 15 words per minute
+  const wordsPerMinute = 15;
   
   // Remove HTML tags and get plain text
   const plainText = content
