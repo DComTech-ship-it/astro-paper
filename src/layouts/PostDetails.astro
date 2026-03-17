@@ -43,11 +43,11 @@ const authorId = author.toLowerCase().replace(/\s+/g, '-');
 const authorData = authorsData[authorId] || {
   id: authorId,
   name: author,
-  email: `${author.toLowerCase().replace(/\s+/g, '.')}@miawoezo.com`,
+  email: `${author.toLowerCase().replace(/\s+/g, '.')}@biggerminds.com`,
   bio: `Passionate writer and contributor to Bigger Minds. Sharing insights on ${tags ? tags.slice(0, 3).join(', ') : 'various topics'} to inspire and educate readers.`,
   isGuest: author !== "Dxmond Tecku",
   socialLinks: {
-    website: "https://miawoezo.com",
+    website: "https://biggerminds.vercel.app",
     twitter: "https://twitter.com/dxmond",
     linkedin: "https://linkedin.com/in/dxmond"
   }
