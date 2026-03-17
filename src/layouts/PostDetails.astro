@@ -45,7 +45,12 @@ const authorData = authorsData[authorId] || {
   name: author,
   email: `${author.toLowerCase().replace(/\s+/g, '.')}@miawoezo.com`,
   bio: `Passionate writer and contributor to Bigger Minds. Sharing insights on ${tags ? tags.slice(0, 3).join(', ') : 'various topics'} to inspire and educate readers.`,
-  isGuest: author !== "Dxmond Tecku"
+  isGuest: author !== "Dxmond Tecku",
+  socialLinks: {
+    website: "https://miawoezo.com",
+    twitter: "https://twitter.com/dxmond",
+    linkedin: "https://linkedin.com/in/dxmond"
+  }
 };
 
 const { Content } = await render(post);
@@ -133,7 +138,7 @@ const nextPost =
     <section class="my-8">
       <AuthorProfile 
         author={authorData}
-        size="lg"
+        size="sm"
         showSocialLinks={true}
       />
     </section>

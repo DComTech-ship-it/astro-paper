@@ -144,8 +144,8 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Send notification email to admin
-    const adminEmail = {
+    // Send notification email
+    const notificationEmail = {
       from: 'noreply@miawoezo.com',
       to: ['admin@miawoezo.com'],
       subject: `New Guest Post Submission: ${sanitizedTitle}`,
@@ -221,7 +221,7 @@ export const POST: APIRoute = async ({ request }) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(adminEmail)
+      body: JSON.stringify(notificationEmail)
     });
 
     if (!resendResponse.ok) {

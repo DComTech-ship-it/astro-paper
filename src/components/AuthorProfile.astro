@@ -21,20 +21,17 @@ const {
 
 const sizeClasses = {
   sm: {
-    container: "flex items-center gap-3 p-3 bg-background border border-border rounded-lg",
-    avatar: "w-10 h-10",
+    container: "flex flex-col gap-2 p-3 bg-background border border-border rounded-lg",
     name: "text-sm font-medium",
     bio: "text-xs"
   },
   md: {
-    container: "flex items-center gap-4 p-4 bg-background border border-border rounded-lg shadow-sm",
-    avatar: "w-12 h-12",
+    container: "flex flex-col gap-3 p-4 bg-background border border-border rounded-lg shadow-sm",
     name: "text-base font-medium",
     bio: "text-sm"
   },
   lg: {
-    container: "flex items-center gap-4 p-4 bg-background border border-border rounded-lg shadow-sm sm:gap-6 sm:p-6",
-    avatar: "w-12 h-12 sm:w-16 sm:h-16",
+    container: "flex flex-col gap-3 p-4 bg-background border border-border rounded-lg shadow-sm sm:p-6",
     name: "text-base font-medium sm:text-lg",
     bio: "text-sm sm:text-base"
   }
@@ -43,27 +40,9 @@ const sizeClasses = {
 const classes = sizeClasses[size];
 ---
 
-<div class:list([classes.container, className, "hover:shadow-md transition-shadow duration-200"])}>
-  <!-- Avatar -->
-  <div class="shrink-0">
-    {author.avatar ? (
-      <img 
-        src={author.avatar} 
-        alt={`${author.name}'s avatar`}
-        class:list={[classes.avatar, "rounded-full object-cover bg-muted border-2 border-border"]}
-        loading="lazy"
-      />
-    ) : (
-      <div class:list={[classes.avatar, "rounded-full bg-accent/10 flex items-center justify-center border-2 border-border"]}>
-        <span class="text-accent font-medium">
-          {author.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)}
-        </span>
-      </div>
-    )}
-  </div>
-
+<div class:list([classes.container, className, "hover:shadow-md transition-shadow duration-200"])>
   <!-- Author Info -->
-  <div class="flex-1 min-w-0">
+  <div class="min-w-0">
     <div class="flex items-center gap-2 flex-wrap sm:gap-3">
       <h3 class:list={[classes.name, "text-foreground font-semibold"]}>{author.name}</h3>
       {author.isGuest && (
@@ -83,13 +62,13 @@ const classes = sizeClasses[size];
     )}
 
     {showSocialLinks && author.socialLinks && (
-      <div class="flex gap-2 mt-3 sm:gap-3 sm:mt-4">
+      <div class="flex gap-3 mt-4">
         {author.socialLinks.website && (
           <a 
             href={author.socialLinks.website} 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-foreground/60 hover:text-accent transition-all duration-200 hover:scale-110 transform p-1 rounded hover:bg-accent/10"
+            class="text-muted hover:text-accent transition-colors duration-200 p-2 rounded-md hover:bg-accent/10 border border-border/50 hover:border-accent/50"
             aria-label="Website"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -103,7 +82,7 @@ const classes = sizeClasses[size];
             href={author.socialLinks.twitter} 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-foreground/60 hover:text-accent transition-all duration-200 hover:scale-110 transform p-1 rounded hover:bg-accent/10"
+            class="text-muted hover:text-accent transition-colors duration-200 p-2 rounded-md hover:bg-accent/10 border border-border/50 hover:border-accent/50"
             aria-label="Twitter"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -116,7 +95,7 @@ const classes = sizeClasses[size];
             href={author.socialLinks.linkedin} 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-foreground/60 hover:text-accent transition-all duration-200 hover:scale-110 transform p-1 rounded hover:bg-accent/10"
+            class="text-muted hover:text-accent transition-colors duration-200 p-2 rounded-md hover:bg-accent/10 border border-border/50 hover:border-accent/50"
             aria-label="LinkedIn"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -129,7 +108,7 @@ const classes = sizeClasses[size];
             href={author.socialLinks.github} 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-foreground/60 hover:text-accent transition-all duration-200 hover:scale-110 transform p-1 rounded hover:bg-accent/10"
+            class="text-muted hover:text-accent transition-colors duration-200 p-2 rounded-md hover:bg-accent/10 border border-border/50 hover:border-accent/50"
             aria-label="GitHub"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">

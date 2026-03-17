@@ -88,7 +88,7 @@ Everyone's natural rhythms are unique. Here are some examples:
 
 ### The Creative Rhythm
 - Morning: Creative work when mind is fresh
-- Afternoon: Administrative tasks and planning  
+- Afternoon: Planning and organization  
 - Evening: Reading, learning, and inspiration
 
 ### The Social Rhythm

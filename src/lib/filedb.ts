@@ -497,7 +497,7 @@ Engaging in creative activities is one of the most powerful ways to enhance your
         id: 1,
         name: "Dxmond Tecku",
         email: "dxmond@biggerminds.com",
-        role: "admin",
+        role: "author",
         bio: "Founder and main author of Bigger Minds. Passionate about exploring ideas that spark curiosity and creativity.",
         avatar: "/images/authors/dxmond-tecku.jpg",
         socialLinks: {
