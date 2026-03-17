@@ -66,7 +66,7 @@ if (typeof initOgImage === "string") {
 
 // Use dynamic OG image if enabled and no remote|local ogImage
 if (!ogImageUrl && SITE.dynamicOgImage) {
-  ogImageUrl = `/posts/${post.slug}/index.png`;
+  ogImageUrl = `/posts/${post.id}/index.png`;
 }
 
 // Resolve OG image URL (or fallback to SITE.ogImage / default `og.png`)
@@ -77,6 +77,7 @@ const ogImage = ogImageUrl
 const layoutProps = {
   title: `${title} | ${SITE.title}`,
   author,
+};
 
 /* ========== Prev/Next Posts ========== */
 
