@@ -1,5 +1,5 @@
 export const SITE = {
-  website: "https://biggerminds.vercel.app/", // replace this with your deployed domain
+  website: "https://biggerminds.vercel.app", // replace this with your deployed domain
   author: "Dxmond Tecku",
   profile: "https://biggerminds.vercel.app",
   desc: "Bigger Minds is your go-to space for everything that sparks curiosity, creativity, and inspiration. From lifestyle and personal stories to tips, ideas, and everyday musings, we explore it all with a fresh perspective and a focus on what makes life uniquely yours.",
