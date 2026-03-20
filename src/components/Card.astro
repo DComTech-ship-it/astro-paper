@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@/utils/slugify";
 import { getPath } from "@/utils/getPath";
 import { calculateReadingTime } from "@/utils/readingTime";
+import fs from 'fs';
 import Datetime from "./Datetime.astro";
 import IconUser from "@/assets/icons/IconUser.svg";
 import IconClock from "@/assets/icons/IconClock.svg";
@@ -15,8 +16,18 @@ const { variant: Heading = "h2", id, data, filePath } = Astro.props;
 
 const { title, description, author } = data;
 
-// Calculate reading time from the body content
-const readingTime = calculateReadingTime(data.body || "");
+// Calculate reading time from the actual file content
+let fileContent = "";
+try {
+  // Try to read the actual markdown file
+  const fullPath = new URL(`../../data/blog/${filePath}`, import.meta.url);
+  fileContent = fs.readFileSync(fullPath, 'utf-8');
+} catch (error) {
+  // Fallback to body if file reading fails
+  fileContent = data.body || "";
+}
+
+const readingTime = calculateReadingTime(fileContent);
 
 ---
 

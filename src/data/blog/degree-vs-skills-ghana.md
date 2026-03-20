@@ -11,14 +11,8 @@ tags:
   - Skills
   - Career
   - Employment
-description: "An exploration of the debate between university degrees and practical skills in Ghana's evolving job market."
+description: An exploration of the debate between university degrees and practical skills in Ghana's evolving job market.
 ---
-
-#  Degree vs Skills in Ghana: What Really Matters in Today's Job Market?
-
-![University Students in Ghana](https://images.unsplash.com/photo-1523580846011-d3a5bc25702b)
-
-## Introduction
 
 For decades, the common belief in Ghana has been simple: **go to school, get a university degree, and you will secure a good job.** Parents encourage their children to pursue higher education, and society often equates academic success with career success.
 
@@ -30,9 +24,19 @@ This has sparked an ongoing debate:
 
 This article explores both sides of the argument using data, online discussions, and labour market insights.
 
----
+<figure>
+  <img
+    src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b"
+    alt="University students in Ghana"
+  />
+    <figcaption class="text-center">
+      University education has long been seen as the path to success in Ghana
+    </figcaption>
+</figure>
 
-#  The Current Employment Situation in Ghana
+## Table of contents
+
+## The Current Employment Situation in Ghana
 
 Recent labour statistics reveal a challenging job market for young people in Ghana.
 
@@ -50,13 +54,11 @@ This creates a paradox:
 - Degrees are required  
 - But **degrees alone are not enough**
 
----
-
-#  The Case for University Degrees
+## The Case for University Degrees
 
 Despite criticism, university degrees still offer several advantages.
 
-## 1️ Higher Income Potential
+### Higher Income Potential
 
 Studies show that degree holders generally earn more than people with lower levels of education.
 
@@ -67,9 +69,7 @@ In Ghana, professionals with degrees can earn:
 
 This suggests that higher education can still provide a strong return on investment.
 
----
-
-## 2️ Access to Professional Careers
+### Access to Professional Careers
 
 Certain careers require formal academic training, including:
 
@@ -81,9 +81,7 @@ Certain careers require formal academic training, including:
 
 Without a degree, entering these fields is nearly impossible.
 
----
-
-## 3️ Personal Development and Knowledge
+### Personal Development and Knowledge
 
 Universities also provide:
 
@@ -94,15 +92,11 @@ Universities also provide:
 
 Modern universities in Ghana are also investing in **digital classrooms and technology-enabled learning environments** to improve the student experience.
 
----
-
-#  The Case for Skills-Based Education
+## The Case for Skills-Based Education
 
 In recent years, **skills training and vocational education** have gained recognition as powerful alternatives.
 
----
-
-## 1️ Demand for Practical Skills
+### Demand for Practical Skills
 
 Employers often complain that many graduates have **theoretical knowledge but lack practical experience**.
 
@@ -116,9 +110,7 @@ Industries now require skills such as:
 
 Technical and vocational training graduates often find work faster in practical industries.
 
----
-
-## 2️ Faster Entry into the Workforce
+### Faster Entry into the Workforce
 
 Unlike university education, which may take **four or more years**, many skill programs can be completed in **6 months to 2 years**.
 
@@ -128,9 +120,7 @@ This allows young people to:
 - Gain practical experience quickly  
 - Start businesses or freelance work  
 
----
-
-## 3️ Growth of the Digital Economy
+### Growth of the Digital Economy
 
 Ghana's growing tech sector shows how skills can sometimes outweigh formal degrees.
 
@@ -142,9 +132,7 @@ Many programmers, designers, and digital entrepreneurs learn through:
 
 These alternative learning paths are becoming increasingly popular among young people.
 
----
-
-#  Public Opinion: What People Say Online
+## Public Opinion: What People Say Online
 
 Discussions across online forums often highlight frustration among graduates.
 
@@ -156,15 +144,11 @@ Another commented that many graduates possess **"book knowledge with little prac
 
 These perspectives reflect a growing perception that **skills and experience matter just as much as academic credentials.**
 
----
-
-#  Video: Skills vs Degrees Debate
+## Video: Skills vs Degrees Debate
 
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/2jIia7aXins" title="Skills vs Degrees Debate" frameborder="0" allowfullscreen></iframe>
 
----
-
-#  The Real Solution: Combining Degrees and Skills
+## The Real Solution: Combining Degrees and Skills
 
 Instead of treating degrees and skills as opposites, experts increasingly recommend **combining both**.
 
@@ -184,9 +168,7 @@ For example:
 
 Graduates who combine **education with real-world skills** tend to perform better in the job market.
 
----
-
-#  The Future of Education in Ghana
+## The Future of Education in Ghana
 
 To address unemployment and skill gaps, Ghana is expanding:
 
@@ -196,9 +178,7 @@ To address unemployment and skill gaps, Ghana is expanding:
 
 The goal is to align education with **real economic needs**, reducing the mismatch between training and available jobs.
 
----
-
-#  Conclusion
+## Conclusion
 
 The debate between **degrees and skills** in Ghana is not about choosing one over the other.
 
@@ -226,9 +206,7 @@ but rather:
 
 > **"How can we integrate both to build a stronger workforce?"**
 
----
-
-#  Key Takeaways
+## Key Takeaways
 
 ```
 Degrees provide: Theoretical knowledge, professional credibility, access to specialized careers
