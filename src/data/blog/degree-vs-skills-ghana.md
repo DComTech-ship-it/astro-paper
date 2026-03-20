@@ -1,6 +1,6 @@
 ---
 author: Desmond Tecku
-pubDatetime: 2026-03-20T12:00:00Z
+pubDatetime: 2025-08-24T12:00:00Z
 title: Degree vs Skills in Ghana
 slug: degree-vs-skills-ghana
 featured: true
