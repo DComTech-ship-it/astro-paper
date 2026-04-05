@@ -16,9 +16,19 @@ description: Every ending carries within it the seed of a new beginning. A power
 
 # Rise. Believe. Begin Again.
 
-![Easter Sunrise](https://unsplash.com/photos/brown-rock-formation-during-daytime-ci1F55HaVWQ)
+<figure>
+  <img
+    src="https://unsplash.com/photos/brown-rock-formation-during-daytime-ci1F55HaVWQ"
+    alt="Easter sunrise symbolizing new beginnings and hope"
+  />
+  <figcaption class="text-center">
+    Every ending carries within it the seed of a new beginning
+  </figcaption>
+</figure>
 
 Every ending carries within it the seed of a new beginning. Easter is not just a date on the calendar — it is a reminder that no matter how dark the Friday, Sunday is always coming.
+
+## Table of contents
 
 ## The Promise of Sunday
 
@@ -26,19 +36,27 @@ Life will press you down. There will be moments that feel like the tomb — sile
 
 Easter speaks to the fighter in you. It says:
 
-**You were not made to stay buried. You were made to rise.**
+"You were not made to stay buried. You were made to rise."
 
 Whatever you have lost — your confidence, your joy, your sense of purpose — this season is your invitation to reclaim it. The same power that brought life out of death is working in your story right now.
 
 ## The Journey Through Darkness
 
-![Cross at Sunrise](https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop&auto=format)
+<figure>
+  <img
+    src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop&auto=format"
+    alt="Cross at sunrise representing hope and redemption"
+  />
+  <figcaption class="text-center">
+    Don't give up on Friday. Your Sunday is on its way.
+  </figcaption>
+</figure>
 
 Don't give up on Friday. Don't lose hope on Saturday. Your Sunday is on its way.
 
 This Easter, choose to rise above doubt. Rise above fear. Rise above every voice that told you it was over. Because the greatest comeback in history happened on a morning just like this — and yours is next.
 
-**Rise. Believe. Begin again.** 
+**Rise. Believe. Begin again.**
 
 ## Watch & Be Inspired
 
@@ -53,29 +71,33 @@ This Easter, choose to rise above doubt. Rise above fear. Rise above every voice
   </iframe>
 </div>
 
-▶ *He Is Risen — Easter Worship Video* 
+▶ *He Is Risen — Easter Worship Video*
 
 ## Words of Inspiration
 
 ### Memory Verse
 
-> "Jesus said to her, 'I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.'"
-> 
-> — John 11:25 (ESV)
+"Jesus said to her, 'I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.'"
 
-*Click to copy: Jesus said to her, "I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live." — John 11:25 (ESV)*
+— John 11:25 (ESV)
 
 ### Bonus Memory Verse
 
-> "He is not here; he has risen, just as he said. Come and see the place where he lay."
-> 
-> — Matthew 28:6 (NIV)
+"He is not here; he has risen, just as he said. Come and see the place where he lay."
 
-*Click to copy: He is not here; he has risen, just as he said. Come and see the place where he lay. — Matthew 28:6 (NIV)*
+— Matthew 28:6 (NIV)
 
 ## Your Comeback Story
 
-![Empty Tomb](https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&auto=format)
+<figure>
+  <img
+    src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&auto=format"
+    alt="Empty tomb representing resurrection and new life"
+  />
+  <figcaption class="text-center">
+    The resurrection story isn't just about what happened thousands of years ago
+  </figcaption>
+</figure>
 
 The resurrection story isn't just about what happened thousands of years ago — it's about what's happening in your life right now. Every setback, every failure, every moment of despair is setting the stage for your greatest comeback.
 
@@ -89,15 +111,37 @@ No matter what Friday you're experiencing, hold on. Your Sunday is coming.
 
 ## Practical Steps to Rise Again
 
-1. **Acknowledge the Pain**: Don't pretend everything is okay. Your feelings are valid.
-2. **Hold onto Hope**: Even the smallest spark of hope can light up the darkest night.
-3. **Take the Next Step**: You don't need to see the whole staircase, just take the first step.
-4. **Trust the Process**: The same power that brought life from death is working in your story.
-5. **Share Your Hope**: Your story of rising can inspire others to rise too.
+### Acknowledge the Pain
+
+Don't pretend everything is okay. Your feelings are valid. It's important to recognize and honor your struggles rather than dismissing them.
+
+### Hold onto Hope
+
+Even the smallest spark of hope can light up the darkest night. When everything feels hopeless, hold onto that tiny flicker of possibility.
+
+### Take the Next Step
+
+You don't need to see the whole staircase, just take the first step. Small, consistent actions create momentum toward your breakthrough.
+
+### Trust the Process
+
+The same power that brought life from death is working in your story. Your current circumstances don't determine your final outcome.
+
+### Share Your Hope
+
+Your story of rising can inspire others to rise too. When you share your journey, you give permission for others to believe in their own comeback.
 
 ## A New Dawn Awaits
 
-![New Beginning Sunrise](https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop&auto=format)
+<figure>
+  <img
+    src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop&auto=format"
+    alt="New beginning sunrise symbolizing hope and fresh starts"
+  />
+  <figcaption class="text-center">
+    Today is your Sunday. Rise up and walk in your new beginning.
+  </figcaption>
+</figure>
 
 As you reflect on this Easter season, remember that you are part of a bigger story — a story of redemption, hope, and endless possibilities.
 
