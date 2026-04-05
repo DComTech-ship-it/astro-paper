@@ -16,7 +16,7 @@ description: Every ending carries within it the seed of a new beginning. A power
 
 # Rise. Believe. Begin Again.
 
-![Easter Sunrise](https://images.unsplash.com/photo-1559650620-12ed68a563b4?w=800&h=400&fit=crop&auto=format)
+![Easter Sunrise](https://unsplash.com/photos/brown-rock-formation-during-daytime-ci1F55HaVWQ)
 
 Every ending carries within it the seed of a new beginning. Easter is not just a date on the calendar — it is a reminder that no matter how dark the Friday, Sunday is always coming.
 
@@ -59,33 +59,19 @@ This Easter, choose to rise above doubt. Rise above fear. Rise above every voice
 
 ### Memory Verse
 
-<div style="background-color: #1e1e1e; padding: 20px; border-radius: 8px; border-left: 4px solid #007acc; margin: 20px 0; position: relative;">
-  <button 
-    onclick="navigator.clipboard.writeText('Jesus said to her, \"I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.\" — John 11:25 (ESV)')"
-    style="position: absolute; top: 10px; right: 10px; background: #007acc; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; font-family: monospace;">
-     Copy
-  </button>
-  
-  <pre style="margin: 0; color: #d4d4d4; font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.6; white-space: pre-wrap;"><code>"Jesus said to her, 'I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.'"</code></pre>
-  <p style="margin: 10px 0 0 0; font-weight: bold; color: #569cd6; font-family: monospace;">
-    — John 11:25 (ESV)
-  </p>
-</div>
+> "Jesus said to her, 'I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.'"
+> 
+> — John 11:25 (ESV)
+
+*Click to copy: Jesus said to her, "I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live." — John 11:25 (ESV)*
 
 ### Bonus Memory Verse
 
-<div style="background-color: #1e1e1e; padding: 20px; border-radius: 8px; border-left: 4px solid #28a745; margin: 20px 0; position: relative;">
-  <button 
-    onclick="navigator.clipboard.writeText('He is not here; he has risen, just as he said. Come and see the place where he lay. — Matthew 28:6 (NIV)')"
-    style="position: absolute; top: 10px; right: 10px; background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; font-family: monospace;">
-     Copy
-  </button>
-  
-  <pre style="margin: 0; color: #d4d4d4; font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.6; white-space: pre-wrap;"><code>"He is not here; he has risen, just as he said. Come and see the place where he lay."</code></pre>
-  <p style="margin: 10px 0 0 0; font-weight: bold; color: #4ec9b0; font-family: monospace;">
-    — Matthew 28:6 (NIV)
-  </p>
-</div>
+> "He is not here; he has risen, just as he said. Come and see the place where he lay."
+> 
+> — Matthew 28:6 (NIV)
+
+*Click to copy: He is not here; he has risen, just as he said. Come and see the place where he lay. — Matthew 28:6 (NIV)*
 
 ## Your Comeback Story
 
