@@ -109,17 +109,9 @@ Don't pretend everything is okay. Your feelings are valid. It's important to rec
 
 Even the smallest spark of hope can light up the darkest night. When everything feels hopeless, hold onto that tiny flicker of possibility.
 
-### Take the Next Step
-
-You don't need to see the whole staircase, just take the first step. Small, consistent actions create momentum toward your breakthrough.
-
-### Trust the Process
-
-The same power that brought life from death is working in your story. Your current circumstances don't determine your final outcome.
-
 ### Share Your Hope
 
-Your story of rising can inspire others to rise too. When you share your journey, you give permission for others to believe in their own comeback.
+Your story of rising can inspire others to rise too. When you share your journey, you give permission for others to believe in their own comeback stories.
 
 ## A New Dawn Awaits
 
@@ -133,7 +125,7 @@ Your story of rising can inspire others to rise too. When you share your journey
   </figcaption>
 </figure>
 
-As you reflect on this Easter season, remember that you are part of a bigger story — a story of redemption, hope, and endless possibilities.
+As you reflect on this Easter season, remember that you are part of a bigger story, a story of redemption, hope, and endless possibilities.
 
 The stone has been rolled away. The tomb is empty. Victory is yours.
 
