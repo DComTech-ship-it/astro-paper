@@ -77,15 +77,15 @@ This Easter, choose to rise above doubt. Rise above fear. Rise above every voice
 
 ### Memory Verse
 
-"Jesus said to her, 'I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.'"
-
-— John 11:25 (ESV)
+> "Jesus said to her, 'I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.'"
+> 
+> — John 11:25 (ESV)
 
 ### Bonus Memory Verse
 
-"He is not here; he has risen, just as he said. Come and see the place where he lay."
-
-— Matthew 28:6 (NIV)
+> "He is not here; he has risen, just as he said. Come and see the place where he lay."
+> 
+> — Matthew 28:6 (NIV)
 
 ## Your Comeback Story
 
