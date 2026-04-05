@@ -18,8 +18,8 @@ description: Every ending carries within it the seed of a new beginning. A power
 
 <figure>
   <img
-    src="https://images.unsplash.com/photo-1559650620-12ed68a563b4?w=800&h=400&fit=crop&auto=format"
-    alt="Easter sunrise symbolizing new beginnings and hope"
+    src="https://unsplash.com/photos/ci1F55HaVWQ/download?force=true"
+    alt="Silhouette of Jesus Christ in blue sky with resurrection light"
   />
   <figcaption class="text-center">
     Every ending carries within it the seed of a new beginning
@@ -41,16 +41,6 @@ Easter speaks to the fighter in you. It says:
 Whatever you have lost — your confidence, your joy, your sense of purpose — this season is your invitation to reclaim it. The same power that brought life out of death is working in your story right now.
 
 ## The Journey Through Darkness
-
-<figure>
-  <img
-    src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop&auto=format"
-    alt="Cross at sunrise representing hope and redemption"
-  />
-  <figcaption class="text-center">
-    Don't give up on Friday. Your Sunday is on its way.
-  </figcaption>
-</figure>
 
 Don't give up on Friday. Don't lose hope on Saturday. Your Sunday is on its way.
 
@@ -91,8 +81,8 @@ This Easter, choose to rise above doubt. Rise above fear. Rise above every voice
 
 <figure>
   <img
-    src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&auto=format"
-    alt="Empty tomb representing resurrection and new life"
+    src="https://unsplash.com/photos/v2HgNzRDfII/download?force=true"
+    alt="Dramatic sunrise lighting with large cross and burial cloth"
   />
   <figcaption class="text-center">
     The resurrection story isn't just about what happened thousands of years ago
@@ -135,8 +125,8 @@ Your story of rising can inspire others to rise too. When you share your journey
 
 <figure>
   <img
-    src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop&auto=format"
-    alt="New beginning sunrise symbolizing hope and fresh starts"
+    src="https://unsplash.com/photos/fL5M_GgZ_w8/download?force=true"
+    alt="Jesus cross on a heavenly background with dramatic lighting"
   />
   <figcaption class="text-center">
     Today is your Sunday. Rise up and walk in your new beginning.
