@@ -18,7 +18,7 @@ description: Every ending carries within it the seed of a new beginning. A power
 
 <figure>
   <img
-    src="https://unsplash.com/photos/brown-rock-formation-during-daytime-ci1F55HaVWQ"
+    src="https://images.unsplash.com/photo-1559650620-12ed68a563b4?w=800&h=400&fit=crop&auto=format"
     alt="Easter sunrise symbolizing new beginnings and hope"
   />
   <figcaption class="text-center">
@@ -63,7 +63,7 @@ This Easter, choose to rise above doubt. Rise above fear. Rise above every voice
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
   <iframe 
     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-    src="https://youtu.be/1Q1OHq0-zsw" 
+    src="https://www.youtube.com/embed/1Q1OHq0-zsw" 
     title="He Is Risen — Easter Worship Video" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
