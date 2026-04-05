@@ -1,6 +1,6 @@
 ---
 author: Desmond
-pubDatetime: 2026-04-05T10:00:00.000Z
+pubDatetime: 2026-04-05T06:00:00.000Z
 title: Rise. Believe. Begin Again.
 slug: rise-believe-begin-again
 featured: true
