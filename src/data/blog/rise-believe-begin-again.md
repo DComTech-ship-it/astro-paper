@@ -26,25 +26,25 @@ description: Every ending carries within it the seed of a new beginning. A power
   </figcaption>
 </figure>
 
-Every ending carries within it the seed of a new beginning. Easter is not just a date on the calendar — it is a reminder that no matter how dark the Friday, Sunday is always coming.
+Every ending carries within it the seed of a new beginning. Easter is not just a date on the calendar. It is a reminder that no matter how dark the Friday, Sunday is always coming.
 
 ## Table of contents
 
 ## The Promise of Sunday
 
-Life will press you down. There will be moments that feel like the tomb — silent, heavy, and hopeless. But just as the stone was rolled away, every burden you carry has an expiry date.
+Life will press you down. There will be moments that feel like the tomb. Silent, heavy, and hopeless. But just as the stone was rolled away, every burden you carry has an expiry date.
 
 Easter speaks to the fighter in you. It says:
 
 > "You were not made to stay buried. You were made to rise."
 
-Whatever you have lost — your confidence, your joy, your sense of purpose — this season is your invitation to reclaim it. The same power that brought life out of death is working in your story right now.
+Whatever you have lost your confidence, your joy, your sense of purpose this season is your invitation to reclaim it. The same power that brought life out of death is working in your story right now.
 
 ## The Journey Through Darkness
 
 Don't give up on Friday. Don't lose hope on Saturday. Your Sunday is on its way.
 
-This Easter, choose to rise above doubt. Rise above fear. Rise above every voice that told you it was over. Because the greatest comeback in history happened on a morning just like this — and yours is next.
+This Easter, choose to rise above doubt. Rise above fear. Rise above every voice that told you it was over. Because the greatest comeback in history happened on a morning just like this and yours is next.
 
 **Rise. Believe. Begin again.**
 
@@ -61,7 +61,7 @@ This Easter, choose to rise above doubt. Rise above fear. Rise above every voice
   </iframe>
 </div>
 
-▶ *He Is Risen — Easter Worship Video*
+▶ *He Is Risen. Easter Worship Video*
 
 ## Words of Inspiration
 
@@ -89,7 +89,7 @@ This Easter, choose to rise above doubt. Rise above fear. Rise above every voice
   </figcaption>
 </figure>
 
-The resurrection story isn't just about what happened thousands of years ago — it's about what's happening in your life right now. Every setback, every failure, every moment of despair is setting the stage for your greatest comeback.
+The resurrection story isn't just about what happened thousands of years ago and it's about what's happening in your life right now. Every setback, every failure, every moment of despair is setting the stage for your greatest comeback.
 
 Consider this:
 
