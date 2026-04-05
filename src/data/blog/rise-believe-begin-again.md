@@ -45,7 +45,7 @@ This Easter, choose to rise above doubt. Rise above fear. Rise above every voice
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
   <iframe 
     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-    src="https://www.youtube.com/embed/1r2L3p4x5yQ" 
+    src="https://youtu.be/1Q1OHq0-zsw?si=mcWkD4Z99LA6WJAz" 
     title="He Is Risen — Easter Worship Video" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -59,34 +59,30 @@ This Easter, choose to rise above doubt. Rise above fear. Rise above every voice
 
 ### Memory Verse
 
-<div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #007acc; margin: 20px 0; position: relative;">
+<div style="background-color: #1e1e1e; padding: 20px; border-radius: 8px; border-left: 4px solid #007acc; margin: 20px 0; position: relative;">
   <button 
     onclick="navigator.clipboard.writeText('Jesus said to her, \"I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.\" — John 11:25 (ESV)')"
-    style="position: absolute; top: 10px; right: 10px; background: #007acc; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">
+    style="position: absolute; top: 10px; right: 10px; background: #007acc; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; font-family: monospace;">
      Copy
   </button>
   
-  <p style="margin: 0; font-style: italic; font-size: 1.1em; line-height: 1.6;">
-    "Jesus said to her, 'I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.'"
-  </p>
-  <p style="margin: 10px 0 0 0; font-weight: bold; color: #666;">
+  <pre style="margin: 0; color: #d4d4d4; font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.6; white-space: pre-wrap;"><code>"Jesus said to her, 'I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.'"</code></pre>
+  <p style="margin: 10px 0 0 0; font-weight: bold; color: #569cd6; font-family: monospace;">
     — John 11:25 (ESV)
   </p>
 </div>
 
 ### Bonus Memory Verse
 
-<div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #28a745; margin: 20px 0; position: relative;">
+<div style="background-color: #1e1e1e; padding: 20px; border-radius: 8px; border-left: 4px solid #28a745; margin: 20px 0; position: relative;">
   <button 
     onclick="navigator.clipboard.writeText('He is not here; he has risen, just as he said. Come and see the place where he lay. — Matthew 28:6 (NIV)')"
-    style="position: absolute; top: 10px; right: 10px; background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">
+    style="position: absolute; top: 10px; right: 10px; background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; font-family: monospace;">
      Copy
   </button>
   
-  <p style="margin: 0; font-style: italic; font-size: 1.1em; line-height: 1.6;">
-    "He is not here; he has risen, just as he said. Come and see the place where he lay."
-  </p>
-  <p style="margin: 10px 0 0 0; font-weight: bold; color: #666;">
+  <pre style="margin: 0; color: #d4d4d4; font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.6; white-space: pre-wrap;"><code>"He is not here; he has risen, just as he said. Come and see the place where he lay."</code></pre>
+  <p style="margin: 10px 0 0 0; font-weight: bold; color: #4ec9b0; font-family: monospace;">
     — Matthew 28:6 (NIV)
   </p>
 </div>
