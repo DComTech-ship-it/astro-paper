@@ -36,7 +36,7 @@ Life will press you down. There will be moments that feel like the tomb — sile
 
 Easter speaks to the fighter in you. It says:
 
-"You were not made to stay buried. You were made to rise."
+> "You were not made to stay buried. You were made to rise."
 
 Whatever you have lost — your confidence, your joy, your sense of purpose — this season is your invitation to reclaim it. The same power that brought life out of death is working in your story right now.
 
